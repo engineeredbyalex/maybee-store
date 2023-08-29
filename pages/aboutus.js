@@ -27,8 +27,7 @@ export default function AboutUsPage() {
                             frumusețe în casele clienților noștri prin produse de calitate și design unic.
                         </p>
                         <p>
-                            Ceea ce facem noi? Turnăm manual săpunuri, lumânări și ceară parfumată, personalizăm parfumurile, iar
-                            recipientele pentru lumânări sunt produse tot de noi. Ne implicăm cu pasiune în găsirea celor mai frumoase
+                            Ceea ce facem noi? Turnăm manual săpunuri, lumânări și ceară parfumată, personalizăm parfumurile. Ne implicăm cu pasiune în găsirea celor mai frumoase
                             variante de ambalare, astfel încât să te simți special/ă chiar din momentul în care primești pachetul nostru.
                         </p>
                         <p>

@@ -45,7 +45,7 @@ const Title = styled(Link)`
   color:inherit;
   text-decoration:none;
   margin:20px 0px 20px 0px;
-  height:2rem;
+  height:auto;
   display: flex;
   align-items: center;
   justify-content: center;

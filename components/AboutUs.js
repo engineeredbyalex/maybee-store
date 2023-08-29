@@ -112,7 +112,7 @@ export default function AboutUs() {
           <RevealWrapper origin='bottom' delay={200} duration={500}>
             <Description>
                 MAYBEE a fost infiintata in 2023 la incurajarea si sustinerea persoanelor apropiate care au incercat si validat produsele noastre si au fost incantate de fiecare detaliu.
-                Ce facem noi? Turnam manual sapunuri, lumanari si ceara parfumate, personalizam parfumurile si tot noi producem si recipientele pentru lumanari. Ne place sa gasim cele mai frumoase variante de impachetare ca tu sa te simti bine si special/a chiar din momentul in care primesti pachetul nostru.
+                Ce facem noi? Turnam manual sapunuri, lumanari si ceara parfumate, personalizam parfumurile. Ne place sa gasim cele mai frumoase variante de impachetare ca tu sa te simti bine si special/a chiar din momentul in care primesti pachetul nostru.
                 Lumanarile, ceara si sapunurile noastre sunt 100% naturale facute din produse bio. Parfumurile sunt creatia exclusiv MAYBEE si sunt atent alese si testate. Acestea au la baza uleiuri esentiale bio mergand pe combinatie de note de varf, de mijloc si de baza si au in compozitie de la patru pana la sase arome care se complimenteaza excelent. Ne dorim ca MAYBEE sa fie un brand cat mai personal si mai aproape de tine.
             </Description>
           </RevealWrapper>
@@ -123,7 +123,7 @@ export default function AboutUs() {
           </RevealWrapper>
           <RevealWrapper origin='bottom' delay={200} duration={500}>
             <IconsWrapper>
-                <SocialIconsStyled bgColor="#000" url="https://www.facebook.com/maybee.candles" />
+                <SocialIconsStyled bgColor="#000" url="https://www.facebook.com/maybee.for.your.home" />
             </IconsWrapper>
           </RevealWrapper>
         </RightSection>
