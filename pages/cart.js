@@ -11,6 +11,7 @@ import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const ColumnsWrapper = styled.div`
     display: grid;
@@ -146,7 +147,6 @@ export default function CartPage() {
   const {
     cartProducts,
     addProduct,
-    removeProduct,
     clearCart,
     setCartProducts,
   } = useContext(CartContext);
@@ -200,7 +200,7 @@ export default function CartPage() {
     axios.get('/api/settings?name=shippingFee').then(res => {
       setShippingFee(res.data.value);
     })
-  }, []);
+  }, [clearCart]);
 
   useEffect(() => {
     if (!session) {
@@ -230,11 +230,11 @@ export default function CartPage() {
         if (cartItem.quantity > 1) {
           return { ...cartItem, quantity: cartItem.quantity - 1 };
         } else {
-          return null; // Remove this item from the cart
+          return null;
         }
       }
       return cartItem;
-    }).filter(Boolean); // Remove null values from the array
+    }).filter(Boolean);
 
     setCartProducts(updatedCartProducts);
   }
@@ -246,10 +246,8 @@ export default function CartPage() {
     });
     if (response.data.url) {
       window.location = response.data.url;
-
-      // Clear local storage after completing the order
-      clearCart(); // Assuming this function clears the cart state
-      localStorage.removeItem('cartProducts'); // Clear the cart data from local storage
+      clearCart();
+      localStorage.removeItem('cartProducts');
     }
   }
 
@@ -308,7 +306,7 @@ export default function CartPage() {
                           <tr key={cartItem.localId}>
                             <ProductInfoCell>
                               <ProductImageBox>
-                                <img src={product.images[0]} alt="" />
+                                <Image src={product.images[0]} alt="" />
                               </ProductImageBox>
                               <div>
                                 <p>{product.title}</p>

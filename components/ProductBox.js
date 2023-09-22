@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const ProductWrapper = styled.div`
   button{
@@ -107,7 +108,7 @@ export default function ProductBox({
     <ProductWrapper>
       <WhiteBox href={url}>
         <div>
-          <img src={images?.[0]} alt="" />
+          <Image src={images?.[0]} alt="" />
         </div>
       </WhiteBox>
       <ProductInfoBox>

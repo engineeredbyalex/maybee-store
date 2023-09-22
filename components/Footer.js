@@ -4,6 +4,7 @@ import logoSmall from "../public/logoSmall.png"
 import Image from "next/image"
 import ANPC_ONE from "@/assets/images/logo1.png"
 import ANPC_TWO from "@/assets/images/anpc-sol.webp"
+import Link from "next/link"
 
 const StyledFooter = styled.div`
   background-color: #CED4DA;
@@ -67,30 +68,30 @@ export default function Footer() {
             <StyledGrid>
                 <StyledColumn>
                     <Image width={70} src={logoSmall} alt="logo" />
-                    <p>Email : contact@maybee.ro</p>
+                    <p>Email : mixedarts.events@gmail.com</p>
                     <p>Mixed Arts Events SRL</p>
                     <p>CUI : 38795036</p>
                     <p>Adresă : Timișoara, jud Timiș</p>
                 </StyledColumn>
                 <StyledColumn>
                     <h2>Întrebări puse frecvent</h2>
-                    <a href="/faq"><p>Procesul de livrare</p></a>
-                    <a href="/faq"><p>Procesul de fabricație</p></a>
-                    <a href="/faq"><p>Procesarea datelor</p></a>
+                    <Link href="/faq"><p>Procesul de livrare</p></Link>
+                    <Link href="/faq"><p>Procesul de fabricație</p></Link>
+                    <Link href="/faq"><p>Procesarea datelor</p></Link>
                 </StyledColumn>
             </StyledGrid>
             <StyledGrid>
                 <StyledColumn>
-                    <Image width={150} src={ANPC_ONE} />
-                    <a href="https://anpc.ro/ce-este-sal" target="_blank">
+                    <Image alt="" width={150} src={ANPC_ONE} />
+                    <Link href="https://anpc.ro/ce-este-sal" target="_blank">
                         <p>https://anpc.ro/ce-este-sal/</p>
-                    </a>
+                    </Link>
                 </StyledColumn>
                 <StyledColumn>
-                    <Image width={150} src={ANPC_TWO} />
-                    <a href="https://ec.europa.eu/consumers/odr/main/?event=main.home2.show" target="_blank">
+                    <Image alt="" width={150} src={ANPC_TWO} />
+                    <Link href="https://ec.europa.eu/consumers/odr/main/?event=main.home2.show" target="_blank">
                         <p>https://ec.europa.eu/consumers/odr/main/?event=main.home2.show</p>
-                    </a>
+                    </Link>
                 </StyledColumn>
             </StyledGrid>
             <StyledBuild>
@@ -98,7 +99,7 @@ export default function Footer() {
                     CONSTRUIT DE :
                 </p>
                 <p>
-                    <a target="_blank" href="https://www.alexlazarescu.com/">alexlazarescu.com</a>
+                    <Link target="_blank" href="https://www.alexlazarescu.com/">alexlazarescu.com</Link>
                 </p>
             </StyledBuild>
         </StyledFooter >

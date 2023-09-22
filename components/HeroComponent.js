@@ -20,7 +20,7 @@ export default function MainHeader() {
   return (
     <StyledHeader>
       <RevealWrapper origin='bottom' delay={200} duration={1000}>
-        <Image width={300} height={300} src={"https://maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com/logoBig.png"} />
+        <Image alt="" width={300} height={300} src={"https://maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com/logoBig.png"} />
       </RevealWrapper>
     </StyledHeader>
   );

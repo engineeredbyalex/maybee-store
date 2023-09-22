@@ -102,14 +102,14 @@ export default function Header() {
       setMobile(false)
     }
 
-  })
+  }, [])
 
   return (
     <StyledHeader>
       <Banner />
       <Center>
         <Wrapper>
-          <Logo href={'/'}><Image width={70} height={70} src={LogoImg} /></Logo>
+          <Logo href={'/'}><Image alt="" width={70} height={70} src={LogoImg} /></Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={'/'}>Acasă</NavLink>
             <NavLink href={'/products'}>Toate produsele</NavLink>

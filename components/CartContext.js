@@ -5,7 +5,7 @@ export const CartContext = createContext({});
 export function CartContextProvider({ children }) {
   const generateLocalId = () => {
     const timestamp = Date.now();
-    const randomSuffix = Math.floor(Math.random() * 10000); // Adding a random number for uniqueness
+    const randomSuffix = Math.floor(Math.random() * 10000);
     return `${timestamp}-${randomSuffix}`;
   };
 
@@ -16,7 +16,7 @@ export function CartContextProvider({ children }) {
     if (cartProducts?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProducts));
     }
-  }, [cartProducts]);
+  }, [cartProducts, ls]);
 
   useEffect(() => {
     if (ls && ls.getItem("cart")) {
@@ -24,7 +24,7 @@ export function CartContextProvider({ children }) {
       console.log("Stored Cart:", storedCart);
       setCartProducts(storedCart);
     }
-  }, []);
+  }, [ls]);
 
   function addProduct(productId, scent, decoration) {
     const existingProductIndex = cartProducts.findIndex(

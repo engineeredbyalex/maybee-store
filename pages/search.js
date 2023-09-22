@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Center from "@/components/Center";
 import Input from "@/components/Input";
 import styled from "styled-components";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import axios from "axios";
 import ProductsGrid from "@/components/ProductsGrid";
 import { debounce } from "lodash";
@@ -25,8 +25,9 @@ export default function SearchPage() {
   const [phrase, setPhrase] = useState('');
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const debouncedSearch = useCallback(
-    debounce(searchProducts, 500), []
+  const debouncedSearch = useMemo(
+    () => debounce(searchProducts, 500),
+    []
   );
   useEffect(() => {
     if (phrase.length > 0) {
@@ -35,7 +36,7 @@ export default function SearchPage() {
     } else {
       setProducts([]);
     }
-  }, [phrase]);
+  }, [phrase, debouncedSearch]);
 
   function searchProducts(phrase) {
     axios.get('/api/products?phrase=' + encodeURIComponent(phrase))
