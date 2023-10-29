@@ -93,7 +93,7 @@ export default function AccountPage() {
   return (
     <>
       <Header />
-      <Center key={o._id}>
+      <Center>
         <ColsWrapper>
           <div>
             <RevealWrapper delay={0}>
