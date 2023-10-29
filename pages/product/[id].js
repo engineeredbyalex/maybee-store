@@ -1,89 +1,21 @@
-import Center from "@/components/Center";
-import Header from "@/components/Header";
-import Title from "@/components/Title";
+
+import Header from "@/components/Basic/Header";
+
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-import styled from "styled-components";
-// importing whitebox
-import CenterdWhiteBox from "@/components/CenteredWhiteBox";
-import WhiteBox from "@/components/WhiteBox";
-// 
-import ProductImages from "@/components/ProductImages";
-import CartIcon from "@/components/icons/CartIcon";
-import FlyingButton from "@/components/FlyingButton";
-import ProductReviews from "@/components/ProductReviews";
-import { useState } from "react";
-// importing coution
-import StickerOne from "@/public/caution_1.png"
-import StickerTwo from "@/public/caution_2.png"
+
 import Image from "next/image";
 
+import ProductImages from "@/components/Basic/ProductImages";
+import FlyingButton from "@/components/Basic/MainButton";
+import ProductReviews from "@/components/Reviews/ProductReviews";
+import { useState } from "react";
+// importing images
+import StickerOne from "@/public/caution_1.png"
+import StickerTwo from "@/public/caution_2.png"
+import Center from "@/components/Layout/Center";
+import Footer from "@/components/Basic/Footer";
 
-const ColWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  @media screen and (min-width: 768px) {
-    grid-template-columns: .8fr 1.2fr;
-  }
-  gap: 40px;
-  margin: 40px 0;
-`;
-const PriceRow = styled.div`
-  display: flex;
-  gap: 20px;
-  align-items: center;
-`;
-const Price = styled.span`
-  font-size: 1.4rem;
-`;
-
-const DropdownWrapper = styled.div`
-  margin-bottom: 1rem;
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    
-  }
-  select {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition:all ease-in-out 0.2s;
-    :hover {
-       transform:scale(1.02);
-    }
-  }
-
-`;
-
-const ScentWrapper = styled.div`
-h3{
-  font-size:22px;
-  margin-bottom:-5px;
-}
-p{
-  font-size:16px;
-  margin-bottom:12px;
-}
-`
-
-const StickerWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-
-
-  @media screen and (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-  }
-`;
-
-const SpacedWhiteBox = styled(WhiteBox)`
-  margin-top: 100px; /* Adjust the margin value as needed */
-`;
 
 
 
@@ -102,91 +34,96 @@ export default function ProductPage({ product }) {
   return (
     <>
       <Header />
-      <Center>
-        <ColWrapper>
-          <CenterdWhiteBox>
-            <ProductImages images={product.images} />
-          </CenterdWhiteBox>
-          <WhiteBox>
-            <Title>{product.title}</Title>
-            <p>{product.description}</p>
-            {product.properties[0].length > 0 && (
-              <DropdownWrapper>
-                <label>Selectați parfumul:</label>
-                <select value={selectedScent} onChange={handleScentChange}>
-                  <option value="">Alegeți un parfum...</option>
-                  {product.properties[0].map((parfum, index) => (
-                    <option key={index} value={parfum}>
-                      {parfum}
-                    </option>
-                  ))}
-                </select>
-              </DropdownWrapper>
-            )}
-            {product.properties[1] && product.properties[1].length > 0 && (
-              <DropdownWrapper>
-                <label>Selectați decorațiunea:</label>
-                <select
-                  value={selectedDecoration}
-                  onChange={handleDecorationChange}
-                >
-                  <option value="">Alegeți o decorațiune...</option>
-                  {product.properties[1].map((decoratiune, index) => (
-                    <option key={index} value={decoratiune}>
-                      {decoratiune}
-                    </option>
-                  ))}
-                </select>
-              </DropdownWrapper>
-            )}
-            <div>
-              <FlyingButton
-                main
-                _id={product._id}
-                src={product.images?.[0]}
-                scent={selectedScent}
-                decoration={selectedDecoration}
-              >
-                Adaugă în coș
-              </FlyingButton>
+      <div className="flex items-center justify-center w-full flex-col mt-[10rem] min-h-[100vh]">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
+          <div className="w-full flex flex-col items-center justify-center gap-[50px] lg:flex-row  lg:items-start ">
+            {/* Imagine */}
+            <div className="lg:max-w-[400px] lg:max-h-[400px] max-w-[300px] max-h-[300px] mb-[5rem]">
+              <ProductImages images={product.images} />
             </div>
-            <PriceRow>
-              <Price>{product.price} RON</Price>
-            </PriceRow>
-          </WhiteBox>
-        </ColWrapper>
-        <WhiteBox>
-          <h2>Parfumuri Maybee</h2>
+            {/* Imagine */}
+            {/* Text si butoane */}
+            <div className="lg:w-1/2 w-full flex flex-col items-center text-center">
+              <h1 className="text-2xl md:text-3xl mb-5">{product.title}</h1>
+              <p>{product.description}</p>
+              {product.properties[0].length > 0 && (
+                <div className="mb-4 text-center">
+                  <label className="block mb-2 mt-5"><p className="text-2xl">Selectați parfumul :</p></label>
+                  <div className="flex flex-wrap gap-2 items-center justify-center">
+                    {product.properties[0].map((parfum, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedScent(parfum)}
+                        className={`px-4 py-2 border border-gray-300 rounded-full transition-all ease-in-out duration-200 hover:scale-102 ${selectedScent === parfum ? 'bg-blue-500 text-white' : 'bg-white'
+                          }`}
+                      >
+                        {parfum}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {product.properties[1] && product.properties[1].length > 0 && (
+                <div className="mb-4 text-center flex flex-col items-center justify-center">
+                  <label className="block mb-2 mt-5 text-center"><p className="text-2xl">Selectați decotațiunea :</p></label>
+                  <div className="flex flex-wrap gap-2 items-center justify-center">
+                    {product.properties[1].map((decoratiune, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedDecoration(decoratiune)}
+                        className={`px-4 py-2 border border-gray-300 rounded-full transition-all ease-in-out duration-200 hover:scale-102 ${selectedDecoration === decoratiune ? 'bg-blue-500 text-white' : 'bg-white'
+                          }`}
+                      >
+                        {decoratiune}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div className="mb-4 w-full flex items-center justify-center  gap-4">
+                <FlyingButton
+                  main
+                  _id={product._id}
+                  src={product.images?.[0]}
+                  scent={selectedScent}
+                  decoration={selectedDecoration}
+                >
+                  Adaugă în coș
+                </FlyingButton>
+                <span className="text-2xl ">{product.price} RON</span>
+              </div>
+            </div>
+
+            {/* Text si butoane */}
+          </div>
+        </div>
+        <div className="w-full flex flex-col items-center justify-center text-center  ">
+          <h2 className="text-2xl md:text-3xl lg:text-5xl mb-10">Parfumuri Maybee</h2>
           {product.scent &&
             Object.entries(product.scent).map(([scentName, scentDescription]) => (
-              <ScentWrapper key={scentName}>
-                <h3>{scentName}</h3>
-                <p>{scentDescription}</p>
-              </ScentWrapper>
+              <div key={scentName} className="mb-6 w-full lg:w-1/2 max-h-[35rem] flex items-center justify-center flex-col bg-gray-200 rounded-2xl p-5">
+                <h3 className="text-xl md:text-2xl">{scentName}</h3>
+                <p className="text-lg max-w-full">{scentDescription}</p>
+              </div>
             ))}
-        </WhiteBox>
-        <SpacedWhiteBox>
-        <WhiteBox>
-            <StickerWrapper>
-              <Image
-                layout="responsive"
-                width={350}
-                height={150}
-                src={StickerOne}
-                alt="Sticker One"
-              />
-              <Image
-                layout="responsive"
-                width={350}
-                height={150}
-                src={StickerTwo}
-                alt="Sticker Two"
-              />
-            </StickerWrapper>
-        </WhiteBox>
-        </SpacedWhiteBox>
+        </div>
+        <div className="mt-10">
+          <div className="flex items-center justify-center gap-8 flex-col">
+            <Image
+              src={StickerOne}
+              alt="Sticker One"
+              className="w-[350px] h-[150px]"
+            />
+            <Image
+              src={StickerTwo}
+              alt="Sticker Two"
+              className="w-[350px] h-[150px]"
+            />
+          </div>
+        </div>
         <ProductReviews product={product} />
-      </Center>
+      </div>
+      <Footer />
     </>
   );
 }
