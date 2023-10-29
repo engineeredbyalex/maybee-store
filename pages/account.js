@@ -93,7 +93,7 @@ export default function AccountPage() {
                           <p>Nu există comenzi</p>
                         )}
                         {orders.length > 0 && orders.map(o => (
-                          <SingleOrder {...o} />
+                          <SingleOrder key={orders.id} {...o} />
                         ))}
                       </div>
                     )}
