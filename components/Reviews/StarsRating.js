@@ -1,7 +1,7 @@
-import StarOutline from "@/components/icons/StarOutline";
+import StarOutline from "@/components/Icons/StarOutline";
 import styled from "styled-components";
 import { useState } from "react";
-import StarSolid from "@/components/icons/StarSolid";
+import StarSolid from "@/components/Icons/StarSolid";
 import { primary } from "@/lib/colors";
 
 const StarsWrapper = styled.div`
@@ -37,6 +37,11 @@ export default function StarsRating({
 }) {
   const [howMany, setHowMany] = useState(defaultHowMany);
   const five = [1, 2, 3, 4, 5];
+
+  function generateStarId(n) {
+    return `star-${n}`;
+  }
+
   function handleStarClick(n) {
     if (disabled) {
       return;
@@ -44,17 +49,18 @@ export default function StarsRating({
     setHowMany(n);
     onChange(n);
   }
+
   return (
     <StarsWrapper>
       {five.map(n => (
-        <>
+        <div key={generateStarId(n)}>
           <StarWrapper
             disabled={disabled}
             size={size}
             onClick={() => handleStarClick(n)}>
             {howMany >= n ? <StarSolid /> : <StarOutline />}
           </StarWrapper>
-        </>
+        </div>
       ))}
     </StarsWrapper>
   );

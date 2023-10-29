@@ -1,16 +1,16 @@
-import Header from "@/components/Header";
+import Header from "@/components/Basic/Header";
 import styled from "styled-components";
-import Center from "@/components/Center";
-import Button from "@/components/Button";
+import Center from "@/components/Layout/Center";
+import Button from "@/components/Basic/Button";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/components/CartContext";
+import { CartContext } from "@/components/Cart/CartContext";
 import axios from "axios";
-import Table from "@/components/Table";
-import Input from "@/components/Input";
+import Table from "@/components/Layout/Table";
+import Input from "@/components/Layout/Input";
 import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Basic/Footer";
 import Image from "next/image";
 
 const ColumnsWrapper = styled.div`
@@ -282,132 +282,158 @@ export default function CartPage() {
     <>
       <Header />
       <Center>
-        <ColumnsWrapper>
+        <div className="flex-row lg:flex-row w-full min-h-screen ">
           <RevealWrapper delay={0}>
-            <Box>
-              <h2>Coș de cumpărături</h2>
+            <div className="p-[30px] bg-[#fff] rounded-lg shadow-md ">
+              <RevealWrapper>
+                <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Coș de cumpărături</div>
+              </RevealWrapper>
               {!cartProducts?.length && (
-                <div>Coșul dvs. este gol</div>
+                <RevealWrapper>
+                  <div className="w-full flex  text-3xl  font-light  mb-5">Coșul dvs. este gol.</div>
+                </RevealWrapper>
               )}
               {products?.length > 0 && (
-                <Table>
+                <table className="table-auto w-full">
                   <thead>
                     <tr>
-                      <th>Produs</th>
-                      <th>Cantitate</th>
-                      <th>Preț</th>
+                      <th className="px-4 py-2">Produs</th>
+                      <th className="px-4 py-2">Cantitate</th>
+                      <th className="px-4 py-2">Preț</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {products.map(product => (
+                    {products.map((product) =>
                       cartProducts
-                        .filter(item => item.productId === product._id)
+                        .filter((item) => item.productId === product._id)
                         .map((cartItem, index) => (
-                          <tr key={cartItem.localId}>
-                            <ProductInfoCell>
-                              <ProductImageBox>
-                                <Image src={product.images[0]} alt="" />
-                              </ProductImageBox>
-                              <div>
-                                <p>{product.title}</p>
-                                <p>Decoratiune: {cartItem.selectedDecoration}</p>
-                                <p>Parfum: {cartItem.selectedScent}</p>
+                          <tr key={cartItem.localId} className="border-b">
+                            <td className="px-4 py-2">
+                              <div className="flex items-center">
+                                <div className="mr-4">
+                                  <img className="w-[150px] h-[150px]" src={product.images[0]} alt="" />
+                                </div>
+                                <div>
+                                  <p>{product.title}</p>
+                                  <p>Decoratiune: {cartItem.selectedDecoration}</p>
+                                  <p>Parfum: {cartItem.selectedScent}</p>
+                                </div>
                               </div>
-                            </ProductInfoCell>
-                            <QuantityWrapper>
-                              <Button onClick={() => lessOfThisProduct(cartItem.localId)}>-</Button>
-                              <QuantityLabel>
-                                <p>{cartItem.quantity}</p>
-                              </QuantityLabel>
-                              <Button onClick={() => moreOfThisProduct(cartItem.localId)}>+</Button>
-                            </QuantityWrapper>
-                            <td>
-                              {product.price} RON
                             </td>
+                            <td className="px-4 py-2">
+                              <div className="flex items-center">
+                                <button onClick={() => lessOfThisProduct(cartItem.localId)} className="px-2 py-1 bg-gray-200 text-black mr-2">-</button>
+                                <p>{cartItem.quantity}</p>
+                                <button onClick={() => moreOfThisProduct(cartItem.localId)} className="px-2 py-1 bg-gray-200 text-black ml-2">+</button>
+                              </div>
+                            </td>
+                            <td className="px-4 py-2">{product.price} RON</td>
                           </tr>
                         ))
-                    ))}
-                    <tr className="subtotal">
-                      <td colSpan={3}>Produse</td>
-                      <td>{productsTotal} RON</td>
+                    )}
+                    <tr >
+                      <td colSpan={3} className="px-4 py-2">Produse</td>
+                      <td className="px-4 py-2">{productsTotal} RON</td>
                     </tr>
-                    <tr className="subtotal">
-                      <td colSpan={3}>Livrare</td>
-                      <td>{shippingFee} RON</td>
+                    <tr >
+                      <td colSpan={3} className="px-4 py-2">Livrare</td>
+                      <td className="px-4 py-2">{shippingFee} RON</td>
                     </tr>
-                    <tr className="subtotal total">
-                      <td colSpan={3}>Total</td>
-                      <td>{productsTotal + parseInt(shippingFee || 0)} RON</td>
+                    <tr >
+                      <td colSpan={3} className="px-4 py-2">Total</td>
+                      <td className="px-4 py-2">{productsTotal + parseInt(shippingFee || 0)} RON</td>
                     </tr>
                   </tbody>
-                </Table>
+                </table >
               )}
-            </Box>
+            </div >
           </RevealWrapper>
-          {!!cartProducts?.length && (
-            <RevealWrapper delay={100}>
-              <Box>
-                <h2>Informații comandă</h2>
-                <Input type="text"
+          {cartProducts?.length && (
+            <div className="delay-100 py-5">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-bold mb-4">Informații comandă</h2>
+                <input
+                  type="text"
                   placeholder="Nume"
                   value={name}
                   name="name"
-                  onChange={ev => setName(ev.target.value)} />
-                <Input type="text"
+                  onChange={(ev) => setName(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 w-full"
+                />
+                <input
+                  type="text"
                   placeholder="Email"
                   value={email}
                   name="email"
-                  onChange={ev => setEmail(ev.target.value)} />
-                <Input type="text"
-                  placeholder="Număr de telefon"
+                  onChange={(ev) => setEmail(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 w-full"
+                />
+                <input
+                  type="text"
+                  i placeholder="Număr de telefon"
                   value={phone}
                   name="phone"
-                  onChange={ev => setPhone(ev.target.value)} />
-                {console.log(phone)}
-                <CityHolder>
-                  <Input type="text"
+                  onChange={(ev) => setPhone(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 w-full"
+                />
+                <div className="flex flex-col md:flex-row md:space-x-4 mb-4">
+                  <input
+                    type="text"
                     placeholder="Oraș"
                     value={city}
                     name="city"
-                    onChange={ev => setCity(ev.target.value)} />
-                  <Input type="text"
+                    onChange={(ev) => setCity(ev.target.value)}
+                    className="border rounded-lg p-2 mb-4 md:mb-0 w-full"
+                  />
+                  <input
+                    type="text"
                     placeholder="Cod Poștal"
                     value={postalCode}
                     name="postalCode"
-                    onChange={ev => setPostalCode(ev.target.value)} />
-                </CityHolder>
-                <Input type="text"
+                    onChange={(ev) => setPostalCode(ev.target.value)}
+                    className="border rounded-lg p-2 w-full"
+                  />
+                </div>
+                <input
+                  type="text"
                   placeholder="Adresă Stradală"
                   value={streetAddress}
                   name="streetAddress"
-                  onChange={ev => setStreetAddress(ev.target.value)} />
-                <Input type="text"
+                  onChange={(ev) => setStreetAddress(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 w-full"
+                />
+                <input
+                  type="text"
                   placeholder="Țară"
                   value={country}
                   name="country"
-                  onChange={ev => setCountry(ev.target.value)} />
-                <div>
-                  <StyledCheckbox>
-                    <Link href="/policy">
-                      Sunt de acord cu termenii și condițiile
-                    </Link>
-                    <span>
-                      <input type="checkbox" onClick={() => setIsTicked(!isTicked)} />
-                    </span>
-                  </StyledCheckbox>
-                  {isTicked ? (
-                    <Button black block
-                      onClick={goToPayment}>
-                      Continuă la plată
-                    </Button>
-                  ) : (
-                    <div></div>
-                  )}
+                  onChange={(ev) => setCountry(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 w-full"
+                />
+                <div className="mb-4 flex items-center">
+                  <div className="mr-2">
+                    <a href="/policy" className="text-blue-500">Sunt de acord cu termenii și condițiile</a>
+                  </div>
+                  <input
+                    type="checkbox"
+                    onClick={() => setIsTicked(!isTicked)}
+                    className="h-4 w-4 text-blue-500"
+                  />
                 </div>
-              </Box>
-            </RevealWrapper>
+                {!isTicked ? (
+                  <button
+                    onClick={goToPayment}
+                    className="bg-black text-white px-4 py-2 rounded-lg w-full"
+                  >
+                    Continuă la plată
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
           )}
-        </ColumnsWrapper>
+        </div>
       </Center>
       <Footer></Footer>
     </>

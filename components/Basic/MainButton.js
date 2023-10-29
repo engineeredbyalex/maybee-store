@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ButtonStyle } from "@/components/Button";
-import { CartContext } from "@/components/CartContext";
+import { ButtonStyle } from "@/components/Basic/Button";
+import { CartContext } from "@/components/Cart/CartContext";
 import { useContext } from "react";
 
 const FlyingButtonWrapper = styled.div`

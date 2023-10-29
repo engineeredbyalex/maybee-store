@@ -1,6 +1,6 @@
-import Center from "@/components/Center";
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Center from "@/components/Layout/Center";
+import Footer from "@/components/Basic/Footer";
+import Header from "@/components/Basic/Header";
 import styled from "styled-components";
 
 const StyledFaq = styled.div`

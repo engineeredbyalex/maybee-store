@@ -4,20 +4,22 @@ import { WishedProduct } from "@/models/WishedProduct";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Setting } from "@/models/Setting";
-import Header from "@/components/Header";
-import HeroComponent from "@/components/HeroComponent";
-import NewProducts from "@/components/NewProducts";
-import Footer from "@/components/Footer";
-import AboutUs from "@/components/AboutUs";
+import Header from "@/components/Basic/Header";
+import HeroComponent from "@/components/Components/HeroComponent";
+import NewProducts from "@/components/Components/NewProducts";
+import Footer from "@/components/Basic/Footer";
+import AboutUs from "@/components/Components/AboutUs";
+
 
 
 export default function HomePage({ featuredProduct, newProducts, wishedNewProducts }) {
+
   return (
     <div>
       <Header />
       <HeroComponent />
-      <AboutUs />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      <AboutUs />
       <Footer />
     </div>
   );
@@ -44,3 +46,4 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
+

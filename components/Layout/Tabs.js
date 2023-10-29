@@ -16,7 +16,7 @@ const StyledTab = styled.span`
   `}
 `;
 
-export default function Tabs({tabs,active,onChange}) {
+export default function Tabs({ tabs, active, onChange }) {
   return (
     <StyledTabs>
       {tabs.map(tabName => (

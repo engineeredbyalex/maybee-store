@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import Input from "@/components/Input";
-import WhiteBox from "@/components/WhiteBox";
-import StarsRating from "@/components/StarsRating";
-import Textarea from "@/components/Textarea";
-import Button from "@/components/Button";
+import Input from "@/components/Layout/Input";
+import WhiteBox from "@/components/Layout/WhiteBox";
+import StarsRating from "@/components/Reviews/StarsRating";
+import Textarea from "@/components/Layout/Textarea";
+import Button from "@/components/Basic/Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "@/components/Spinner";
 
 const Title = styled.h2`
   font-size:1.2rem;
@@ -71,8 +70,19 @@ export default function ProductReviews({ product }) {
     });
   }
   useEffect(() => {
+    const loadReviews = async () => {
+      try {
+        setReviewsLoading(true);
+        const response = await axios.get(`/api/reviews?product=${product._id}`);
+        setReviews(response.data);
+        setReviewsLoading(false);
+      } catch (error) {
+        console.error('Error loading reviews', error);
+        setReviewsLoading(false);
+      }
+    };
     loadReviews();
-  });
+  }, [product]);
   function loadReviews() {
     setReviewsLoading(true);
     axios.get('/api/reviews?product=' + product._id).then(res => {

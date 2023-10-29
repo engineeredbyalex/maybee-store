@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
-import { AiOutlineHeart } from "react-icons/ai"
-import { AiFillHeart } from "react-icons/ai"
 
 
 export default function ProductBox({
@@ -47,7 +45,7 @@ export default function ProductBox({
               }`}
             onClick={addToWishlist}
           >
-            {isWished ? <AiFillHeart size={30} /> : <AiOutlineHeart size={30} />}
+            {/* {isWished ? <HeartSolidIcon /> : <HeartOutlineIcon />} */}
           </button>
         </div>
       </div>
