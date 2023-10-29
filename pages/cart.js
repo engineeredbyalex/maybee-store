@@ -332,15 +332,15 @@ export default function CartPage() {
                         ))
                     )}
                     <tr >
-                      <td colSpan={3} className="px-4 py-2">Produse</td>
+                      <td colSpan={2} className="px-4 py-2">Produse</td>
                       <td className="px-4 py-2">{productsTotal} RON</td>
                     </tr>
                     <tr >
-                      <td colSpan={3} className="px-4 py-2">Livrare</td>
+                      <td colSpan={2} className="px-4 py-2">Livrare</td>
                       <td className="px-4 py-2">{shippingFee} RON</td>
                     </tr>
                     <tr >
-                      <td colSpan={3} className="px-4 py-2">Total</td>
+                      <td colSpan={2} className="px-4 py-2">Total</td>
                       <td className="px-4 py-2">{productsTotal + parseInt(shippingFee || 0)} RON</td>
                     </tr>
                   </tbody>
