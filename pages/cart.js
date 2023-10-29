@@ -420,7 +420,7 @@ export default function CartPage() {
                     className="h-4 w-4 text-blue-500"
                   />
                 </div>
-                {!isTicked ? (
+                {isTicked ? (
                   <button
                     onClick={goToPayment}
                     className="bg-black text-white px-4 py-2 rounded-lg w-full"
