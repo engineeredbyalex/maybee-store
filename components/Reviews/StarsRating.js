@@ -1,7 +1,7 @@
-import StarOutline from "@/components/Icons/StarOutline";
+import StarOutline from "../Icons/StarOutline";
 import styled from "styled-components";
 import { useState } from "react";
-import StarSolid from "@/components/Icons/StarSolid";
+import StarSolid from "../Icons/StarSolid";
 import { primary } from "@/lib/colors";
 
 const StarsWrapper = styled.div`

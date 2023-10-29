@@ -1,4 +1,4 @@
-import Center from "@/components/Center"
+import Center from "@/components/Layout/Center"
 import styled from "styled-components"
 
 const StyledPolicy = styled.div`
