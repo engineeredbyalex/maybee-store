@@ -58,7 +58,7 @@ export default function StarsRating({
             disabled={disabled}
             size={size}
             onClick={() => handleStarClick(n)}>
-            {howMany >= n ? <StarSolid /> : <StarOutline />}
+            {howMany >= n ? <div /> : <div />}
           </StarWrapper>
         </div>
       ))}
