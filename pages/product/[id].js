@@ -46,7 +46,7 @@ export default function ProductPage({ product }) {
             <div className="lg:w-1/2 w-full flex flex-col items-center text-center">
               <h1 className="text-2xl md:text-3xl mb-5">{product.title}</h1>
               <p>{product.description}</p>
-              {product.properties[0].length > 0 && (
+              {product.properties && product.properties.length > 0 && product.properties[0] && (
                 <div className="mb-4 text-center">
                   <label className="block mb-2 mt-5"><p className="text-2xl">Selectați parfumul :</p></label>
                   <div className="flex flex-wrap gap-2 items-center justify-center">
@@ -63,9 +63,9 @@ export default function ProductPage({ product }) {
                   </div>
                 </div>
               )}
-              {product.properties[1] && product.properties[1].length > 0 && (
+              {product.properties && product.properties[1] && product.properties[1].length > 0 && (
                 <div className="mb-4 text-center flex flex-col items-center justify-center">
-                  <label className="block mb-2 mt-5 text-center"><p className="text-2xl">Selectați decotațiunea :</p></label>
+                  <label className="block mb-2 mt-5 text-center"><p className="text-2xl">Selectați decorațiunea :</p></label>
                   <div className="flex flex-wrap gap-2 items-center justify-center">
                     {product.properties[1].map((decoratiune, index) => (
                       <button
