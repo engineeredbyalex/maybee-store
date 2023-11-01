@@ -80,25 +80,40 @@ export default function ProductPage({ product }) {
                   </div>
                 </div>
               )}
-              <div className="mb-4 w-full flex items-center justify-center  gap-4">
-                <FlyingButton
-                  main
-                  _id={product._id}
-                  src={product.images?.[0]}
-                  scent={selectedScent}
-                  decoration={selectedDecoration}
-                >
-                  Adaugă în coș
-                </FlyingButton>
-                <span className="text-2xl ">{product.price} RON</span>
-              </div>
+              {selectedDecoration || selectedScent || !product.scent ?
+                (<div className="mb-4 w-full flex items-center justify-center  gap-4">
+                  <FlyingButton
+                    main
+                    _id={product._id}
+                    src={product.images?.[0]}
+                    scent={selectedScent}
+                    decoration={selectedDecoration}
+                  >
+                    Adaugă în coș
+                  </FlyingButton>
+                  <span className="text-2xl ">{product.price} RON</span>
+                </div>)
+                :
+                (<div className="mb-4 w-full flex items-center justify-center  gap-4 ">
+                  <FlyingButton
+
+                    disabled
+                    _id={product._id}
+                    src={product.images?.[0]}
+                    scent={selectedScent}
+                    decoration={selectedDecoration}
+                  >
+                    Adaugă în coș
+                  </FlyingButton>
+                  <span className="text-2xl ">{product.price} RON</span>
+                </div>)}
             </div>
 
             {/* Text si butoane */}
           </div>
         </div>
         <div className="w-full flex flex-col items-center justify-center text-center  ">
-          <h2 className="text-2xl md:text-3xl lg:text-5xl mb-10">Parfumuri Maybee</h2>
+          {product.scent ? (<h2 className="text-2xl md:text-3xl lg:text-5xl mb-10">Parfumuri Maybee</h2>) : (<h2 className="text-2xl md:text-3xl lg:text-5xl mb-10"></h2>)}
           {product.scent &&
             Object.entries(product.scent).map(([scentName, scentDescription]) => (
               <div key={scentName} className="mb-6 w-full lg:w-1/2 max-h-[35rem] flex items-center justify-center flex-col bg-gray-200 rounded-2xl p-5">
@@ -108,16 +123,16 @@ export default function ProductPage({ product }) {
             ))}
         </div>
         <div className="mt-10">
-          <div className="flex items-center justify-center gap-8 flex-col">
+          <div className="flex items-center justify-center gap-8 flex-col lg:gap-[10rem] ">
             <Image
               src={StickerOne}
               alt="Sticker One"
-              className="w-[350px] h-[150px]"
+              className="w-[350px] h-[150px] lg:scale-150"
             />
             <Image
               src={StickerTwo}
               alt="Sticker Two"
-              className="w-[350px] h-[150px]"
+              className="w-[350px] h-[150px] lg:scale-150"
             />
           </div>
         </div>

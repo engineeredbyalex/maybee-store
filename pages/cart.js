@@ -284,7 +284,7 @@ export default function CartPage() {
       <Center>
         <div className="flex-row lg:flex-row w-full min-h-screen ">
           <RevealWrapper delay={0}>
-            <div className="p-[30px] bg-[#fff] rounded-lg shadow-md ">
+            <div className="p-[30px] bg-[#fff] rounded-lg shadow-md mt-[5rem] ">
               <RevealWrapper>
                 <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Coș de cumpărături</div>
               </RevealWrapper>
@@ -315,8 +315,8 @@ export default function CartPage() {
                                 </div>
                                 <div>
                                   <p>{product.title}</p>
-                                  <p>Decoratiune: {cartItem.selectedDecoration}</p>
-                                  <p>Parfum: {cartItem.selectedScent}</p>
+                                  {cartItem.selectedDecoration ? (<p>Decoratiune: {cartItem.selectedDecoration}</p>) : (null)}
+                                  {cartItem.selectedScent ? (<p>Parfum: {cartItem.selectedScent}</p>) : (null)}
                                 </div>
                               </div>
                             </td>
