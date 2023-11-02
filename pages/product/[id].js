@@ -28,6 +28,9 @@ export default function ProductPage({ product }) {
     if (!product.properties) {
       setIsDisabled(false);
     }
+    else if (product._id === '649d792f59d007b6f857eadc') {
+      setIsDisabled(false);
+    }
     else if (product.properties.length === 0) {
       setIsDisabled(false);
     }

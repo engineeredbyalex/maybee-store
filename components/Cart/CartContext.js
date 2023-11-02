@@ -75,12 +75,10 @@ export function CartContextProvider({ children }) {
 
   function clearCart() {
     console.log("Clearing cart");
-    setCartProducts([]);
     if (ls) {
       ls.removeItem("cart"); // Clear cart data from local storage
     }
   }
-
   console.log("Current Cart:", cartProducts);
 
   return (
