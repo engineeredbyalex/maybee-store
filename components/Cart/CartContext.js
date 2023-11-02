@@ -75,8 +75,16 @@ export function CartContextProvider({ children }) {
 
   function clearCart() {
     console.log("Clearing cart");
+    setCartProducts([]);
+
     if (ls) {
+      console.log("Local storage exists");
       ls.removeItem("cart"); // Clear cart data from local storage
+
+      const storedCartAfterClear = ls.getItem("cart");
+      console.log("Stored Cart After Clear:", storedCartAfterClear);
+    } else {
+      console.log("Local storage does not exist");
     }
   }
   console.log("Current Cart:", cartProducts);
