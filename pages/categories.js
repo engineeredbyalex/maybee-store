@@ -53,9 +53,9 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
               </div>
               <div className="flex gap-[50px] flex-col lg:flex-row">
                 {categoriesProducts[cat._id].map((p, index) => (
-                  // <RevealWrapper key={p._id} delay={index * 50}>
-                    <ProductBox {...p} wished={wishedProducts.includes(p._id)} />
-                  // </RevealWrapper>
+               
+                  <ProductBox key={p._id} {...p} wished={wishedProducts.includes(p._id)} />
+                 
                 ))}
               </div>
             </div>

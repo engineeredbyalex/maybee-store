@@ -1,17 +1,12 @@
 import Header from "@/components/Basic/Header";
 import styled from "styled-components";
 import Center from "@/components/Layout/Center";
-import Button from "@/components/Basic/Button";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/components/Cart/CartContext";
 import axios from "axios";
-import Table from "@/components/Layout/Table";
-import Input from "@/components/Layout/Input";
-import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
-import Image from "next/image";
 
 const ColumnsWrapper = styled.div`
     display: grid;
@@ -405,7 +400,7 @@ export default function CartPage() {
                 />
                 <div className="mb-4 flex items-center">
                   <div className="mr-2">
-                    <a href="/policy" className="text-blue-500">Sunt de acord cu termenii și condițiile</a>
+                    <Link href="/policy" className="text-blue-500">Sunt de acord cu termenii și condițiile</Link>
                   </div>
                   <input
                     type="checkbox"
