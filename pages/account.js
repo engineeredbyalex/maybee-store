@@ -75,7 +75,7 @@ export default function AccountPage() {
       <Center>
         <div className="grid grid-cols-2 gap-8 mb-10 mt-[10rem]">
           <div>
-            <RevealWrapper delay={0}>
+
               <WhiteBox>
                 <Tabs
                   tabs={['Comenzi', 'Wishlist']}
@@ -117,10 +117,10 @@ export default function AccountPage() {
                   </>
                 )}
               </WhiteBox>
-            </RevealWrapper>
+
           </div>
           <div>
-            <RevealWrapper delay={100}>
+
               <WhiteBox>
                 <h2>{session ? 'Account details' : 'Login'}</h2>
                 {!addressLoaded && (
@@ -174,7 +174,7 @@ export default function AccountPage() {
                   <Button primary onClick={login}>Contectare cu Google</Button>
                 )}
               </WhiteBox>
-            </RevealWrapper>
+
           </div>
         </div>
       </Center>

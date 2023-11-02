@@ -10,15 +10,13 @@ export default function AboutUs() {
       <Wrapper>
         <Center>
           <div className="flex flex-col max-w-[500px]  text-center lg:text-center">
-            <RevealWrapper>
+
               <h2 className="text-2xl font-bold mb-5">Despre MAYBEE</h2>
-            </RevealWrapper>
-            <RevealWrapper>
+
               <p className="text-[18px] leading-6 text-black">
                 MAYBEE, infiintată în 2023, creează manual produse precum sapunuri, lumanari si ceara parfumata. <br /> Ne specializăm în parfumuri personalizate și impachetari frumoase pentru a-ti aduce un sentiment special. <br /> Toate produsele noastre sunt 100% naturale și bazate pe uleiuri esentiale bio, combinate armonios pentru a-ti oferi o experiență deosebita. <br /> Vrem ca MAYBEE să fie un brand personal, dedicat ție.
               </p>
-            </RevealWrapper>
-            <RevealWrapper>
+
               <div className="my-5">
                 <Link href="/aboutus" passHref>
                   <p className="inline-block px-4 py-2 border border-black text-black hover:bg-black hover:text-white transition duration-500 ease-in-out transform hover:scale-105">
@@ -26,8 +24,7 @@ export default function AboutUs() {
                   </p>
                 </Link>
               </div>
-            </RevealWrapper>
-            <RevealWrapper>
+
               <div className="flex justify-center gap-[30px]">
                 <SocialIcon
                   bgColor="#000"
@@ -44,7 +41,7 @@ export default function AboutUs() {
                   className="transform transition duration-500 ease-in-out hover:scale-105"
                 />
               </div>
-            </RevealWrapper>
+
           </div>
         </Center>
       </Wrapper>

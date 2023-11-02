@@ -9,10 +9,29 @@ import HeroComponent from "@/components/Components/HeroComponent";
 import NewProducts from "@/components/Components/NewProducts";
 import Footer from "@/components/Basic/Footer";
 import AboutUs from "@/components/Components/AboutUs";
-
-
+import { useLayoutEffect, useState } from "react";
+import ScrollButton from "@/components/Basic/ScrollButton";
 
 export default function HomePage({ featuredProduct, newProducts, wishedNewProducts }) {
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+
+      localStorage.setItem("scrollPosition", scrollPosition);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Set the scroll position on component mount
+    const storedScrollPosition = localStorage.getItem("scrollPosition");
+    if (storedScrollPosition) {
+      window.scrollTo(0, parseInt(storedScrollPosition));
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div>
@@ -20,6 +39,7 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
       <HeroComponent />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
       <AboutUs />
+      <ScrollButton />
       <Footer />
     </div>
   );
@@ -46,4 +66,3 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
-

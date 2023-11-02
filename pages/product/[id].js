@@ -1,19 +1,19 @@
 
+// 
 import Header from "@/components/Basic/Header";
-
+// 
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-
+// 
 import Image from "next/image";
-
+// 
 import ProductImages from "@/components/Basic/ProductImages";
 import FlyingButton from "@/components/Basic/MainButton";
 import ProductReviews from "@/components/Reviews/ProductReviews";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // importing images
 import StickerOne from "@/public/caution_1.png"
 import StickerTwo from "@/public/caution_2.png"
-import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
 
 
@@ -22,15 +22,27 @@ import Footer from "@/components/Basic/Footer";
 export default function ProductPage({ product }) {
   const [selectedScent, setSelectedScent] = useState('');
   const [selectedDecoration, setSelectedDecoration] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleScentChange = (event) => {
-    setSelectedScent(event.target.value);
-  };
-
-  const handleDecorationChange = (event) => {
-    setSelectedDecoration(event.target.value);
-  };
-
+  useEffect(() => {
+    if (!product.properties) {
+      setIsDisabled(false);
+    }
+    else if (product.properties.length === 0) {
+      setIsDisabled(false);
+    }
+    else if (product.properties.length === 1) {
+      if (selectedScent || selectedDecoration) {
+        setIsDisabled(false);
+      } else {
+        setIsDisabled(true);
+      }
+    } else if (selectedScent && selectedDecoration) {
+      setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
+    }
+  }, [selectedScent, selectedDecoration, product.properties]);
   return (
     <>
       <Header />
@@ -80,7 +92,7 @@ export default function ProductPage({ product }) {
                   </div>
                 </div>
               )}
-              {selectedDecoration || selectedScent || !product.scent ?
+              {!isDisabled ?
                 (<div className="mb-4 w-full flex items-center justify-center  gap-4">
                   <FlyingButton
                     main
@@ -96,7 +108,6 @@ export default function ProductPage({ product }) {
                 :
                 (<div className="mb-4 w-full flex items-center justify-center  gap-4 ">
                   <FlyingButton
-
                     disabled
                     _id={product._id}
                     src={product.images?.[0]}

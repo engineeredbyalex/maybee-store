@@ -210,7 +210,6 @@ export default function CartPage() {
       setName(response.data.name);
       setEmail(response.data.email);
       setPhone(response.data.phone);
-      { console.log(response.data.phone) }
       setCity(response.data.city);
       setPostalCode(response.data.postalCode);
       setStreetAddress(response.data.streetAddress);
@@ -283,16 +282,11 @@ export default function CartPage() {
       <Header />
       <Center>
         <div className="flex-row lg:flex-row w-full min-h-screen ">
-          <RevealWrapper delay={0}>
-            <div className="p-[30px] bg-[#fff] rounded-lg shadow-md mt-[5rem] ">
-              <RevealWrapper>
-                <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Coș de cumpărături</div>
-              </RevealWrapper>
-              {!cartProducts?.length && (
-                <RevealWrapper>
-                  <div className="w-full flex  text-3xl  font-light  mb-5">Coșul dvs. este gol.</div>
-                </RevealWrapper>
-              )}
+          <div className="p-[30px] bg-[#fff] rounded-lg shadow-md mt-[5rem] ">
+            <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Coș de cumpărături</div>
+            {cartProducts?.length === 0 && (
+              <div className="w-full flex  text-3xl  font-light  mb-5">Coșul dvs. este gol.</div>
+            )}
               {products?.length > 0 && (
                 <table className="table-auto w-full">
                   <thead>
@@ -346,8 +340,7 @@ export default function CartPage() {
                   </tbody>
                 </table >
               )}
-            </div >
-          </RevealWrapper>
+          </div >
           {cartProducts?.length && (
             <div className="delay-100 py-5">
               <div className="bg-white p-6 rounded-lg shadow-md">
@@ -428,14 +421,14 @@ export default function CartPage() {
                     Continuă la plată
                   </button>
                 ) : (
-                  <div></div>
+                    null
                 )}
               </div>
             </div>
           )}
         </div>
       </Center>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }

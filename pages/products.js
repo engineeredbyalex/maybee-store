@@ -1,32 +1,50 @@
 import Header from "@/components/Basic/Header";
-import styled from "styled-components";
+import { useLayoutEffect, useState } from "react";
 import Center from "@/components/Layout/Center";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import ProductsGrid from "@/components/Layout/ProductsGrid";
-import Title from "@/components/Basic/Title";
+
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
-import Wrapper from "@/components/Layout/Wrapper";
-import { RevealWrapper } from "next-reveal";
+import Footer from "@/components/Basic/Footer";
+import ScrollButton from "@/components/Basic/ScrollButton";
+
 
 export default function ProductsPage({ products, wishedProducts }) {
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      localStorage.setItem("scrollPosition", scrollPosition);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Set the scroll position on component mount
+    const storedScrollPosition = localStorage.getItem("scrollPosition");
+    if (storedScrollPosition) {
+      window.scrollTo(0, parseInt(storedScrollPosition));
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Header />
       <Center>
-        <RevealWrapper>
-          <div className="w-full flex items-center justify-start text-5xl mt-[5rem] font-normal text-uppercase mb-5">Toate produsele</div>
-        </RevealWrapper>
+        <div className="w-full flex items-center justify-start text-5xl mt-[5rem] font-normal text-uppercase mb-5">Toate produsele</div>
       </Center>
       <div className="mt-[10rem]">
         <Center>
           <ProductsGrid products={products} wishedProducts={wishedProducts} />
         </Center>
       </div>
-
-
+      <ScrollButton />
+      <Footer />
     </>
   );
 }

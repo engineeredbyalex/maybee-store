@@ -10,15 +10,34 @@ import { WishedProduct } from "@/models/WishedProduct";
 import { Category } from "@/models/Category"; // Import Category model
 import { Product } from "@/models/Product"; // Import Product model
 import Footer from "@/components/Basic/Footer";
+import { useLayoutEffect, useState } from "react";
+import ScrollButton from "@/components/Basic/ScrollButton";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      localStorage.setItem("scrollPosition", scrollPosition);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Set the scroll position on component mount
+    const storedScrollPosition = localStorage.getItem("scrollPosition");
+    if (storedScrollPosition) {
+      window.scrollTo(0, parseInt(storedScrollPosition));
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <Header />
       <Center>
-        <RevealWrapper>
-          <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Catalog</div>
-        </RevealWrapper>
+        <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Catalog</div>
       </Center>
       <Center>
         <div className="w-full flex items-center justify-center flex-col mt-[10rem]">
@@ -34,15 +53,16 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
               </div>
               <div className="flex gap-[50px] flex-col lg:flex-row">
                 {categoriesProducts[cat._id].map((p, index) => (
-                  <RevealWrapper key={p._id} delay={index * 50}>
+                  // <RevealWrapper key={p._id} delay={index * 50}>
                     <ProductBox {...p} wished={wishedProducts.includes(p._id)} />
-                  </RevealWrapper>
+                  // </RevealWrapper>
                 ))}
               </div>
             </div>
           ))}
         </div>
       </Center>
+      <ScrollButton />
       <Footer />
     </ >
   );
