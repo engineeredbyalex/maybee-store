@@ -61,6 +61,9 @@ export default function ProductPage({ product }) {
             <div className="lg:w-1/2 w-full flex flex-col items-center text-center">
               <h1 className="text-2xl md:text-3xl mb-5">{product.title}</h1>
               <p>{product.description}</p>
+              {product.weight ? (
+                <p className="text-[18px]">Gramaj ceară : {product.weight} gr</p>
+              ) : (null)}
               {product.properties && product.properties.length > 0 && product.properties[0] && (
                 <div className="mb-4 text-center">
                   <label className="block mb-2 mt-5"><p className="text-2xl">Selectați parfumul :</p></label>
