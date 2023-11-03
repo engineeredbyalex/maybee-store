@@ -16,8 +16,6 @@ export default async function handler(req, res) {
 
     try {
         const orderDoc = await Order.create({
-            // Include all necessary properties for the order
-            // including selectedScent and selectedDecoration
             line_items: cartProducts,
             name,
             email,
