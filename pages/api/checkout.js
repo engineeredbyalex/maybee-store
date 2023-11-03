@@ -74,6 +74,12 @@ export default async function handler(req, res) {
     cancel_url: process.env.PUBLIC_URL + '/cart?canceled=1',
     metadata: { orderId: orderDoc._id.toString() },
     allow_promotion_codes: true,
+    payment_intent_data: {
+      receipt_email: email,
+      metadata: {
+        coupon_code: 'MAYBEE10', // Add the coupon code to metadata
+      },
+    },
     shipping_options: [
       {
         shipping_rate_data: {
