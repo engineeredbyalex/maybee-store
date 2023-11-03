@@ -77,7 +77,7 @@ export default async function handler(req, res) {
     payment_intent_data: {
       receipt_email: email,
       metadata: {
-        coupon_code: 'MAYBEE10', // Add the coupon code to metadata
+        coupon_code: 'Maybee10', // Add the coupon code to metadata
       },
     },
     shipping_options: [
