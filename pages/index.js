@@ -11,6 +11,7 @@ import Footer from "@/components/Basic/Footer";
 import AboutUs from "@/components/Components/AboutUs";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
+import Banner from "@/components/Basic/Banner";
 
 export default function HomePage({ featuredProduct, newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {
@@ -35,6 +36,7 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
 
   return (
     <div>
+      <Banner />
       <Header />
       <HeroComponent />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
