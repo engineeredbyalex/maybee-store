@@ -1,16 +1,25 @@
 import { model, models, Schema } from "mongoose";
 
 const LineItemSchema = new Schema({
-  productId: String,
+  productId: {
+    type: Schema.Types.ObjectId,
+    ref: "Product",
+    required: true,
+  },
   selectedScent: String,
   selectedDecoration: String,
-  title: String, // Add the title field here
-  quantity: Number, // Change to Number type
+  title: String,
+  quantity: Number,
+  price: Number,
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+  },
 });
 
 const OrderSchema = new Schema({
   userEmail: String,
-  line_items: [LineItemSchema], // Use the LineItemSchema
+  line_items: [LineItemSchema],
   name: String,
   email: String,
   phone: String,

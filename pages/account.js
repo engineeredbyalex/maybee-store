@@ -11,6 +11,7 @@ import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
 import Tabs from "@/components/Layout/Tabs";
 import SingleOrder from "@/components/Cart/SingleOrder";
+import Banner from "@/components/Basic/Banner";
 
 export default function AccountPage() {
   const { data: session } = useSession();
@@ -71,6 +72,7 @@ export default function AccountPage() {
   }
   return (
     <>
+      <Banner />
       <Header />
       <Center>
         <div className="grid grid-cols-2 gap-8 mb-10 mt-[10rem]">
@@ -122,7 +124,7 @@ export default function AccountPage() {
           <div>
 
               <WhiteBox>
-                <h2>{session ? 'Account details' : 'Login'}</h2>
+              <h2>{session ? 'Detalii cont' : 'Login'}</h2>
                 {!addressLoaded && (
                   <Spinner fullWidth={true} />
                 )}

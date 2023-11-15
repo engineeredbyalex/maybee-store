@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import StickerOne from "@/public/caution_1.png"
 import StickerTwo from "@/public/caution_2.png"
 import Footer from "@/components/Basic/Footer";
+import Banner from "@/components/Basic/Banner";
 
 
 
@@ -48,6 +49,7 @@ export default function ProductPage({ product }) {
   }, [selectedScent, selectedDecoration, product.properties]);
   return (
     <>
+      <Banner />
       <Header />
       <div className="flex items-center justify-center w-full flex-col mt-[10rem] min-h-[100vh]">
         <div className="grid grid-cols-1 md:grid-cols-1 gap-8">

@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         title: productInfo.title,
         quantity: quantity,
         price: productInfo.price, // Store the price
-        // Include any other information you want to store here
+        category: productInfo.category
       });
     }
   }

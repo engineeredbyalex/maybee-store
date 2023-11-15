@@ -4,15 +4,15 @@ import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
 import WhiteBox from "@/components/Layout/WhiteBox";
 import { RevealWrapper } from "next-reveal";
+import Banner from "@/components/Basic/Banner";
 
 export default function AboutUsPage() {
     return (
         <>
+            <Banner />
             <Header />
             <Center>
-
-                    <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Despre noi</div>
-
+                <div className="w-full flex  text-5xl mt-[10rem] font-normal text-uppercase mb-5">Despre noi</div>
             </Center>
             <div className="flex items-center justify-center text-center min-h-screen">
                 <Center>

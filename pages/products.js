@@ -10,6 +10,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
 import Footer from "@/components/Basic/Footer";
 import ScrollButton from "@/components/Basic/ScrollButton";
+import Banner from "@/components/Basic/Banner";
 
 
 export default function ProductsPage({ products, wishedProducts }) {
@@ -34,9 +35,10 @@ export default function ProductsPage({ products, wishedProducts }) {
 
   return (
     <>
+      <Banner />
       <Header />
       <Center>
-        <div className="w-full flex items-center justify-start text-5xl mt-[5rem] font-normal text-uppercase mb-5">Toate produsele</div>
+        <div className="w-full flex items-center justify-start text-5xl mt-[10rem] font-normal text-uppercase mb-5">Toate produsele</div>
       </Center>
       <div className="mt-[10rem]">
         <Center>

@@ -12,6 +12,7 @@ import { Product } from "@/models/Product"; // Import Product model
 import Footer from "@/components/Basic/Footer";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
+import Banner from "@/components/Basic/Banner";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
   useLayoutEffect(() => {
@@ -35,9 +36,10 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
 
   return (
     <>
+      <Banner />
       <Header />
       <Center>
-        <div className="w-full flex  text-5xl mt-[5rem] font-normal text-uppercase mb-5">Catalog</div>
+        <div className="w-full flex  text-5xl mt-[10rem] font-normal text-uppercase mb-5">Catalog</div>
       </Center>
       <Center>
         <div className="w-full flex items-center justify-center flex-col mt-[10rem]">

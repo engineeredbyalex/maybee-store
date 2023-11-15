@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Basic/Spinner";
 import Footer from "@/components/Basic/Footer";
+import Banner from "@/components/Basic/Banner";
 
 export default function CategoryPage({
   category,
@@ -53,6 +54,7 @@ export default function CategoryPage({
   }, [filtersValues, sort, filtersChanged, category._id, subCategories]);
   return (
     <>
+      <Banner />
       <Header />
       <Center>
         <div className="flex items-center justify-between mt-[5rem] mb-[5rem]">

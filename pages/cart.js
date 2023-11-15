@@ -7,6 +7,8 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
+import Banner from "@/components/Basic/Banner";
+
 
 const ColumnsWrapper = styled.div`
     display: grid;
@@ -259,21 +261,25 @@ export default function CartPage() {
   if (isSuccess) {
     return (
       <>
+        <Banner />
         <Header />
-        <Center>
-          <ColumnsWrapper>
-            <Box>
-              <h1>Mulțumim pentru comandă</h1>
-              <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
-            </Box>
-          </ColumnsWrapper>
-        </Center>
+        <div className="mt-[10rem]">
+          <Center>
+            <ColumnsWrapper>
+              <Box>
+                <h1>Mulțumim pentru comandă</h1>
+                <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
+              </Box>
+            </ColumnsWrapper>
+          </Center>
+        </div>
       </>
     );
   }
 
   return (
     <>
+      <Banner />
       <Header />
       <Center>
         <div className="flex-row lg:flex-row w-full min-h-screen ">
@@ -416,7 +422,7 @@ export default function CartPage() {
                     Continuă la plată
                   </button>
                 ) : (
-                    null
+                    <></>
                 )}
               </div>
             </div>
