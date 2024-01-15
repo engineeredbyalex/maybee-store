@@ -153,12 +153,12 @@ export default function CartPage() {
         <Header />
         <div className="mt-[10rem]">
           <Center>
-            <ColumnsWrapper>
-              <Box>
+            <div>
+              <div>
                 <h1>Mulțumim pentru comandă</h1>
                 <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
-              </Box>
-            </ColumnsWrapper>
+              </div>
+            </div>
           </Center>
         </div>
       </>
