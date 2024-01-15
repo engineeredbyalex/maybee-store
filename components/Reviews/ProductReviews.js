@@ -1,138 +1,99 @@
-import styled from "styled-components";
-import Input from "@/components/Layout/Input";
-import WhiteBox from "@/components/Layout/WhiteBox";
-import StarsRating from "@/components/Reviews/StarsRating";
-import Textarea from "@/components/Layout/Textarea";
-import Button from "@/components/Basic/Button";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import Input from '@/components/Layout/Input';
+import WhiteBox from '@/components/Layout/WhiteBox';
+import StarsRating from '@/components/Reviews/StarsRating';
+import Textarea from '@/components/Layout/Textarea';
+import Button from '@/components/Basic/Button';
+import axios from 'axios';
+import Center from '../Layout/Center';
+import Wrapper from '../Layout/Wrapper';
 
-const Title = styled.h2`
-  font-size:1.2rem;
-  margin-bottom:50px;
-  margin-top:50px;
-  text-transform:uppercase;
-  font-size:22px;
-`;
-const Subtitle = styled.h3`
-  font-size: 22px;
-  margin-top: 5px;
-`;
-const ColsWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  margin-bottom: 40px;
-  @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-`;
-const ReviewWrapper = styled.div`
-  margin-bottom: 10px;
-  border-top: 1px solid #eee;
-  padding: 10px 0;
-  h3{
-    margin:5px 0;
-    font-size:20px;
-    color:#333;
-    font-weight: normal;
-  }
-  p{
-    margin:5px 0px;
-    font-size: 16px;
-    line-height: 1rem;
-    color:#555;
-  }
-`;
-const ReviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  time{
-    font-size: 12px;
-    color: #aaa;
-  }
-`;
 
-export default function ProductReviews({ product }) {
+const ProductReviews = ({ product }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [reviewsLoading, setReviewsLoading] = useState(false);
-  function submitReview() {
+
+  const submitReview = () => {
     const data = { title, description, stars, product: product._id };
-    axios.post('/api/reviews', data).then(res => {
+    axios.post('/api/reviews', data).then((res) => {
       setTitle('');
       setDescription('');
       setStars(0);
       loadReviews();
     });
-  }
+  };
+
+  const loadReviews = async () => {
+    try {
+      setReviewsLoading(true);
+      const response = await axios.get(`/api/reviews?product=${product._id}`);
+      setReviews(response.data);
+      setReviewsLoading(false);
+    } catch (error) {
+      console.error('Error loading reviews', error);
+      setReviewsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const loadReviews = async () => {
-      try {
-        setReviewsLoading(true);
-        const response = await axios.get(`/api/reviews?product=${product._id}`);
-        setReviews(response.data);
-        setReviewsLoading(false);
-      } catch (error) {
-        console.error('Error loading reviews', error);
-        setReviewsLoading(false);
-      }
-    };
     loadReviews();
   }, [product]);
-  function loadReviews() {
-    setReviewsLoading(true);
-    axios.get('/api/reviews?product=' + product._id).then(res => {
-      setReviews(res.data);
-      setReviewsLoading(false);
-    });
-  }
+
   return (
-    <div>
-      <Title>Recenzii</Title>
-      <ColsWrapper>
+    <div className='flex w-full items-start justify-start flex-col mt-[3rem]'>
+      {/* Review Add */}
+      <div className='lg:ml-[10rem] ml-[2rem] lg:mr-[10rem] mr-[2rem]'>
         <div>
-          <WhiteBox>
-            <Subtitle>Adaugă o recenzie</Subtitle>
+          <div>
+            <h2>Adaugă o recenzie</h2>
             <div>
               <StarsRating onChange={setStars} />
             </div>
             <Input
               value={title}
-              onChange={ev => setTitle(ev.target.value)}
-              placeholder="Titlu" />
+              onChange={(ev) => setTitle(ev.target.value)}
+              placeholder="Titlu"
+              className="border text-base w-full"
+            />
             <Textarea
               value={description}
-              onChange={ev => setDescription(ev.target.value)}
-              placeholder="Parerea dvs." />
+              onChange={(ev) => setDescription(ev.target.value)}
+              placeholder="Parerea dvs."
+              className="border text-base w-full"
+            />
             <div>
-              <Button primary onClick={submitReview}>Trimite recenzia</Button>
+              <Button primary onClick={submitReview}>
+                Trimite recenzia
+              </Button>
             </div>
-          </WhiteBox>
+          </div>
         </div>
+        {/* All reviews*/}
         <div>
-          <WhiteBox>
-            <Subtitle>Toate recenzile :</Subtitle>
-
-            {reviews.length === 0 && (
-              <p>Nu există recenzii !</p>
-            )}
-            {reviews.length > 0 && reviews.map(review => (
-              <ReviewWrapper key={review._id}>
-                <ReviewHeader>
-                  <StarsRating size={'sm'} disabled={true} defaultHowMany={review.stars} />
-                  <time>{(new Date(review.createdAt)).toLocaleString('sv-SE')}</time>
-                </ReviewHeader>
-                <h3>{review.title}</h3>
-                <p>{review.description}</p>
-              </ReviewWrapper>
-            ))}
-          </WhiteBox>
+          <div>
+            <h2>Toate recenzile :</h2>
+            {reviews.length === 0 && <p>Nu există recenzii!</p>}
+            {reviews.length > 0 &&
+              reviews.map((review) => (
+                <div key={review._id} className={ReviewWrapper}>
+                  <div className={ReviewHeader}>
+                    {/* <StarsRating size={'sm'} disabled={true} defaultHowMany={review.stars} /> */}
+                    <time className={Time}>
+                      {(new Date(review.createdAt)).toLocaleString('sv-SE')}
+                    </time>
+                  </div>
+                  <h3>{review.title}</h3>
+                  <p>{review.description}</p>
+                </div>
+              ))}
+          </div>
         </div>
-      </ColsWrapper>
+      </div>
     </div>
   );
-}
+};
+
+export default ProductReviews;

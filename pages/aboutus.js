@@ -2,8 +2,6 @@ import React from "react";
 import Header from "@/components/Basic/Header";
 import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
-import WhiteBox from "@/components/Layout/WhiteBox";
-import { RevealWrapper } from "next-reveal";
 import Banner from "@/components/Basic/Banner";
 
 export default function AboutUsPage() {

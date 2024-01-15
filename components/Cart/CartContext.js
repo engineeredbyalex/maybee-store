@@ -1,3 +1,5 @@
+
+
 import { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext({});
@@ -21,17 +23,19 @@ export function CartContextProvider({ children }) {
   useEffect(() => {
     if (ls && ls.getItem("cart")) {
       const storedCart = JSON.parse(ls.getItem("cart"));
-      console.log("Stored Cart:", storedCart);
       setCartProducts(storedCart);
     }
   }, [ls]);
 
-  function addProduct(productId, scent, decoration) {
+  function addProduct(productId, selectedValues) {
+  // Check if you are constructing cartProduct correctly
     const existingProductIndex = cartProducts.findIndex(
       (item) =>
         item.productId === productId &&
-        item.selectedScent === scent &&
-        item.selectedDecoration === decoration
+        item.selectedValues &&
+        item.selectedValues.name === selectedValues.name &&
+        item.selectedValues.values &&
+        item.selectedValues.values.join(",") === selectedValues.values.join(",")
     );
 
     if (existingProductIndex !== -1) {
@@ -47,14 +51,12 @@ export function CartContextProvider({ children }) {
         {
           localId: generateLocalId(),
           productId,
-          selectedScent: scent,
-          selectedDecoration: decoration,
+          selectedValues,
           quantity: 1,
         },
       ]);
     }
   }
-
   function updateQuantity(localId, newQuantity) {
     if (newQuantity <= 0) {
       removeProduct(localId);
@@ -94,9 +96,7 @@ export function CartContextProvider({ children }) {
         cartProducts,
         setCartProducts,
         addProduct,
-        updateQuantity,
-        removeProduct,
-        clearCart,
+        clearCart
       }}
     >
       {children}

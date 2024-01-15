@@ -18,7 +18,7 @@ const FlyingButtonWrapper = styled.div`
     background-color: ${props => props.main ? "#252525" : "transparent"};
     border: ${props => props.main ? "none" : "1px solid #252525"};
     color: ${props => props.main ? "white" : "#252525"};
-    pointer-events: ${props => props.disabled ? "none" : "auto"}; /* Disable pointer events if disabled prop is true */
+    pointer-events: ${props => props.disabled ? "none" : "auto"};
 
     ${props => props.white && `
       background-color: white;
@@ -41,11 +41,9 @@ export default function FlyingButton(props) {
     <FlyingButtonWrapper
       white={props.white}
       main={props.main}
-      scent={props.scent}
-      decoration={props.decoration}
-      disabled={props.disabled} // Pass the disabled prop to the wrapper
+      disabled={props.disabled}
     >
-      <button onClick={() => addProduct(props._id, props.scent, props.decoration)}>
+      <button onClick={() => addProduct(props._id, props.selectedValues)}>
         {props.children}
       </button>
     </FlyingButtonWrapper>

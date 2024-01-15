@@ -1,19 +1,24 @@
 import { model, models, Schema } from "mongoose";
 
+const SelectedValuesSchema = new Schema({
+  propertyName: String, // Store the name of the property
+  value: String,
+});
+
 const LineItemSchema = new Schema({
   productId: {
     type: Schema.Types.ObjectId,
     ref: "Product",
     required: true,
   },
-  selectedScent: String,
-  selectedDecoration: String,
-  title: String,
-  quantity: Number,
-  price: Number,
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
+  selectedValues: [SelectedValuesSchema],
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
   },
 });
 
