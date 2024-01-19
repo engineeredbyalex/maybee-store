@@ -1,5 +1,5 @@
 import { RevealWrapper } from "next-reveal";
-import HeroImage from "@/assets/images/heroPhoto.jpg";
+import HeroImage from '@/public/images/heroPhoto.jpg'
 
 export default function MainHeader() {
   const logo = "https://maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com/logoBig.png";

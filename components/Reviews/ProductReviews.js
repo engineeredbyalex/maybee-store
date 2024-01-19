@@ -78,10 +78,9 @@ const ProductReviews = ({ product }) => {
             {reviews.length === 0 && <p>Nu există recenzii!</p>}
             {reviews.length > 0 &&
               reviews.map((review) => (
-                <div key={review._id} className={ReviewWrapper}>
-                  <div className={ReviewHeader}>
-                    {/* <StarsRating size={'sm'} disabled={true} defaultHowMany={review.stars} /> */}
-                    <time className={Time}>
+                <div key={review._id}>
+                  <div >
+                    <time >
                       {(new Date(review.createdAt)).toLocaleString('sv-SE')}
                     </time>
                   </div>

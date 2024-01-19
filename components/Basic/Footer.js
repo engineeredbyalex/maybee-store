@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import Center from "@/components/Layout/Center"
-import logoSmall from "../../public/logoSmall.png"
+import logoSmall from '@/public/images/logoSmall.png'
 import Image from "next/image"
-import ANPC_ONE from "@/assets/images/logo1.png"
-import ANPC_TWO from "@/assets/images/anpc-sol.webp"
+import ANPC_ONE from '@/public/images/logo1.png'
+import ANPC_TWO from '@/public/images/anpc-sol.webp'
 import Link from "next/link"
 
 const StyledFooter = styled.div`
