@@ -35,22 +35,22 @@ export default function Header() {
           </h2>
         </div>
         <div className={toggle ? ("text-white left-[0px] right-0 bottom-0 top-[20rem] flex flex-col relative lg:flex gap-[30px] items-center") : ("text-white hidden lg:flex gap-[30px]")}>
-          <Link className="text-[20px] nav_item" href={'/'}>Acasă</Link>
-          <Link className="text-[20px] nav_item" href={'/products'}>Produse</Link>
-          <Link className="text-[20px] nav_item" href={'/categories'}>Catalog</Link>
-          <Link className="text-[20px] nav_item" href={'/aboutus'}>Despre noi</Link>
+          <Link className="" href={'/'}><h5>Acasă</h5></Link>
+          <Link className="" href={'/products'}><h5>Produse</h5></Link>
+          <Link className="" href={'/categories'}><h5>Catalog</h5></Link>
+          <Link className="" href={'/aboutus'}><h5>Despre noi</h5></Link>
           {/* <Link className="text-[20px] nav_item" href={'/blog'}>Blog</Link> */}
 
         </div>
         <div className={toggle ? ("text-white lg:flex gap-[15px] absolute top-[80vh] ") : ("text-white hidden lg:flex  gap-[15px] ")}>
           <Button white outline>
             <Link href={"/cart"}>
-              <p className=" text-[16px]">Coș ({cartProducts.length})</p>
+              <p >Coș ({cartProducts.length})</p>
             </Link>
           </Button>
           <Button black transparent>
             <Link href={"/account"}>
-              <p className="text-white text-[16px]">Cont</p>
+              <p>Cont</p>
             </Link>
           </Button>
         </div>
