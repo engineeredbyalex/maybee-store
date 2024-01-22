@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation Bar/Header";
 import { useLayoutEffect, useState } from "react";
 import Center from "@/components/Layout/Center";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -10,7 +10,9 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
 import Footer from "@/components/Basic/Footer";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 
 
 export default function ProductsPage({ products, wishedProducts }) {
@@ -34,20 +36,24 @@ export default function ProductsPage({ products, wishedProducts }) {
   }, []);
 
   return (
-    <>
+    <div className="overflow-hidden">
       <Banner />
       <Header />
-      <Center>
-        <div className="w-full flex items-center justify-start text-5xl mt-[10rem] font-normal text-uppercase mb-5">Toate produsele</div>
-      </Center>
-      <div className="mt-[10rem]">
-        <Center>
-          <ProductsGrid products={products} wishedProducts={wishedProducts} />
-        </Center>
-      </div>
+      <Layout>
+        <div className="w-full flex items-center justify-center flex-col overflow-x-hidden text-center">
+          <div className="w-full flex items-center justify-start mt-[15rem]">
+            <h4 className="uppercase font-bold text-[#595959]">
+              Toate produsele
+            </h4>
+          </div>
+          <SmallSpacer>
+            <ProductsGrid products={products} wishedProducts={wishedProducts} />
+          </SmallSpacer>
+        </div>
+      </Layout>
       <ScrollButton />
       <Footer />
-    </>
+    </div>
   );
 }
 

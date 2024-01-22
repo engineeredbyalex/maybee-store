@@ -1,8 +1,10 @@
 import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation Bar/Header";
 import styled from "styled-components";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer } from "@/components/Layout/Spacer";
 
 const StyledFaq = styled.div`
 display:flex;
@@ -20,19 +22,20 @@ export default function Faq() {
         <>
             <Banner />
             <Header />
-            <StyledFaq>
-                <Center>
-                    <StyledAnswer>
-                        <h2 className="font-bold text-2xl">Procesul de livrare</h2>
+            <Layout>
+                <div className="mt-[15rem] text-[#595959] flex flex-col gap-10">
+                    <div className="flex flex-col gap-10">
+                        <h4 className="font-bold">Procesul de livrare</h4>
                         <p>Iti multumim ca ne vizitezi si asteptam comanda ta pentru a te bucura de o experienta olfactiva si vizuala unice.
                             Inainte de plasarea comenzii, te rugam sa studiezi toate produsele noastre si sa iei decizia cea mai buna pentru tine.
                             Lumanarea parfumata Deluxe e turnata si decorata manual intr-un recipient handmade unic, dar am creat si varianta Classic de lumanare turnata in borcan de sticla cu un design minimalist.  Iti recomandam sa alegi cea mai potrivita varianta de decor care poate sa fie cu plante suculente colorate sau cristale naturale. Apoi studiaza cu atentie descrierea parfumurilor noastre si alege pe cel care te reprezinta cel mai bine. Verifica cosul si mergi mai departe pentru a efectua plata.
                             Pe perioada verii din cauza temperaturilor ridicate, livrarile se fac doar de luni pana miercuri inclusiv. Intarzierea ridicarii comenzii de la curier poate duce la amanarea expunerii produselor noastre la temperaturile specific verii pe perioada weekendului si rezultatul final sa nu fie intocmai cel dorit.
                             Iti multumim!
                         </p>
-                    </StyledAnswer>
-                    <StyledAnswer>
-                        <h2 className="font-bold text-2xl">Procesul de fabricație</h2>
+                    </div>
+
+                    <div className="flex flex-col gap-10 w-full h-auto">
+                        <h4 className="font-bold">Procesul de fabricație</h4>
                         <p>Maybee este o companie romaneasca mica dar avem dorinta sa cream produse unice si de calitate.
                             Recipientele lumanarilor Deluxe sunt turnate, finisate si sigilate manual intr-o maniera care sa va asigure confortul visual. Lacul folosit la sigilarea vaselor, este pe baza de apa si folosit si in cazul vaselor de bucatarie. Deci, va puteti simti in siguranta.
                             Folosim ceara de soia de cea mai buna calitate iar timpul de topire este de mai lunga durata decat in cazul altor variante.
@@ -40,9 +43,10 @@ export default function Faq() {
                             Sapunul de corp este facut din ingrediente bio si continue lapte de capra. Parfumurile sunt atent combinate si adaugate in proportie de 2.5%. Dupa testarea sapunurilor noastre, s-a ajuns la concluzia ca lasa pielea fina, e cremos si cu un parfum care rezista pe piele pe perioada zilei.
                             Sapunul de fata este facut din ingrediente bio si continue lapte de capra si carbune active vegetal. Am ales sa nu adaugam parfum insa proprietatile acestuia sunt de mare calitate si elimină impuritățile și excesul de sebum, lăsând tenul tău curat și revigorat. Proprietățile sale de detoxifiere absorb delicat toxinele și impuritățile, redându-ți un aspect proaspăt și luminos
                             Iti dorim o experienta cat mai frumoasa cu produsele noastre Maybee.</p>
-                    </StyledAnswer>
-                    <StyledAnswer>
-                        <h2 className="font-bold text-2xl">Politică de confidențialitate</h2>
+                    </div>
+
+                    <div className="flex flex-col gap-10 w-full h-auto">
+                        <h4 className="font-bold">Politică de confidențialitate</h4>
                         <p>Conform cerințelor Legii nr. 677/2001 pentru protecția persoanelor cu privire la prelucrarea datelor cu caracter personal și libera circulație a acestor date, modificată și completată, Mixed Arts Events SRL are obligația de a administra în condiții de siguranță și numai pentru scopurile specificate, datele personale pe care ni le furnizați despre dumneavoastră.
 
                             Mixed Arts Events SRL se angajează că folosește datele furnizate de utilizatorii site-ului numai în scopul comunicării cu clienții săi, al confirmării comenzilor și întocmirii facturilor fiscale, și al informării clienților cu privire la funcționarea site-ului și a unor oferte speciale sau promoții ale societății dar numai cu acordul prealabil a clientului. Datele personale se mai utilizează pentru întocmirea AWB-urilor și se transmit astfel firmelor de curierat care efectuează livrarea coletelor și încasarea contravalori în cazul coletelor cu plata la ramburs.
@@ -52,9 +56,10 @@ export default function Faq() {
                             Conform Legii nr. 677 din 21 noiembrie 2001, toți utilizatorii beneficiază de dreptul de acces și intervenție asupra datelor personale, de a vă opune preluării datelor personale și să solicitați ștergerea datelor
 
                             E-mail: mixedarts.events@gmail.com</p>
-                    </StyledAnswer>
-                    <StyledAnswer>
-                        <h2 className="font-bold text-2xl">Termeni și condiții</h2>
+                    </div>
+
+                    <div className="flex flex-col gap-10 w-full h-auto">
+                        <h4 className="font-bold">Termeni și condiții</h4>
                         <p>1. DEFINIȚII:
                             Maybee: - este denumirea comercială al magazinului online al firmei Mixed Arts Events SRL  sediul social în localitatea Timisoara, jud. Timis, Str Cugir 16 având codul de înregistrare fiscală 38795036, înregistrată la Oficiul Registrului Comerțului Timis sub nr. J35/344/02.02.2018, e-mail: mixedarts.events@gmail.com - denumită și Vânzător.
                             Utilizator: - orice persoană fizică care are vârsta de peste 16 ani sau persoană juridică sau orice altă entitate juridică care utilizează vizitează siteul www.maybee.ro.
@@ -97,10 +102,12 @@ export default function Faq() {
                             <br />
                             9. ABUZ
                             Ne-ridicarea/refuzul coletelor comandate sau returnările în mod repetat vor fi considerate abuz, iar firma noastră își rezervă dreptul de a refuza viitoarele comenzi plasate de client. Dacă un client a refuzat un colet în ultimele 30 de zile și lansează o nouă comandă va fi sunat și se va solicita plata în avans (prin card bancar sau transfer bancar) pentru comanda nouă plasată pentru a evita refuzul preluării/ridicării coletului. La a doua acțiune de acest gen a clientului se va factura în plus tariful de livrare tur retur a coletelor deja refuzate și până la achitarea acestor sume nu se vor onora nici comenzile plătite prin card bancar sau virament bancar, respectiv se vor reține din sumele încasate tarifele de transport datorate și se va restituii numai diferența fără să fie onorată comanda.</p>
-                    </StyledAnswer>
-                </Center>
-            </StyledFaq>
-            <Footer />
+                    </div>
+                </div>
+            </Layout>
+            <BigSpacer>
+                <Footer />
+            </BigSpacer>
         </>
     )
 }

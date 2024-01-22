@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation Bar/Header";
 import Center from "@/components/Layout/Center";
 import ProductBox from "@/components/Layout/ProductBox";
 import Link from "next/link";
@@ -12,7 +12,9 @@ import { Product } from "@/models/Product"; // Import Product model
 import Footer from "@/components/Basic/Footer";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
   useLayoutEffect(() => {
@@ -38,32 +40,34 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
     <>
       <Banner />
       <Header />
-      <Center>
-        <div className="w-full flex  text-5xl mt-[10rem] font-normal text-uppercase mb-5">Catalog</div>
-      </Center>
-      <Center>
-        <div className="w-full flex items-center justify-center flex-col mt-[10rem]">
-          {mainCategories.map((cat) => (
-            <div key={cat._id} className="mb-8 w-full">
-              <div className="flex justify-between items-center mb-4">
-                <div className="w-full flex flex-col">
-                  <h2 className="text-2xl font-bold text-black">{cat.name}</h2>
-                  <Link href={'/category/' + cat._id}>
-                    <p className="text-black">Arată toate</p>
-                  </Link>
+      <Layout>
+        <div className="w-full flex items-center justify-start mt-[15rem]">
+          <h4 className="uppercase font-bold text-[#595959]">
+            Catalog
+          </h4>
+        </div>
+        <SmallSpacer>
+          <div className="w-full flex items-center justify-center flex-col">
+            {mainCategories.map((cat) => (
+              <div key={cat._id} className="mb-8 w-full">
+                <div className="flex justify-between items-center mb-4">
+                  <div className="w-full flex flex-col">
+                    <h5 className=" font-bold text-[#595959]">{cat.name}</h5>
+                    <Link href={'/category/' + cat._id}>
+                      <p className="text-[#595959]">Arată toate</p>
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex gap-[50px] flex-col lg:flex-row">
+                  {categoriesProducts[cat._id].map((p, index) => (
+                    <ProductBox key={p._id} {...p} wished={wishedProducts.includes(p._id)} />
+                  ))}
                 </div>
               </div>
-              <div className="flex gap-[50px] flex-col lg:flex-row">
-                {categoriesProducts[cat._id].map((p, index) => (
-               
-                  <ProductBox key={p._id} {...p} wished={wishedProducts.includes(p._id)} />
-                 
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Center>
+            ))}
+          </div>
+        </SmallSpacer>
+      </Layout>
       <ScrollButton />
       <Footer />
     </ >

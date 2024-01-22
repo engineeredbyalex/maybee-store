@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation Bar/Header";
 import styled from "styled-components";
 import Center from "@/components/Layout/Center";
 import { useContext, useEffect, useState } from "react";
@@ -7,9 +7,11 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer } from "@/components/Layout/Spacer";
 
-export default function CartPage() {
+const CartPage = () => {
   const {
     cartProducts,
     addProduct,
@@ -32,21 +34,27 @@ export default function CartPage() {
 
   useEffect(() => {
     if (cartProducts.length > 0) {
-      axios.post("/api/cart", { ids: cartProducts.map((item) => item.productId) }).then((response) => {
-        const updatedCartProducts = response.data.map((product) => {
-          const cartProduct = cartProducts.find((item) => item.productId === product._id);
-          if (cartProduct) {
-            return {
-              ...product,
-              selectedValues: cartProduct.selectedValues,
-              quantity: cartProduct.quantity,
-            };
-          }
-          return product;
-        });
+      axios
+        .post("/api/cart", {
+          ids: cartProducts.map((item) => item.productId),
+        })
+        .then((response) => {
+          const updatedCartProducts = response.data.map((product) => {
+            const cartProduct = cartProducts.find(
+              (item) => item.productId === product._id
+            );
+            if (cartProduct) {
+              return {
+                ...product,
+                selectedValues: cartProduct.selectedValues,
+                quantity: cartProduct.quantity,
+              };
+            }
+            return product;
+          });
 
-        setProducts(updatedCartProducts);
-      });
+          setProducts(updatedCartProducts);
+        });
     } else {
       setProducts([]);
     }
@@ -169,181 +177,186 @@ export default function CartPage() {
     <>
       <Banner />
       <Header />
-      <Center>
-        <div className="flex-row lg:flex-row w-full min-h-screen ">
-          <div className="bg-[#fff] mt-[20vh] ">
-            <div className="w-full flex  mt-[5rem] font-normal text-uppercase mb-5">
-              <h1>Coș de cumpărături</h1>
-            </div>
+      <Layout>
+        <div className="w-full min-h-screen mt-[15rem] text-[#595959]">
+          <div className="bg-[#fff] mt-4 p-4">
+            <h4 className=" font-bold mb-4">Coș de cumpărături</h4>
             {cartProducts.length === 0 && (
-              <div className="w-full flex font-light mb-5"><h1>Coșul dvs. este gol.</h1></div>
+              <p className="text-lg font-light mb-4">Coșul dvs. este gol.</p>
             )}
             {products?.length > 0 && (
-              <table className="table-auto w-full">
-                <thead>
-                  <tr>
-                    <th className="px-4 py-2">Produs</th>
-                    <th className="px-4 py-2">Cantitate</th>
-                    <th className="px-4 py-2">Preț</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product) => {
-                    const cartItemsForProduct = cartProducts.filter((item) => item.productId === product._id);
-                    return cartItemsForProduct.map((cartItem, index) => (
-                      <tr key={cartItem.localId} className="border-b">
-                        <td className="px-4 py-2">
-                          <div className="flex items-center flex-col">
-                            <div className="mr-4">
-                              <img className="lg:w-[10rem] lg:h-[10rem]" src={product.images[0]} alt="" />
-                            </div>
-                            <div>
-                              <p>{product.title}</p>
-                              {Object.keys(cartItem.selectedValues).map((key, index) => (
-                                <p key={index}>
-                                  {`${key}: ${cartItem
-                                    .selectedValues[key]}`}
-                                </p>
-                              ))}
-                            </div>
-                          </div>
-                        </td>
-                        <td className="px-4 py-2">
-                          <div className="flex items-center">
-                            <button onClick={() => lessOfThisProduct(cartItem.localId)} className="px-2 py-1 bg-gray-200 text-black mr-2">
-                              -
-                            </button>
-                            <p>{cartItem.quantity}</p>
-                            <button onClick={() => moreOfThisProduct(cartItem.localId)} className="px-2 py-1 bg-gray-200 text-black ml-2">
-                              +
-                            </button>
-                          </div>
-                        </td>
-                        <td className="px-4 py-2">{product.price} RON</td>
-                      </tr>
-                    ));
-                  })}
-                  <tr>
-                    <td colSpan={2} className="px-4 py-2">
-                      Produse
-                    </td>
-                    <td className="px-4 py-2">{productsTotal} RON</td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className="px-4 py-2">
-                      Livrare
-                    </td>
-                    <td className="px-4 py-2">{shippingFee} RON</td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} className="px-4 py-2">
-                      Total
-                    </td>
-                    <td className="px-4 py-2">{productsTotal + parseInt(shippingFee || 0)} RON</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="">
+                {products.map((product) => {
+                  const cartItemsForProduct = cartProducts.filter(
+                    (item) => item.productId === product._id
+                  );
+                  return cartItemsForProduct.map((cartItem, index) => (
+                    <div className="border-b">
+                      <div key={cartItem.localId} className="flex  mb-4 items-center justify-evenly py-3">
+                        <div className="flex-shrink-0">
+                          <img
+                            className="w-16 h-16 mr-4"
+                            src={product.images[0]}
+                            alt=""
+                          />
+                        </div>
+                        <div className="flex-grow">
+                          <p>{product.title}</p>
+                          {Object.keys(cartItem.selectedValues).map(
+                            (key, index) => (
+                              <p key={index}>
+                                {`${key}: ${cartItem.selectedValues[key]}`}
+                              </p>
+                            )
+                          )}
+                        </div>
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => lessOfThisProduct(cartItem.localId)}
+                            className="px-2 py-1 bg-gray-200 text-black mr-2"
+                          >
+                            -
+                          </button>
+                          <p>{cartItem.quantity}</p>
+                          <button
+                            onClick={() => moreOfThisProduct(cartItem.localId)}
+                            className="px-2 py-1 bg-gray-200 text-black ml-2"
+                          >
+                            +
+                          </button>
+                        </div>
+                        <div className="flex-shrink-0 ml-2">
+                          {product.price} RON
+                        </div>
+                      </div>
+                    </div>
+                  ));
+                })}
+                <div className="mt-4">
+                  <div className="flex justify-between">
+                    <div><p>Produse</p></div>
+                    <div><p>{productsTotal} RON</p></div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div><p>Livrare</p></div>
+                    <div><p>{shippingFee} RON</p></div>
+                  </div>
+                  <div className="flex justify-between">
+                    <div><p>Total</p></div>
+                    <div><p>{productsTotal + parseInt(shippingFee || 0)} RON</p></div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
           {cartProducts.length > 0 && (
-            <div className="delay-100 py-5">
-              <div className="bg-white p-6 rounded-lg">
-                <h2 className="text-xl font-bold mb-4">Informații comandă</h2>
+            <div className="p-4">
+              <h5 className=" font-medium mb-4">Informații comandă</h5>
+              <div className="mb-4">
                 <input
                   type="text"
                   placeholder="Nume"
                   value={name}
                   name="name"
                   onChange={(ev) => setName(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 w-full"
+                  className="border rounded-lg p-2 w-full"
                 />
+              </div>
+              <div className="mb-4">
                 <input
                   type="text"
                   placeholder="Email"
                   value={email}
                   name="email"
                   onChange={(ev) => setEmail(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 w-full"
+                  className="border rounded-lg p-2 w-full"
                 />
+              </div>
+              <div className="mb-4">
                 <input
                   type="text"
-                  i
                   placeholder="Număr de telefon"
                   value={phone}
                   name="phone"
                   onChange={(ev) => setPhone(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 w-full"
+                  className="border rounded-lg p-2 w-full"
                 />
-                <div className="flex flex-col md:flex-row md:space-x-4 mb-4">
-                  <input
-                    type="text"
-                    placeholder="Oraș"
-                    value={city}
-                    name="city"
-                    onChange={(ev) => setCity(ev.target.value)}
-                    className="border rounded-lg p-2 mb-4 md:mb-0 w-full"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Cod Poștal"
-                    value={postalCode}
-                    name="postalCode"
-                    onChange={(ev) => setPostalCode(ev.target.value)}
-                    className="border rounded-lg p-2 w-full"
-                  />
-                </div>
+              </div>
+              <div className="mb-4 flex flex-col md:flex-row md:space-x-4">
+                <input
+                  type="text"
+                  placeholder="Oraș"
+                  value={city}
+                  name="city"
+                  onChange={(ev) => setCity(ev.target.value)}
+                  className="border rounded-lg p-2 mb-4 md:mb-0 w-full"
+                />
+                <input
+                  type="text"
+                  placeholder="Cod Poștal"
+                  value={postalCode}
+                  name="postalCode"
+                  onChange={(ev) => setPostalCode(ev.target.value)}
+                  className="border rounded-lg p-2 w-full"
+                />
+              </div>
+              <div className="mb-4">
                 <input
                   type="text"
                   placeholder="Adresă Stradală"
                   value={streetAddress}
                   name="streetAddress"
                   onChange={(ev) => setStreetAddress(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 w-full"
+                  className="border rounded-lg p-2 w-full"
                 />
+              </div>
+              <div className="mb-4">
                 <input
                   type="text"
                   placeholder="Țară"
                   value={country}
                   name="country"
                   onChange={(ev) => setCountry(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 w-full"
+                  className="border rounded-lg p-2 w-full"
                 />
-                <div className="mb-4 flex items-center">
-                  <div className="mr-2">
-                    <Link href="/policy" className="text-blue-500">
-                      Sunt de acord cu termenii și condițiile
-                    </Link>
-                  </div>
-                  <input
-                    type="checkbox"
-                    onClick={() => setIsTicked(!isTicked)}
-                    className="h-4 w-4 text-blue-500"
-                  />
-                </div>
-                {isTicked ? (
-                  <div>
-                    <button
-                      onClick={goToPayment}
-                      className="bg-black text-white px-4 py-2 rounded-lg w-full mb-4"
-                    >
-                      Continuă la plată
-                    </button>
-                    <button
-                      onClick={clearCartHandler}
-                      className="bg-red-500 text-white px-4 py-2 rounded-lg w-full"
-                    >
-                      Golește coșul
-                    </button>
-                  </div>
-                ) : (
-                    <></>
-                )}
               </div>
+              <div className="mb-4 flex items-center">
+                <div className="mr-2">
+                  <Link href="/policy" className="text-blue-500">
+                    Sunt de acord cu termenii și condițiile
+                  </Link>
+                </div>
+                <input
+                  type="checkbox"
+                  onClick={() => setIsTicked(!isTicked)}
+                  className="h-4 w-4 text-blue-500"
+                />
+              </div>
+              {isTicked && (
+                <div>
+                  <button
+                    onClick={goToPayment}
+                    className="bg-black text-white px-4 py-2 rounded-lg w-full mb-4"
+                  >
+                    Continuă la plată
+                  </button>
+                  <button
+                    onClick={clearCartHandler}
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg w-full"
+                  >
+                    Golește coșul
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>
-      </Center>
-      <Footer />
+      </Layout>
+      <div className=" mt-[30px] lg:mt-[60px]">
+        <Footer />
+      </div>
     </>
   );
-}
+};
+
+export default CartPage;

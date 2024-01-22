@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation Bar/Header";
 import Center from "@/components/Layout/Center";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "@/components/Basic/Button";
@@ -11,7 +11,7 @@ import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
 import Tabs from "@/components/Layout/Tabs";
 import SingleOrder from "@/components/Cart/SingleOrder";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation Bar/Banner";
 
 export default function AccountPage() {
   const { data: session } = useSession();

@@ -7,6 +7,7 @@ import Button from '@/components/Basic/Button';
 import axios from 'axios';
 import Center from '../Layout/Center';
 import Wrapper from '../Layout/Wrapper';
+import { BigSpacer, SmallSpacer } from '../Layout/Spacer';
 
 
 const ProductReviews = ({ product }) => {
@@ -43,12 +44,12 @@ const ProductReviews = ({ product }) => {
   }, [product]);
 
   return (
-    <div className='flex w-full items-start justify-start flex-col mt-[3rem]'>
+    <div className='flex w-full items-center justify-center flex-col mt-[3rem]'>
       {/* Review Add */}
-      <div className='lg:ml-[10rem] ml-[2rem] lg:mr-[10rem] mr-[2rem]'>
+      <div className=''>
         <div>
-          <div>
-            <h2>Adaugă o recenzie</h2>
+          <div className='flex flex-col items-center justify-center'>
+            <h4 className='uppercase leading-[3rem] font-bold text-[#595959]'>Adaugă o recenzie</h4>
             <div>
               <StarsRating onChange={setStars} />
             </div>
@@ -65,16 +66,18 @@ const ProductReviews = ({ product }) => {
               className="border text-base w-full"
             />
             <div>
-              <Button primary onClick={submitReview}>
-                Trimite recenzia
-              </Button>
+              <SmallSpacer>
+                <Button primary onClick={submitReview}>
+                  <p className='font-bold py-2'>Trimite recenzia</p>
+                </Button>
+              </SmallSpacer>
             </div>
           </div>
         </div>
         {/* All reviews*/}
-        <div>
-          <div>
-            <h2>Toate recenzile :</h2>
+        < BigSpacer >
+          <div className='flex flex-col gap-10 text-[#595959]'>
+            <h5 className='uppercase font-bold'>Toate recenzile :</h5>
             {reviews.length === 0 && <p>Nu există recenzii!</p>}
             {reviews.length > 0 &&
               reviews.map((review) => (
@@ -84,12 +87,12 @@ const ProductReviews = ({ product }) => {
                       {(new Date(review.createdAt)).toLocaleString('sv-SE')}
                     </time>
                   </div>
-                  <h3>{review.title}</h3>
+                  <p>{review.title}</p>
                   <p>{review.description}</p>
                 </div>
               ))}
           </div>
-        </div>
+        </ BigSpacer>
       </div>
     </div>
   );

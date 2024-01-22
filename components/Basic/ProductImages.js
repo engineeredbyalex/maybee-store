@@ -13,7 +13,7 @@ export default function ProductImages({ images }) {
         />
       </div>
 
-      <div className="flex gap-10 mt-10">
+      <div className="flex flex-wrap gap-10 mt-10">
         {images?.map((image) => (
           <div
             key={image}

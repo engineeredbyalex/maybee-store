@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Wrapper from "../Layout/Wrapper"
-import Center from "../Layout/Center"
+import Wrapper from "../../Layout/Wrapper"
+import Center from "../../Layout/Center"
 
 
 export default function Banner() {
@@ -9,7 +9,7 @@ export default function Banner() {
             <Wrapper>
                 <Center>
                     {/* <p className="text-white text-[14px] lg:text-[16px] text-center  uppercase">Utilizează codul <b>(MB10)</b> până pe 15 ianuarie 2024 pentru a obține <b>10% reducere</b>.</p> */}
-                    <p className="text-white text-[14px] lg:text-[16px] text-center  uppercase">CREAT CU GRIJĂ Și atenție - MAYBEE</p>
+                    <p className="text-white text-center  uppercase">CREAT CU GRIJĂ Și atenție - MAYBEE</p>
                 </Center>
             </Wrapper>
         </div>

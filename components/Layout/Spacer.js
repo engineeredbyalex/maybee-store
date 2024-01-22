@@ -1,12 +1,10 @@
-import styled from "styled-components"
-
-const StyledSpacer = styled.div`
-margin-top:30px;
-margin-bottom:30px;
-`
-
-export default function Spacer() {
+export function BigSpacer({ children }) {
     return (
-        <StyledSpacer></StyledSpacer>
+        <div className="mt-[60px] w-full flex items-center justify-center overflow-hidden">{children}</div>
+    )
+}
+export function SmallSpacer({ children }) {
+    return (
+        <div className="mt-[30px] w-full flex items-center justify-center  overflow-hidden">{children}</div>
     )
 }

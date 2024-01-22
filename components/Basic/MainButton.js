@@ -13,11 +13,12 @@ const FlyingButtonWrapper = styled.div`
     justify-content: center;
     height: 3rem;
     width: 12rem;
+    
     ${ButtonStyle};
 
-    background-color: ${props => props.main ? "#252525" : "transparent"};
-    border: ${props => props.main ? "none" : "1px solid #252525"};
-    color: ${props => props.main ? "white" : "#252525"};
+    background-color: ${props => props.main ? "#595959" : "transparent" || props.red ? "#870000" : "transparent"};
+border: ${props => props.main ? "none" : "1px solid #595959" || props.red ? "#870000" : "transparent"};
+color: ${props => props.main ? "white" : "#595959" || props.red ? "#870000" : "transparent"};
     pointer-events: ${props => props.disabled ? "none" : "auto"};
 
     ${props => props.white && `
@@ -25,11 +26,17 @@ const FlyingButtonWrapper = styled.div`
       border: 3px solid white;
       font-weight: 500;
     `}
+      ${
+  props => props.red && `
+      background-color: #870000;
+      border: 3px solid #870000;
+      font-weight: 500;
+    `}
   }
 
   &:hover {
     button {
-      transform: ${props => (props.disabled ? "none" : "scale(1.02)")};
+      border-radius:10rem,
     }
   }
 `;
@@ -43,7 +50,7 @@ export default function FlyingButton(props) {
       main={props.main}
       disabled={props.disabled}
     >
-      <button onClick={() => addProduct(props._id, props.selectedValues)}>
+      <button className="rounded-md" onClick={() => addProduct(props._id, props.selectedValues)}>
         {props.children}
       </button>
     </FlyingButtonWrapper>
