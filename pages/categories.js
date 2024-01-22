@@ -69,7 +69,9 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
         </SmallSpacer>
       </Layout>
       <ScrollButton />
-      <Footer />
+      <div className="mt-[30px] lg:mt-[60px]">
+        <Footer />
+      </div>
     </ >
   );
 }

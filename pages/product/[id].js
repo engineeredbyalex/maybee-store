@@ -86,13 +86,13 @@ export default function ProductPage({ product }) {
               </div>
             </div>
             <div>
-              <div className="w-full flex flex-col items-center justify-center text-center mb-10 ">
-                {Object.entries(product.scent).map(([scentName, scentDescription]) => (
+              <div className="w-full flex flex-col items-center justify-center text-center mb-10">
+                {product?.scent && Object.entries(product.scent).map(([scentName, scentDescription]) => (
                   <div className="w-1/2" key={scentName}>
                     <h3 className="text-[#595959]">{scentName}</h3>
                     <p className="text-[#595959]">{scentDescription}</p>
                   </div>
-            ))}
+                ))}
               </div>
             </div>
             <div className="mt-10">
@@ -113,7 +113,9 @@ export default function ProductPage({ product }) {
           </div>
         </Layout>
       </div>
-      <Footer />
+      <div className="mt-[30px] lg:mt-[60px]">
+        <Footer />
+      </div>
     </>
   );
 }

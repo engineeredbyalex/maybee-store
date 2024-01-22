@@ -42,9 +42,9 @@ export default function AboutUsPage() {
                     </BigSpacer>
                 </div>
             </Layout>
-            <BigSpacer>
+            <div className="mt-[30px] lg:mt-[60px]">
                 <Footer />
-            </BigSpacer>
+            </div>
         </>
     );
 }

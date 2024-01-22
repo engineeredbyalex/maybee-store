@@ -42,7 +42,9 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
       <AboutUs />
       <ScrollButton />
-      <Footer />
+      <div className="mt-[30px] lg:mt-[60px]">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -105,9 +105,9 @@ export default function Faq() {
                     </div>
                 </div>
             </Layout>
-            <BigSpacer>
+            <div className="mt-[30px] lg:mt-[60px]">
                 <Footer />
-            </BigSpacer>
+            </div>
         </>
     )
 }

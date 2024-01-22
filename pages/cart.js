@@ -9,7 +9,6 @@ import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Navigation Bar/Banner";
 import Layout from "@/components/Layout/Layout";
-import { BigSpacer } from "@/components/Layout/Spacer";
 
 const CartPage = () => {
   const {
@@ -191,8 +190,8 @@ const CartPage = () => {
                     (item) => item.productId === product._id
                   );
                   return cartItemsForProduct.map((cartItem, index) => (
-                    <div className="border-b">
-                      <div key={cartItem.localId} className="flex  mb-4 items-center justify-evenly py-3">
+                    <div key={cartItem.localId} className="border-b">
+                      <div className="flex  mb-4 items-center justify-evenly py-3">
                         <div className="flex-shrink-0">
                           <img
                             className="w-16 h-16 mr-4"
