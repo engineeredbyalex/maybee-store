@@ -75,7 +75,7 @@ export default function AccountPage() {
       <Header />
       <Center>
         <div className="mb-10 mt-[15rem]">
-          {/* <div className="mb-4">
+          <div className="mb-4">
             <Tabs
               tabs={['Comenzi', 'Wishlist']}
               active={activeTab}
@@ -111,11 +111,11 @@ export default function AccountPage() {
                 )}
               </>
             )}
-          </div> */}
+          </div>
           <div className="mt-6">
-            {/* <h2 className="text-[#595959] mb-4">{session ? 'Detalii cont' : 'Login'}</h2> */}
-            <h2 className="text-[#595959] uppercase font-bold">Pagină sub mentenanță</h2>
-            {/* {!addressLoaded && <Spinner fullWidth={true} />}
+            <h2 className="text-[#595959] mb-4">{session ? 'Detalii cont' : 'Login'}</h2>
+            {/* <h2 className="text-[#595959] uppercase font-bold">Pagină sub mentenanță</h2> */}
+            {!addressLoaded && <Spinner fullWidth={true} />}
             {addressLoaded && session && (
               <div className="mb-4">
                 <Input type="text"
@@ -162,7 +162,7 @@ export default function AccountPage() {
             )}
             {!session && (
               <Button coal onClick={login}><p className="py-3">Conectare cu Google</p></Button>
-            )} */}
+            )}
           </div>
         </div>
       </Center>
