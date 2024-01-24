@@ -1,6 +1,6 @@
-import Header from "@/components/Basic/Navigation Bar/Header";
-import Center from "@/components/Layout/Center";
-import ProductBox from "@/components/Layout/ProductBox";
+import Header from "@/components/Basic/navigation/Header";
+import Center from "@/components/layout/Center";
+import ProductBox from "@/components/layout/ProductBox";
 import Link from "next/link";
 import { RevealWrapper } from "next-reveal";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -12,9 +12,9 @@ import { Product } from "@/models/Product"; // Import Product model
 import Footer from "@/components/Basic/Footer";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Navigation Bar/Banner";
-import Layout from "@/components/Layout/Layout";
-import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
+import Banner from "@/components/Basic/navigation/Banner";
+import Layout from "@/components/layout/Layout";
+import { BigSpacer, SmallSpacer } from "@/components/layout/Spacer";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
   useLayoutEffect(() => {

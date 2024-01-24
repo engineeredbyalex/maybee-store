@@ -1,14 +1,14 @@
-import Header from "@/components/Basic/Navigation Bar/Header";
+import Header from "@/components/Basic/navigation/Header";
 import Title from "@/components/Basic/Title";
-import Center from "@/components/Layout/Center";
+import Center from "@/components/layout/Center";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
-import ProductsGrid from "@/components/Layout/ProductsGrid";
+import ProductsGrid from "@/components/layout/ProductsGrid";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Basic/Spinner";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Banner from "@/components/Basic/navigation/Banner";
 
 export default function CategoryPage({
   category,

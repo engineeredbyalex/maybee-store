@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import Wrapper from "../../Layout/Wrapper"
-import Center from "../../Layout/Center"
+import Wrapper from "../../layout/Wrapper"
+import Center from "../../layout/Center"
 
 
 export default function Banner() {

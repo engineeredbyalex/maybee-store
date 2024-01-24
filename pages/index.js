@@ -4,14 +4,14 @@ import { WishedProduct } from "@/models/WishedProduct";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Setting } from "@/models/Setting";
-import Header from "@/components/Basic/Navigation Bar/Header";
-import HeroComponent from "@/components/Components/HeroComponent";
-import NewProducts from "@/components/Components/NewProducts";
+import Header from "@/components/Basic/navigation/Header";
+import HeroComponent from "@/components/components/HeroComponent";
+import NewProducts from "@/components/components/NewProducts";
 import Footer from "@/components/Basic/Footer";
-import AboutUs from "@/components/Components/AboutUs";
+import AboutUs from "@/components/components/AboutUs";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Banner from "@/components/Basic/navigation/Banner";
 
 export default function HomePage({ featuredProduct, newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {

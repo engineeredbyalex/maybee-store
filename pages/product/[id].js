@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Header from "@/components/Basic/Navigation Bar/Header";
+import Header from "@/components/Basic/navigation/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import Image from "next/image";
 import ProductImages from "@/components/Basic/ProductImages";
 import FlyingButton from "@/components/Basic/MainButton";
-import ProductReviews from "@/components/Reviews/ProductReviews";
+import ProductReviews from "@/components/reviews/ProductReviews";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Navigation Bar/Banner";
+import Banner from "@/components/Basic/navigation/Banner";
 import StickerOne from '@/public/images/caution_1.png';
 import StickerTwo from '@/public/images/caution_2.png';
-import Layout from "@/components/Layout/Layout";
-import { SmallSpacer } from "@/components/Layout/Spacer";
+import Layout from "@/components/layout/Layout";
+import { SmallSpacer } from "@/components/layout/Spacer";
 
 export default function ProductPage({ product }) {
   const [selectedValues, setSelectedValues] = useState({});

@@ -1,5 +1,5 @@
 
-import { CartContextProvider } from "@/components/Cart/CartContext";
+import { CartContextProvider } from "@/components/cart/CartContext";
 import { SessionProvider } from "next-auth/react";
 import '@/styles/global.css'
 

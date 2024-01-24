@@ -1,6 +1,6 @@
-import Banner from "@/components/Basic/Navigation Bar/Banner"
-import Header from "@/components/Basic/Navigation Bar/Header"
-import Center from "@/components/Layout/Center"
+import Banner from "@/components/Basic/navigation/Banner"
+import Header from "@/components/Basic/navigation/Header"
+import Center from "@/components/layout/Center"
 import styled from "styled-components"
 
 const StyledPolicy = styled.div`

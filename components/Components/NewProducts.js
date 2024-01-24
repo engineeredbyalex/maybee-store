@@ -1,9 +1,9 @@
-import Center from "@/components/Layout/Center";
-import ProductsGrid from "@/components/Layout/ProductsGrid";
+import Center from "@/components/layout/Center";
+import ProductsGrid from "@/components/layout/ProductsGrid";
 import { RevealWrapper } from "next-reveal";
 import { useEffect } from "react";
-import Layout from "../Layout/Layout";
-import { BigSpacer } from "../Layout/Spacer";
+import Layout from "../layout/Layout";
+import { BigSpacer } from "../layout/Spacer";
 
 export default function NewProducts({ products, wishedProducts }) {
 

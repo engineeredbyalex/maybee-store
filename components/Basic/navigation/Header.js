@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { CartContext } from "@/components/Cart/CartContext";
+import { CartContext } from "@/components/cart/CartContext";
 import Button from "../Button";
 import Image from "next/image";
 import { AiOutlineMenu } from "react-icons/ai"
@@ -35,10 +35,10 @@ export default function Header() {
           </h2>
         </div>
         <div className={toggle ? ("text-white left-[0px] right-0 bottom-0 top-[20rem] flex flex-col relative lg:flex gap-[30px] items-center") : ("text-white hidden lg:flex gap-[30px]")}>
-          <Link className="" href={'/'}><h5>Acasă</h5></Link>
-          <Link className="" href={'/products'}><h5>Produse</h5></Link>
-          <Link className="" href={'/categories'}><h5>Catalog</h5></Link>
-          <Link className="" href={'/aboutus'}><h5>Despre noi</h5></Link>
+          <Link className="" href={'/'}><p>Acasă</p></Link>
+          <Link className="" href={'/products'}><p>Produse</p></Link>
+          <Link className="" href={'/categories'}><p>Catalog</p></Link>
+          <Link className="" href={'/aboutus'}><p>Despre noi</p></Link>
           {/* <Link className="text-[20px] nav_item" href={'/blog'}>Blog</Link> */}
 
         </div>

@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
-import Wrapper from "../Layout/Wrapper";
-import Center from "../Layout/Center";
-import Layout from "../Layout/Layout";
-import { BigSpacer, SmallSpacer } from "../Layout/Spacer";
+import Layout from "../layout/Layout";
+import { SmallSpacer } from "../layout/Spacer";
 import Button from "../Basic/Button";
 
 export default function AboutUs() {
@@ -12,13 +10,13 @@ export default function AboutUs() {
       <Layout>
         <div className="flex flex-col text-center lg:text-center w-full">
           <SmallSpacer>
-            <h2 className="text-[#595959] font-bold mb-5">Despre MAYBEE</h2>
+            <h3 className="text-[#595959] font-bold mb-5">Despre MAYBEE</h3>
           </SmallSpacer>
-          <BigSpacer>
+          <SmallSpacer>
             <div className="w-2/3">
-              <h5 className=" text-[#595959]">
+              <p className=" text-[#595959]">
                 MAYBEE, infiintată în 2023, creează manual produse precum sapunuri, lumanari si ceara parfumata. <br /> Ne specializăm în parfumuri personalizate și impachetari frumoase pentru a-ti aduce un sentiment special. <br /> Toate produsele noastre sunt 100% naturale și bazate pe uleiuri esentiale bio, combinate armonios pentru a-ti oferi o experiență deosebita. <br /> Vrem ca MAYBEE să fie un brand personal, dedicat ție.
-              </h5>
+              </p>
               <SmallSpacer>
                 <Button solid primary>
                   <Link href="/aboutus" passHref>
@@ -29,7 +27,7 @@ export default function AboutUs() {
                 </Button>
               </SmallSpacer>
             </div>
-          </BigSpacer>
+          </SmallSpacer>
           <SmallSpacer>
             <div className="flex justify-center gap-[30px]">
               <SocialIcon
