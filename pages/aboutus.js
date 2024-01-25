@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "@/components/Basic/navigation/Header";
-import Center from "@/components/layout/Center";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/navigation/Banner";
 import Layout from "@/components/layout/Layout";

@@ -1,4 +1,4 @@
-import Center from "@/components/layout/Center";
+
 import logoSmall from '@/public/images/logoSmall.png';
 import Image from "next/image";
 import ANPC_ONE from '@/public/images/logo1.png';
