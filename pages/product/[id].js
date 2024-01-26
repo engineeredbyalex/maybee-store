@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "@/components/Basic/navigation/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import ProductImages from "@/components/Basic/ProductImages";
 import FlyingButton from "@/components/Basic/MainButton";
 import ProductReviews from "@/components/Reviews/ProductReviews";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/navigation/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import StickerOne from '@/public/images/caution_1.png';
 import StickerTwo from '@/public/images/caution_2.png';
 import Layout from "@/components/Layout/Layout";
@@ -28,7 +28,7 @@ export default function ProductPage({ product }) {
       <Header />
       <div className="flex items-center justify-center w-full flex-col  min-h-[100vh] bg-[#fff] mt-[10rem]">
         <Layout>
-          <div className="flex flex-col items-center justify-between w-full min-h-screen lg:ml-[60px] lg:mr-[60px] ml-[30px] mr-[30px]">
+          <div className="flex flex-col items-center justify-between w-full min-h-screen ">
             <div className="flex flex-row items-center justify-between mt-[5rem]">
               <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
                 <div className="w-full lg:w-1/2 flex items-center justify-center flex-col">
@@ -79,7 +79,7 @@ export default function ProductPage({ product }) {
                       >
                         <p className="uppercase text-[#fff]">  Adaugă în coș</p>
                       </FlyingButton>
-                      <h5 className="text-[#595959] font-bold">{product.price} RON</h5>
+                      <h6 className="text-[#595959] font-bold">{product.price} RON</h6>
                     </div>
                   </SmallSpacer>
                 </div>

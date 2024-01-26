@@ -7,9 +7,9 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <div className="bg-gray-300 h-full">
+        <div className="bg-[#959595] h-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 p-2 lg:p-8">
-                <div className="flex flex-col justify-between items-center">
+                <div className="flex flex-col justify-between items-center text-[#FFFFFF]">
                     <Image width={70} src={logoSmall} alt="logo" />
                     <p>Email : mixedarts.events@gmail.com</p>
                     <p>Mixed Arts Events SRL</p>
@@ -17,29 +17,29 @@ export default function Footer() {
                     <p>Adresă : Timișoara, jud Timiș</p>
                 </div>
                 <div className="flex flex-col justify-between items-center mt-4 lg:mt-0">
-                    <h2 className="font-light text-2xl">Întrebări puse frecvent</h2>
-                    <Link href="/faq"><p className="text-blue-700">Procesul de livrare</p></Link>
-                    <Link href="/faq"><p className="text-blue-700">Procesul de fabricație</p></Link>
-                    <Link href="/faq"><p className="text-blue-700">Procesarea datelor</p></Link>
+                    <p className="font-light text-[#FFFFFF]">Întrebări puse frecvent</p>
+                    <Link href="/faq"><p className="text-[#FFFFFF]">Procesul de livrare</p></Link>
+                    <Link href="/faq"><p className="text-[#FFFFFF]">Procesul de fabricație</p></Link>
+                    <Link href="/faq"><p className="text-[#FFFFFF]">Procesarea datelor</p></Link>
                 </div>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 p-2 lg:p-8">
                 <div className="flex flex-col items-center">
                     <Image alt="" width={150} src={ANPC_ONE} />
                     <Link href="https://anpc.ro/ce-este-sal" target="_blank">
-                        <p className="text-blue-700">https://anpc.ro/ce-este-sal/</p>
+                        <p className="text-[#FFFFFF]">https://anpc.ro/ce-este-sal/</p>
                     </Link>
                 </div>
                 <div className="flex flex-col items-center mt-4 lg:mt-0">
                     <Image alt="" width={150} src={ANPC_TWO} />
                     <Link href="https://ec.europa.eu/consumers/odr/main/?event=main.home2.show" target="_blank">
-                        <p className="text-blue-700">https://ec.europa.eu/consumers/odr/main/?event=main.home2.show</p>
+                        <p className="text-[#FFFFFF]">https://ec.europa.eu/consumers/odr/main/?event=main.home2.show</p>
                     </Link>
                 </div>
             </div>
             <div className="bg-black text-white flex items-center justify-center flex-col p-3">
                 <p>CONSTRUIT DE :</p>
-                <Link target="_blank" href="https://www.alexlazarescu.com/" className="text-blue-700">alexlazarescu.com</Link>
+                <Link target="_blank" href="https://www.alexlazarescu.com/" className="text-[#FFFFFF]">alexlazarescu.com</Link>
             </div>
         </div>
     );

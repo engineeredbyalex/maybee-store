@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/navigation/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import styled from "styled-components";
 import Center from "@/components/Layout/Center";
 import { useContext, useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/navigation/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import Layout from "@/components/Layout/Layout";
 
 const CartPage = () => {

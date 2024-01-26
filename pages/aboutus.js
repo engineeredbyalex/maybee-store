@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "@/components/Basic/navigation/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/navigation/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import Layout from "@/components/Layout/Layout";
 import { BigSpacer } from "@/components/Layout/Spacer";
 

@@ -53,7 +53,6 @@ export default function SingleOrder({ line_items, createdAt, ...rest }) {
           <ProductRow key={item._id}>
             <span>{item.quantity}</span>
             <ProductName>{item.name}</ProductName>
-            {console.log(item.name)}
           </ProductRow>
         ))}
       </div>
