@@ -1,10 +1,10 @@
-import Center from "@/components/layout/Center";
+import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
 import Header from "@/components/Basic/navigation/Header";
 import styled from "styled-components";
 import Banner from "@/components/Basic/navigation/Banner";
-import Layout from "@/components/layout/Layout";
-import { BigSpacer } from "@/components/layout/Spacer";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer } from "@/components/Layout/Spacer";
 
 const StyledFaq = styled.div`
 display:flex;

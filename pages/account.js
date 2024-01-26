@@ -1,14 +1,14 @@
 import Header from "@/components/Basic/navigation/Header";
-import Center from "@/components/layout/Center";
+import Center from "@/components/Layout/Center";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Button from "@/components/Basic/Button";
-import Input from "@/components/layout/Input";
+import Input from "@/components/Layout/Input";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Basic/Spinner";
-import ProductBox from "@/components/layout/ProductBox";
-import Tabs from "@/components/layout/Tabs";
-import SingleOrder from "@/components/cart/SingleOrder";
+import ProductBox from "@/components/Layout/ProductBox";
+import Tabs from "@/components/Layout/Tabs";
+import SingleOrder from "@/components/Cart/SingleOrder";
 import Banner from "@/components/Basic/navigation/Banner";
 
 export default function AccountPage() {

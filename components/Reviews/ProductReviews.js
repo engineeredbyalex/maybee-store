@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Input from '@/components/layout/Input';
-import WhiteBox from '@/components/layout/WhiteBox';
-import StarsRating from '@/components/reviews/StarsRating';
-import Textarea from '@/components/layout/Textarea';
+import Input from '@/components/Layout/Input';
+import WhiteBox from '@/components/Layout/WhiteBox';
+import StarsRating from '@/components/Reviews/StarsRating';
+import Textarea from '@/components/Layout/Textarea';
 import Button from '@/components/Basic/Button';
 import axios from 'axios';
-import Center from '../layout/Center';
-import Wrapper from '../layout/Wrapper';
-import { BigSpacer, SmallSpacer } from '../layout/Spacer';
+import Center from '../Layout/Center';
+import Wrapper from '../Layout/Wrapper';
+import { BigSpacer, SmallSpacer } from '../Layout/Spacer';
 
 
 const ProductReviews = ({ product }) => {

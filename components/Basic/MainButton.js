@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { ButtonStyle } from "@/components/Basic/Button";
-import { CartContext } from "../cart/CartContext";
+import { CartContext } from "../Cart/CartContext";
 import { useContext } from "react";
 
 const FlyingButtonWrapper = styled.div`
@@ -14,7 +13,6 @@ const FlyingButtonWrapper = styled.div`
     height: 3rem;
     width: 12rem;
     
-    ${ButtonStyle};
 
     background-color: ${props => props.main ? "#595959" : "transparent" || props.red ? "#870000" : "transparent"};
 border: ${props => props.main ? "none" : "1px solid #595959" || props.red ? "#870000" : "transparent"};

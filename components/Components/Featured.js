@@ -1,7 +1,7 @@
-import Center from "@/components/layout/Center";
+import Center from "@/components/Layout/Center";
 import styled from "styled-components";
 import ButtonLink from "@/components/Basic/ButtonLink";
-import CartIcon from "@/components/icons/CartIcon";
+import CartIcon from "@/components/Icons/CartIcon";
 import FlyingButton from "@/components/Basic/MainButton";
 import { RevealWrapper } from 'next-reveal'
 import Image from "next/image";

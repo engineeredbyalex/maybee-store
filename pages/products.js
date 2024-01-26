@@ -1,9 +1,9 @@
 import Header from "@/components/Basic/navigation/Header";
 import { useLayoutEffect, useState } from "react";
-import Center from "@/components/layout/Center";
+import Center from "@/components/Layout/Center";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-import ProductsGrid from "@/components/layout/ProductsGrid";
+import ProductsGrid from "@/components/Layout/ProductsGrid";
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
@@ -11,8 +11,8 @@ import { WishedProduct } from "@/models/WishedProduct";
 import Footer from "@/components/Basic/Footer";
 import ScrollButton from "@/components/Basic/ScrollButton";
 import Banner from "@/components/Basic/navigation/Banner";
-import Layout from "@/components/layout/Layout";
-import { BigSpacer, SmallSpacer } from "@/components/layout/Spacer";
+import Layout from "@/components/Layout/Layout";
+import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 
 
 export default function ProductsPage({ products, wishedProducts }) {

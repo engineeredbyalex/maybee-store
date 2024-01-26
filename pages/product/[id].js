@@ -5,13 +5,13 @@ import { Product } from "@/models/Product";
 import Image from "next/image";
 import ProductImages from "@/components/Basic/ProductImages";
 import FlyingButton from "@/components/Basic/MainButton";
-import ProductReviews from "@/components/reviews/ProductReviews";
+import ProductReviews from "@/components/Reviews/ProductReviews";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/navigation/Banner";
 import StickerOne from '@/public/images/caution_1.png';
 import StickerTwo from '@/public/images/caution_2.png';
-import Layout from "@/components/layout/Layout";
-import { SmallSpacer } from "@/components/layout/Spacer";
+import Layout from "@/components/Layout/Layout";
+import { SmallSpacer } from "@/components/Layout/Spacer";
 
 export default function ProductPage({ product }) {
   const [selectedValues, setSelectedValues] = useState({});

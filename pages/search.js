@@ -1,10 +1,10 @@
 import Header from "@/components/Basic/navigation/Header";
-import Center from "@/components/layout/Center";
-import Input from "@/components/layout/Input";
+import Center from "@/components/Layout/Center";
+import Input from "@/components/Layout/Input";
 import styled from "styled-components";
 import { useMemo, useEffect, useState } from "react";
 import axios from "axios";
-import ProductsGrid from "@/components/layout/ProductsGrid";
+import ProductsGrid from "@/components/Layout/ProductsGrid";
 import { debounce } from "lodash";
 import Spinner from "@/components/Basic/Spinner";
 

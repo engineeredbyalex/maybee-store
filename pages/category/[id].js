@@ -1,9 +1,9 @@
 import Header from "@/components/Basic/navigation/Header";
 import Title from "@/components/Basic/Title";
-import Center from "@/components/layout/Center";
+import Center from "@/components/Layout/Center";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
-import ProductsGrid from "@/components/layout/ProductsGrid";
+import ProductsGrid from "@/components/Layout/ProductsGrid";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Basic/Spinner";

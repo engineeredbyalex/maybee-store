@@ -1,5 +1,5 @@
 import React from "react";
-import ProductBox from "@/components/layout/ProductBox";
+import ProductBox from "@/components/Layout/ProductBox";
 import { RevealWrapper } from "next-reveal";
 
 export default function ProductsGrid({ products, wishedProducts = [] }) {

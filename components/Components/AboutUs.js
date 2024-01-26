@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
-import Layout from "../layout/Layout";
-import { SmallSpacer } from "../layout/Spacer";
+import Layout from "../Layout/Layout";
+import { SmallSpacer } from "../Layout/Spacer";
 import Button from "../Basic/Button";
 
 export default function AboutUs() {
