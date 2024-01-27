@@ -1,13 +1,13 @@
 import React from "react";
-import Header from "@/components/Basic/Navigation/Header";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Navigation/Banner";
 import Layout from "@/components/Layout/Layout";
 import { BigSpacer } from "@/components/Layout/Spacer";
+import Header from "@/components/Basic/Navigation/Header";
 
 export default function AboutUsPage() {
     return (
-        <>
+        <div>
             <Banner />
             <Header />
             <Layout>
@@ -44,6 +44,6 @@ export default function AboutUsPage() {
             <div className="mt-[30px] lg:mt-[60px]">
                 <Footer />
             </div>
-        </>
+        </div>
     );
 }

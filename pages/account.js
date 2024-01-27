@@ -1,10 +1,8 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Button from "@/components/Basic/Button";
 import WhiteBox from "@/components/Layout/WhiteBox";
-import { RevealWrapper } from "next-reveal";
 import Input from "@/components/Layout/Input";
 import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
