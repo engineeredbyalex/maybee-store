@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Link from "next/link";
-import { CartContext } from "@/components/Cart/CartContext";
-import Button from "../Button";
+import { CartContext } from "../Cart/CartContext";
+import Button from "./Button";
 import Image from "next/image";
 import { AiOutlineMenu } from "react-icons/ai"
 import LogoNav from '@/public/images/logoBig.png'

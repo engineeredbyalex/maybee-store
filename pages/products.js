@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Navigation/Header";
+import Header from "@/components/Basic/Header";
 import { useLayoutEffect, useState } from "react";
 import Center from "@/components/Layout/Center";
 import { mongooseConnect } from "@/lib/mongoose";
@@ -10,7 +10,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
 import Footer from "@/components/Basic/Footer";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Navigation/Banner";
+import Banner from "@/components/Basic/Banner";
 import Layout from "@/components/Layout/Layout";
 import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 

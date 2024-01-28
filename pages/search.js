@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Navigation/Header";
+import Header from "@/components/Basic/Header";
 import Center from "@/components/Layout/Center";
 import Input from "@/components/Layout/Input";
 import styled from "styled-components";
