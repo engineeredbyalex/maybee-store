@@ -1,5 +1,5 @@
-import Banner from "@/components/Basic/Navigation/Banner"
-import Header from "@/components/Basic/Navigation/Header";
+import Banner from "@/components/Basic/Banner"
+import Header from "@/components/Basic/Header";
 import Center from "@/components/Layout/Center"
 import styled from "styled-components"
 

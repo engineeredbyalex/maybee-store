@@ -8,8 +8,8 @@ import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
 import Tabs from "@/components/Layout/Tabs";
 import SingleOrder from "@/components/Cart/SingleOrder";
-import Header from "@/components/Basic/Navigation/Header";
-import Banner from "@/components/Basic/Navigation/Banner";
+import Header from "@/components/Basic/Header";
+import Banner from "@/components/Basic/Banner";
 
 export default function AccountPage() {
   const { data: session } = useSession();
