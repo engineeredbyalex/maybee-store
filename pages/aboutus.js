@@ -1,5 +1,5 @@
-import Banner from "@/components/Basic/Navigation/Banner";
-import Header from "@/components/Basic/Navigation/Header";
+import Banner from "@/components/Basic/Banner";
+import Header from "@/components/Basic/Header";
 import { BigSpacer } from "@/components/Layout/Spacer";
 import Footer from "@/components/Basic/Footer";
 import Layout from "@/components/Layout/Layout";
