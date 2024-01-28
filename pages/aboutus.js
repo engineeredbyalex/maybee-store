@@ -1,9 +1,8 @@
-import React from "react";
-import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Navigation/Banner";
-import Layout from "@/components/Layout/Layout";
-import { BigSpacer } from "@/components/Layout/Spacer";
 import Header from "@/components/Basic/Navigation/Header";
+import Banner from "@/components/Basic/Navigation/Banner";
+import { BigSpacer } from "@/components/Layout/Spacer";
+import Footer from "@/components/Basic/Footer";
 
 export default function AboutUsPage() {
     return (
