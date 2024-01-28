@@ -12,76 +12,76 @@ import Header from "@/components/Basic/Header";
 import Banner from "@/components/Basic/Banner";
 
 export default function AccountPage() {
-  const { data: session } = useSession();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [streetAddress, setStreetAddress] = useState('');
-  const [country, setCountry] = useState('');
-  const [addressLoaded, setAddressLoaded] = useState(true);
-  const [wishlistLoaded, setWishlistLoaded] = useState(true);
-  const [orderLoaded, setOrderLoaded] = useState(true);
-  const [wishedProducts, setWishedProducts] = useState([]);
-  const [activeTab, setActiveTab] = useState('Orders');
-  const [orders, setOrders] = useState([]);
+  // const { data: session } = useSession();
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [city, setCity] = useState('');
+  // const [postalCode, setPostalCode] = useState('');
+  // const [streetAddress, setStreetAddress] = useState('');
+  // const [country, setCountry] = useState('');
+  // const [addressLoaded, setAddressLoaded] = useState(true);
+  // const [wishlistLoaded, setWishlistLoaded] = useState(true);
+  // const [orderLoaded, setOrderLoaded] = useState(true);
+  // const [wishedProducts, setWishedProducts] = useState([]);
+  // const [activeTab, setActiveTab] = useState('Orders');
+  // const [orders, setOrders] = useState([]);
 
-  async function logout() {
-    await signOut({ callbackUrl: process.env.NEXT_PUBLIC_URL });
-  }
+  // async function logout() {
+  //   await signOut({ callbackUrl: process.env.NEXT_PUBLIC_URL });
+  // }
 
-  async function login() {
-    await signIn('google');
-  }
+  // async function login() {
+  //   await signIn('google');
+  // }
 
-  function saveAddress() {
-    const data = { name, email, city, streetAddress, postalCode, country };
-    axios.put('/api/address', data);
-  }
+  // function saveAddress() {
+  //   const data = { name, email, city, streetAddress, postalCode, country };
+  //   axios.put('/api/address', data);
+  // }
 
-  function fetchAddressData() {
-    axios.get('/api/address').then(response => {
-      const { name, email, city, postalCode, streetAddress, country } = response.data;
-      setName(name);
-      setEmail(email);
-      setCity(city);
-      setPostalCode(postalCode);
-      setStreetAddress(streetAddress);
-      setCountry(country);
-      setAddressLoaded(true);
-    });
-  }
+  // function fetchAddressData() {
+  //   axios.get('/api/address').then(response => {
+  //     const { name, email, city, postalCode, streetAddress, country } = response.data;
+  //     setName(name);
+  //     setEmail(email);
+  //     setCity(city);
+  //     setPostalCode(postalCode);
+  //     setStreetAddress(streetAddress);
+  //     setCountry(country);
+  //     setAddressLoaded(true);
+  //   });
+  // }
 
-  function fetchWishlistData() {
-    axios.get('/api/wishlist').then(response => {
-      setWishedProducts(response.data.map(wp => wp.product));
-      setWishlistLoaded(true);
-    });
-  }
+  // function fetchWishlistData() {
+  //   axios.get('/api/wishlist').then(response => {
+  //     setWishedProducts(response.data.map(wp => wp.product));
+  //     setWishlistLoaded(true);
+  //   });
+  // }
 
-  function fetchOrdersData() {
-    axios.get('/api/orders').then(response => {
-      setOrders(response.data);
-      setOrderLoaded(true);
-    });
-  }
+  // function fetchOrdersData() {
+  //   axios.get('/api/orders').then(response => {
+  //     setOrders(response.data);
+  //     setOrderLoaded(true);
+  //   });
+  // }
 
-  useEffect(() => {
-    if (session) {
-      setAddressLoaded(false);
-      setWishlistLoaded(false);
-      setOrderLoaded(false);
-      fetchAddressData();
-      fetchWishlistData();
-      fetchOrdersData();
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session) {
+  //     setAddressLoaded(false);
+  //     setWishlistLoaded(false);
+  //     setOrderLoaded(false);
+  //     fetchAddressData();
+  //     fetchWishlistData();
+  //     fetchOrdersData();
+  //   }
+  // }, [session]);
 
-  function productRemovedFromWishlist(idToRemove) {
-    setWishedProducts(products => {
-      return [...products.filter(p => p._id.toString() !== idToRemove)];
-    });
-  }
+  // function productRemovedFromWishlist(idToRemove) {
+  //   setWishedProducts(products => {
+  //     return [...products.filter(p => p._id.toString() !== idToRemove)];
+  //   });
+  // }
 
   return (
     <>
