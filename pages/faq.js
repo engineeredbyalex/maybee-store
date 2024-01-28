@@ -1,8 +1,8 @@
 import Center from "@/components/Layout/Center";
 import Footer from "@/components/Basic/Footer";
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import styled from "styled-components";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import Layout from "@/components/Layout/Layout";
 import { BigSpacer } from "@/components/Layout/Spacer";
 

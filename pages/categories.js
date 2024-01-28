@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import Center from "@/components/Layout/Center";
 import ProductBox from "@/components/Layout/ProductBox";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import { Product } from "@/models/Product"; // Import Product model
 import Footer from "@/components/Basic/Footer";
 import { useLayoutEffect, useState } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import Layout from "@/components/Layout/Layout";
 import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 

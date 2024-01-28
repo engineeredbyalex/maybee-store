@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import Center from "@/components/Layout/Center";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/components/Cart/CartContext";
@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Footer from "@/components/Basic/Footer";
 import Layout from "@/components/Layout/Layout";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 
 const CartPage = () => {
   const {

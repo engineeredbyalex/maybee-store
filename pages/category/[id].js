@@ -1,4 +1,4 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import Title from "@/components/Basic/Title";
 import Center from "@/components/Layout/Center";
 import { Category } from "@/models/Category";
@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "@/components/Basic/Spinner";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 
 export default function CategoryPage({
   category,

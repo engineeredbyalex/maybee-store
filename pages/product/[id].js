@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "@/components/Basic/Header";
+import Header from "@/components/Basic/Navigation/Header";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
 import Image from "next/image";
@@ -7,7 +7,7 @@ import ProductImages from "@/components/Basic/ProductImages";
 import FlyingButton from "@/components/Basic/MainButton";
 import ProductReviews from "@/components/Reviews/ProductReviews";
 import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
+import Banner from "@/components/Basic/Navigation/Banner";
 import StickerOne from '@/public/images/caution_1.png';
 import StickerTwo from '@/public/images/caution_2.png';
 import Layout from "@/components/Layout/Layout";
