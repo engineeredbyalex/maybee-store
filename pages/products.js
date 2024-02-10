@@ -37,7 +37,7 @@ export default function ProductsPage({ products, wishedProducts }) {
 
   return (
     <div className="overflow-hidden">
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <Layout>
         <div className="w-full flex items-center justify-center flex-col overflow-x-hidden text-center">

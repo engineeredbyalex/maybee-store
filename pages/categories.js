@@ -38,7 +38,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <Layout>
         <div className="w-full flex items-center justify-start mt-[15rem]">

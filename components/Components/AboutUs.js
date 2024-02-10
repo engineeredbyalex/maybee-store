@@ -6,7 +6,7 @@ import Button from "../Basic/Button";
 
 export default function AboutUs() {
   return (
-    <div className="flex items-center justify-center w-full min-h-screen flex-col bg-[#fff]">
+    <div className="flex items-center justify-center w-full min-h-screen flex-col">
       <Layout>
         <div className="flex flex-col text-center lg:text-center w-full">
           <SmallSpacer>
@@ -20,7 +20,7 @@ export default function AboutUs() {
               <SmallSpacer>
                 <Button solid primary>
                   <Link href="/aboutus" passHref>
-                    <p className="py-3">
+                    <p className="uppercase">
                       Află mai multe
                     </p>
                   </Link>

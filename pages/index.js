@@ -36,9 +36,8 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
 
   return (
     <div>
-      <Banner />
       <Header />
-      <HeroComponent />
+      <HeroComponent product={featuredProduct} />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
       <AboutUs />
       <ScrollButton />
@@ -52,8 +51,8 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
 export async function getServerSideProps(ctx) {
   await mongooseConnect();
   const featuredProductSetting = await Setting.findOne({ name: 'featuredProductId' });
-  // const featuredProductId = featuredProductSetting.value;
-  // const featuredProduct = await Product.findById(featuredProductId);
+  const featuredProductId = featuredProductSetting.value;
+  const featuredProduct = await Product.findById(featuredProductId);
   const newProducts = await Product.find({}, null, { sort: { '_id': -1 }, limit: 10 });
   const session = await getServerSession(ctx.req, ctx.res, authOptions);
   const wishedNewProducts = session?.user
@@ -64,7 +63,7 @@ export async function getServerSideProps(ctx) {
     : [];
   return {
     props: {
-      // featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
+      featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       newProducts: JSON.parse(JSON.stringify(newProducts)),
       wishedNewProducts: wishedNewProducts.map(i => i.product.toString()),
     },

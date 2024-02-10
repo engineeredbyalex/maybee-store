@@ -20,7 +20,7 @@ const StyledAnswer = styled.div`
 export default function Faq() {
     return (
         <>
-            <Banner />
+            {/* <Banner /> */}
             <Header />
             <Layout>
                 <div className="mt-[15rem] text-[#595959] flex flex-col gap-10">

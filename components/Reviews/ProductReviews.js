@@ -57,13 +57,13 @@ const ProductReviews = ({ product }) => {
               value={title}
               onChange={(ev) => setTitle(ev.target.value)}
               placeholder="Titlu"
-              className="border text-base w-full"
+              className="border text-base w-full bg-transparent"
             />
             <Textarea
               value={description}
               onChange={(ev) => setDescription(ev.target.value)}
               placeholder="Parerea dvs."
-              className="border text-base w-full"
+              className="border text-base w-full bg-transparent"
             />
             <div>
               <SmallSpacer>

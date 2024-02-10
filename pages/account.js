@@ -87,11 +87,11 @@ export default function AccountPage() {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-2 mt-[10rem] gap-4">
         <div >
-          <WhiteBox>
+          <div>
             <Tabs
               tabs={['Comenzi', 'Wishlist']}
               active={activeTab}
@@ -142,13 +142,13 @@ export default function AccountPage() {
                 )}
               </>
             )}
-          </WhiteBox>
+          </div>
 
         </div>
         <div>
 
-          <WhiteBox>
-            <h2>{session ? 'Detalii cont' : 'Conectare'}</h2>
+          <div>
+            <h4 className="text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h4>
             {!addressLoaded ? (
               <Spinner fullWidth={true} />
             ) : (
@@ -159,6 +159,7 @@ export default function AccountPage() {
                   value={name}
                   name="name"
                   onChange={ev => setName(ev.target.value)}
+                    className="bg-transparent"
                 />
                 <Input
                   type="text"
@@ -166,6 +167,7 @@ export default function AccountPage() {
                   value={email}
                   name="email"
                   onChange={ev => setEmail(ev.target.value)}
+                    className="bg-transparent"
                 />
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
@@ -174,6 +176,7 @@ export default function AccountPage() {
                     value={city}
                     name="city"
                     onChange={ev => setCity(ev.target.value)}
+                      className="bg-transparent"
                   />
                   <Input
                     type="text"
@@ -181,6 +184,7 @@ export default function AccountPage() {
                     value={postalCode}
                     name="postalCode"
                     onChange={ev => setPostalCode(ev.target.value)}
+                      className="bg-transparent"
                   />
                 </div>
                 <Input
@@ -189,6 +193,7 @@ export default function AccountPage() {
                   value={streetAddress}
                   name="streetAddress"
                   onChange={ev => setStreetAddress(ev.target.value)}
+                    className="bg-transparent"
                 />
                 <Input
                   type="text"
@@ -196,6 +201,7 @@ export default function AccountPage() {
                   value={country}
                   name="country"
                   onChange={ev => setCountry(ev.target.value)}
+                    className="bg-transparent"
                 />
                 <Button black block onClick={saveAddress}>
                   Salvează
@@ -208,7 +214,7 @@ export default function AccountPage() {
                 )}
               </div>
             )}
-          </WhiteBox>
+          </div>
         </div>
       </div >
     </>

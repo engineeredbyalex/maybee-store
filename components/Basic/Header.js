@@ -1,64 +1,71 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { CartContext } from "../Cart/CartContext";
-import Button from "./Button";
 import Image from "next/image";
-import { AiOutlineMenu } from "react-icons/ai"
-import LogoNav from '@/public/images/logoBig.png'
-
 import { gsap } from "gsap";
+import Logo from "@/public/images/logo_Maybee.png";
+import Bars from "../Icons/Bars";
+import { MdAccountCircle } from "react-icons/md";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 export default function Header() {
   const { cartProducts } = useContext(CartContext);
   const [toggle, setToggle] = useState(false);
   const navigationBarRef = useRef(null);
 
-
   useEffect(() => {
     const navigationBar = navigationBarRef.current;
 
     if (navigationBar) {
       if (toggle) {
-        gsap.to(navigationBar, { height: '100vh', backgroundColor: "black", duration: 0.5 });
+        gsap.to(navigationBar, { backgroundColor: "black", duration: 0.2 });
+        gsap.to(navigationBar, { height: '100%', backgroundColor: "black", duration: 0.5, delay: 0.5 });
+
+        // Reveal links with a delay after the navigation bar expands
+        gsap.fromTo(".link-item", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, delay: 1 });
       } else {
-        gsap.to(navigationBar, { height: '8vh', backgroundColor: "rgba(0, 0, 0, 0.75)", duration: 0.5 });
+        gsap.to(navigationBar, { height: '10vh' });
+        gsap.to(navigationBar, { backgroundColor: "transparent", duration: 0.2, duration: 0.5, delay: 0.5 });
       }
     }
   }, [toggle]);
 
+  useEffect(() => {
+    window.addEventListener("resize", function () {
+      if (window.innerWidth < 768) {
+        setToggle(false)
+      }
+      else {
+        null
+      }
+    })
+  }, [])
+
   return (
     <div ref={navigationBarRef} className="navigation_bar">
-      <div className="w-full flex items-center justify-center h-[8vh] gap-[60px] absolute top-0">
-        <div className="w-1/2 lg:w-auto flex items-center justify-start absolute left-[30px] lg:relative">
-          <h2 >
-            <Image alt="logo" width={150} src={LogoNav}></Image>
-          </h2>
+      <div className="w-full flex items-center justify-center h-[10vh] gap-[60px] absolute top-0">
+        <div className="w-1/2 lg:w-1/3 flex items-center justify-center">
+          <Image src={Logo} alt="logo" width={70}></Image>
         </div>
-        <div className={toggle ? ("text-white left-[0px] right-0 bottom-0 top-[20rem] flex flex-col relative lg:flex gap-[30px] items-center") : ("text-white hidden lg:flex gap-[30px]")}>
-          <Link className="" href={'/'}><p>Acasă</p></Link>
-          <Link className="" href={'/products'}><p>Produse</p></Link>
-          <Link className="" href={'/categories'}><p>Catalog</p></Link>
-          <Link className="" href={'/aboutus'}><p>Despre noi</p></Link>
-          {/* <Link className="text-[20px] nav_item" href={'/blog'}>Blog</Link> */}
-
+        <div className={toggle ? ("flex flex-col items-center justify-center w-screen h-auto absolute top-[50vh] bottom-0 left-0 right-0 text-[#FDFCEA] uppercase font-semibold z-[5]") : ("hidden lg:flex items-center justify-center gap-5 w-1/3 text-[#595959] uppercase font-bold")}>
+          <Link href={'/'}><p className="link-item">Acasă</p></Link>
+          <Link href={'/products'}><p className="link-item">Produse</p></Link>
+          <Link href={'/categories'}><p className="link-item">Catalog</p></Link>
+          <Link href={'/aboutus'}><p className="link-item">Despre noi</p></Link>
         </div>
-        <div className={toggle ? ("text-white lg:flex gap-[15px] absolute top-[80vh] ") : ("text-white hidden lg:flex  gap-[15px] ")}>
-          <Button white outline>
-            <Link href={"/cart"}>
-              <p >Coș ({cartProducts.length})</p>
-            </Link>
-          </Button>
-          <Button black transparent>
-            <Link href={"/account"}>
-              <p>Cont</p>
-            </Link>
-          </Button>
+        <div className={toggle ? ("flex flex-col items-center justify-center w-screen h-auto absolute top-[80vh] bottom-0 left-0 right-0 text-[#FDFCEA] uppercase font-semibold z-[2]") : ("lg:w-1/3 hidden lg:flex items-center justify-center gap-5 text-[#595959] uppercase font-semibold")}>
+          <Link className="flex items-center justify-center link-item " href={"/cart"}>
+            <MdOutlineShoppingCart size={30} />
+            <p>({cartProducts.length})</p>
+          </Link>
+          <Link className="link-item" href={"/account"}>
+            <MdAccountCircle size={30} />
+          </Link>
         </div>
-        <div className="cursor-pointer  lg:hidden  w-1/2 flex items-center justify-end absolute right-[30px] " onClick={() => setToggle(!toggle)}>
-          <AiOutlineMenu size={30} color="white" />
+        <div className="cursor-pointer flex items-center justify-center lg:hidden lg:w-1/3 w-1/2 z-[1]" onClick={() => setToggle(!toggle)}>
+          <Bars />
         </div>
       </div>
-
     </div>
   );
 }

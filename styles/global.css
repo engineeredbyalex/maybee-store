@@ -2,45 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #FDFCEA;
+    overflow-x: hidden;
+}
+
 .navigation_bar{
-    width: 100%;
-    height: 10vh;
+    width: 100vw;
+    height:auto;
     position: absolute;
-    top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
     z-index: 13;
 @media screen and (min-width:1024px) {
-    width: 100%;
-    height: 10vh;
+    width: 100vw;
+    height:auto;
     position: absolute;
-    top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
     z-index: 13;
 }
 }
 
 h1 {
-    @apply text-[7.5em]
+    @apply  text-[18rem] 
 }
 h2 {
-    @apply text-[4rem] lg:text-[7rem] leading-[4rem] lg:leading-[6.5rem]
+    @apply  text-[11rem] lg:text-[5.5rem]
 }
 h3 {
-    @apply text-[3.5rem] lg:text-[6.5rem] leading-[3.5rem] lg:leading-[6.5rem]
+    @apply  text-[3rem]  lg:text-[4.5rem]
 }
 h4 {
-    @apply text-[2.5rem] lg:text-[4rem] leading-[3rem] lg:leading-[3rem]
+    @apply  text-[4rem] 
 }
 h5{
-    @apply text-[2rem] lg:text-[3rem] leading-[2.5rem] lg:leading-[3rem]
+    @apply  text-[2.6rem]
 }
 h6{
-    @apply text-[1.35rem] lg:text-[2.5rem] leading-[2.5rem] lg:leading-[3rem]
+    @apply  text-[1.6rem] 
 }
 p {
-    @apply text-[1.3rem] lg:text-[1.5rem] leading-[1.5rem] lg:leading-[2rem]
+    @apply  text-[1.8rem] lg:text-[1.4rem]
 }

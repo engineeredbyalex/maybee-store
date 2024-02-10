@@ -155,7 +155,7 @@ const CartPage = () => {
   if (isSuccess) {
     return (
       <>
-        <Banner />
+        {/* <Banner /> */}
         <Header />
         <div className="mt-[10rem]">
           <Center>
@@ -173,11 +173,11 @@ const CartPage = () => {
 
   return (
     <>
-      <Banner />
+      {/* <Banner /> */}
       <Header />
       <Layout>
         <div className="w-full min-h-screen mt-[15rem] text-[#595959]">
-          <div className="bg-[#fff] mt-4 p-4">
+          <div className="bg-transparent mt-4 p-4">
             <h4 className=" font-bold mb-4">Coș de cumpărături</h4>
             {cartProducts.length === 0 && (
               <p className="text-lg font-light mb-4">Coșul dvs. este gol.</p>
@@ -211,14 +211,14 @@ const CartPage = () => {
                         <div className="flex items-center">
                           <button
                             onClick={() => lessOfThisProduct(cartItem.localId)}
-                            className="px-2 py-1 bg-gray-200 text-black mr-2"
+                            className="px-2 py-1 bg-orange-300 text-black mr-2"
                           >
                             -
                           </button>
                           <p>{cartItem.quantity}</p>
                           <button
                             onClick={() => moreOfThisProduct(cartItem.localId)}
-                            className="px-2 py-1 bg-gray-200 text-black ml-2"
+                            className="px-2 py-1 bg-orange-300 text-black ml-2"
                           >
                             +
                           </button>
@@ -251,71 +251,71 @@ const CartPage = () => {
             <div className="p-4">
               <h5 className=" font-medium mb-4">Informații comandă</h5>
               <div className="mb-4">
-                <input
+                <input 
                   type="text"
                   placeholder="Nume"
                   value={name}
                   name="name"
                   onChange={(ev) => setName(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
               <div className="mb-4">
-                <input
+                <input 
                   type="text"
                   placeholder="Email"
                   value={email}
                   name="email"
                   onChange={(ev) => setEmail(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
               <div className="mb-4">
-                <input
+                <input 
                   type="text"
                   placeholder="Număr de telefon"
                   value={phone}
                   name="phone"
                   onChange={(ev) => setPhone(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
-              <div className="mb-4 flex flex-col md:flex-row md:space-x-4">
-                <input
+              <div className="mb-4 flex flex-col md:flex-row md:space-x-4 bg-transparent">
+                <input 
                   type="text"
                   placeholder="Oraș"
                   value={city}
                   name="city"
                   onChange={(ev) => setCity(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 md:mb-0 w-full"
+                  className="border rounded-lg p-2 mb-4 md:mb-0 w-full bg-transparent"
                 />
-                <input
+                <input 
                   type="text"
                   placeholder="Cod Poștal"
                   value={postalCode}
                   name="postalCode"
                   onChange={(ev) => setPostalCode(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
               <div className="mb-4">
-                <input
+                <input 
                   type="text"
                   placeholder="Adresă Stradală"
                   value={streetAddress}
                   name="streetAddress"
                   onChange={(ev) => setStreetAddress(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
               <div className="mb-4">
-                <input
+                <input 
                   type="text"
                   placeholder="Țară"
                   value={country}
                   name="country"
                   onChange={(ev) => setCountry(ev.target.value)}
-                  className="border rounded-lg p-2 w-full"
+                  className="border rounded-lg p-2 w-full bg-transparent"
                 />
               </div>
               <div className="mb-4 flex items-center">

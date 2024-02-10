@@ -8,7 +8,7 @@ import { BigSpacer } from "../Layout/Spacer";
 export default function NewProducts({ products, wishedProducts }) {
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fff] py-[60px]">
+    <div className="min-h-screen flex items-center justify-center  py-[60px]">
       <Layout>
         <div className="flex flex-col">
           <BigSpacer>

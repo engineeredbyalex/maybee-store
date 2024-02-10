@@ -24,9 +24,8 @@ export default function ProductPage({ product }) {
   };
   return (
     <>
-      <Banner />
       <Header />
-      <div className="flex items-center justify-center w-full flex-col  min-h-[100vh] bg-[#fff] mt-[10rem]">
+      <div className="flex items-center justify-center w-full flex-col  min-h-[100vh] bg-[#FDFCEA] mt-[10rem]">
         <Layout>
           <div className="flex flex-col items-center justify-between w-full min-h-screen ">
             <div className="flex flex-row items-center justify-between mt-[5rem]">

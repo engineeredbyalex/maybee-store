@@ -20,7 +20,7 @@ p{font-size:16px;}
 export default function Policy() {
     return (
         <div>
-            <Banner />
+            {/* <Banner /> */}
             <Header />
             <Center>
                 <StyledPolicy>
