@@ -4,7 +4,7 @@ import { CartContext } from "../Cart/CartContext";
 import Image from "next/image";
 import { gsap } from "gsap";
 import Logo from "@/public/images/logo_Maybee.png";
-import Bars from "../Icons/Bars";
+// import Bars from "../Icons/Bars";
 import { MdAccountCircle } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
