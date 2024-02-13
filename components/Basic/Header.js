@@ -4,7 +4,7 @@ import { CartContext } from "../Cart/CartContext";
 import Image from "next/image";
 import { gsap } from "gsap";
 import Logo from "@/public/images/logo_Maybee.png";
-import Bars from "../Icons/Bars";
+import Menu from "@/components/Icons/Bars"
 import { MdAccountCircle } from "react-icons/md";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
@@ -63,7 +63,7 @@ export default function Header() {
           </Link>
         </div>
         <div className="cursor-pointer flex items-center justify-center lg:hidden lg:w-1/3 w-1/2 z-[1]" onClick={() => setToggle(!toggle)}>
-          <Bars />
+          <Menu />
         </div>
       </div>
     </div>
