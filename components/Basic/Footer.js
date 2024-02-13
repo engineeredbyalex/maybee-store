@@ -34,10 +34,10 @@ export default function Footer() {
 
             <div className="w-full flex items-center justify-center flex-col lg:flex-row gap-5 mb-5">
                 <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
-                    <Image width={200} height={200} src={logo2} />
+                    <Image width={200} height={200} src={logo2} alt="logo" />
                 </a>
                 <a href="https://anpc.ro/ce-este-sal/" target="_blank">
-                    <Image width={200} height={200} src={logo3} />
+                    <Image width={200} height={200} src={logo3} alt="logo" />
                 </a>
             </div>
             <div className="w-full flex items-center justify-center flex-col bg-black text-[#FDFCEA]">
