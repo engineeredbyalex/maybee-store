@@ -62,13 +62,13 @@ const ProductReviews = ({ product }) => {
             <Textarea
               value={description}
               onChange={(ev) => setDescription(ev.target.value)}
-              placeholder="Parerea dvs."
+              placeholder="Părerea dvs."
               className="border text-base w-full bg-transparent"
             />
             <div>
               <SmallSpacer>
                 <Button primary onClick={submitReview}>
-                  <p className='font-bold py-2'>Trimite recenzia</p>
+                  <p className='uppercase'>Trimite recenzia</p>
                 </Button>
               </SmallSpacer>
             </div>
@@ -76,9 +76,9 @@ const ProductReviews = ({ product }) => {
         </div>
         {/* All reviews*/}
         < BigSpacer >
-          <div className='flex flex-col gap-10 text-[#595959]'>
+          <div className='flex flex-col text-[#595959] text-center'>
             <h5 className='uppercase font-bold'>Toate recenzile :</h5>
-            {reviews.length === 0 && <p>Nu există recenzii!</p>}
+            {reviews.length === 0 && <p>Fii primul care a pune o recenzie.</p>}
             {reviews.length > 0 &&
               reviews.map((review) => (
                 <div key={review._id}>

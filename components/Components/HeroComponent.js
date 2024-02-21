@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function MainHeader({ product }) {
 
   return (
-    <div className="min-h-screen flex items-center justify-center flex-col">
+    <div className="min-h-screen flex items-center justify-center flex-col mt-[5rem] lg:mt-[0rem]">
       <p className="text-[#595959] text-center leading-[1.8rem]">
         CREAT CU GRIJĂ  ȘI ATENȚIE
       </p>

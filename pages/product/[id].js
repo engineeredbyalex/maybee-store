@@ -67,7 +67,7 @@ export default function ProductPage({ product }) {
                     </div>
                   ))}
                   <SmallSpacer>
-                    <div className="mb-4 w-full flex items-center justify-center  gap-4">
+                    <div className="mb-4 w-full flex flex-col items-center justify-center  gap-2">
                       <FlyingButton
                         main
                         _id={product._id}
@@ -78,7 +78,7 @@ export default function ProductPage({ product }) {
                       >
                         <p className="uppercase text-[#fff]">  Adaugă în coș</p>
                       </FlyingButton>
-                      <h6 className="text-[#595959] font-bold">{product.price} RON</h6>
+                      <h5 className="text-[#595959]">{product.price} RON</h5>
                     </div>
                   </SmallSpacer>
                 </div>

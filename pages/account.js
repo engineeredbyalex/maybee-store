@@ -1,22 +1,20 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Button from "@/components/Basic/Button";
-import WhiteBox from "@/components/Layout/WhiteBox";
-import { RevealWrapper } from "next-reveal";
 import Input from "@/components/Layout/Input";
 import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
 import Tabs from "@/components/Layout/Tabs";
 import SingleOrder from "@/components/Cart/SingleOrder";
 import Header from "@/components/Basic/Header";
-import Banner from "@/components/Basic/Banner";
+import Layout from "@/components/Layout/Layout";
 
 export default function AccountPage() {
   const { data: session } = useSession();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
@@ -27,29 +25,27 @@ export default function AccountPage() {
   const [wishedProducts, setWishedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('Orders');
   const [orders, setOrders] = useState([]);
+  const [phone, setPhone] = useState([]);
 
-  async function logout() {
-    await signOut({ callbackUrl: process.env.NEXT_PUBLIC_URL });
-  }
-
-  async function login() {
-    await signIn('google');
+  async function register() {
+  // Implement your registration logic here
   }
 
   function saveAddress() {
-    const data = { name, email, city, streetAddress, postalCode, country };
+    const data = { name, email, city, streetAddress, postalCode, country, phone };
     axios.put('/api/address', data);
   }
 
   function fetchAddressData() {
     axios.get('/api/address').then(response => {
-      const { name, email, city, postalCode, streetAddress, country } = response.data;
+      const { name, email, city, postalCode, streetAddress, country, phone } = response.data;
       setName(name);
       setEmail(email);
       setCity(city);
       setPostalCode(postalCode);
       setStreetAddress(streetAddress);
       setCountry(country);
+      setCountry(phone);
       setAddressLoaded(true);
     });
   }
@@ -87,136 +83,116 @@ export default function AccountPage() {
 
   return (
     <>
-      {/* <Banner /> */}
       <Header />
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-[10rem] gap-4">
-        <div >
-          <div>
-            <Tabs
-              tabs={['Comenzi', 'Wishlist']}
-              active={activeTab}
-              onChange={setActiveTab}
-            />
-            {activeTab === 'Orders' && (
-              <>
-                {!orderLoaded ? (
-                  <Spinner fullWidth={true} />
-                ) : (
-                    <div>
-                    {orders.length === 0 ? (
-                      <p>Conectați-vă pentru a vedea comenzile dvs.</p>
-                    ) : (
-                      orders.map(o => <SingleOrder key={o._id} {...o} />)
-                    )}
-                  </div>
-                )}
-              </>
-            )}
-            {activeTab === 'Wishlist' && (
-              <>
-                {!wishlistLoaded ? (
-                  <Spinner fullWidth={true} />
-                ) : (
-                  <>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {wishedProducts.length > 0 ? (
-                        wishedProducts.map(wp => (
-                          <ProductBox
-                            key={wp._id}
-                            {...wp}
-                            wished={true}
-                            onRemoveFromWishlist={productRemovedFromWishlist}
-                          />
-                        ))
-                      ) : (
-                        <>
-                          {session ? (
-                            <p>Listă de dorințe goală</p>
-                          ) : (
-                            <p>Conectați-vă pentru a adăuga produse la lista de dorințe</p>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  </>
-                )}
-              </>
-            )}
+      <Layout>
+        <div className="flex flex-row items-center justify-center gap-4 w-full ">
+          <div className="w-[25vw] bg-[#252525] h-screen text-[#FDFCEA] flex items-center justify-center ">
+            <div className="mt-[10vh] flex flex-col items-center justify-center">
+              <p>Cont</p>
+              <p>Comenzi</p>
+              <p>Setari</p>
+              <p>Contact</p>
+              <button onClick={() => signOut("google")}>
+                <p className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase">Deconectare</p>
+              </button>
+            </div>
           </div>
-
-        </div>
-        <div>
-
-          <div>
-            <h4 className="text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h4>
-            {!addressLoaded ? (
-              <Spinner fullWidth={true} />
-            ) : (
-              <div>
-                <Input
-                  type="text"
-                  placeholder="Nume"
-                  value={name}
-                  name="name"
-                  onChange={ev => setName(ev.target.value)}
-                    className="bg-transparent"
-                />
-                <Input
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  name="email"
-                  onChange={ev => setEmail(ev.target.value)}
-                    className="bg-transparent"
-                />
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
-                    type="text"
-                    placeholder="Oraș"
-                    value={city}
-                    name="city"
-                    onChange={ev => setCity(ev.target.value)}
-                      className="bg-transparent"
-                  />
-                  <Input
-                    type="text"
-                    placeholder="Cod poștal"
-                    value={postalCode}
-                    name="postalCode"
-                    onChange={ev => setPostalCode(ev.target.value)}
-                      className="bg-transparent"
-                  />
-                </div>
-                <Input
-                  type="text"
-                  placeholder="Adresă"
-                  value={streetAddress}
-                  name="streetAddress"
-                  onChange={ev => setStreetAddress(ev.target.value)}
-                    className="bg-transparent"
-                />
-                <Input
-                  type="text"
-                  placeholder="Țară"
-                  value={country}
-                  name="country"
-                  onChange={ev => setCountry(ev.target.value)}
-                    className="bg-transparent"
-                />
-                <Button black block onClick={saveAddress}>
-                  Salvează
-                </Button>
-                <hr />
+          <div className="w-[75vw] h-screen border-[#595959] flex items-center justify-center ">
+            <div className=" text-[#595959] flex items-start justify-center  mt-[10vh] flex-col">
+              <div className="w-auto mt-5 text-center">
                 {session ? (
-                  <Button primary onClick={logout}>Deconectare</Button>
+                  <h5 className="uppercase">Buna ziua,<br /> {session.user.name}</h5>
                 ) : (
-                  <Button primary onClick={login}>Conectați-vă cu Google</Button>
+                  <h5 className="leading-[3rem] text-center">Va rugam sa va conectati sau sa va creati un cont</h5>
                 )}
               </div>
-            )}
+              <div className="w-[30rem] flex items-center justify-center text-center ">
+                {session ?
+                  (<div className="h-full w-full flex items-center justify-center flex-col">
+                    <p className="uppercase">Date utilizator</p>
+                    <div className="flex flex-col items-center justify-center">
+                      <Input type="text"
+                        placeholder="Name"
+                        value={name}
+                        name="name"
+                        onChange={ev => setName(ev.target.value)} />
+                      <Input type="text"
+                        placeholder="Email"
+                        value={email}
+                        name="email"
+                        onChange={ev => setEmail(ev.target.value)} />
+                      <div>
+                        <Input type="text"
+                          placeholder="City"
+                          value={city}
+                          name="city"
+                          onChange={ev => setCity(ev.target.value)} />
+                        <Input type="text"
+                          placeholder="Postal Code"
+                          value={postalCode}
+                          name="postalCode"
+                          onChange={ev => setPostalCode(ev.target.value)} />
+                      </div>
+                      <Input type="text"
+                        placeholder="Street Address"
+                        value={streetAddress}
+                        name="streetAddress"
+                        onChange={ev => setStreetAddress(ev.target.value)} />
+                      <Input type="numbers"
+                        placeholder="Numar de telefon"
+                        value={phone}
+                        name="phoneNumber"
+                        onChange={ev => setPhone(ev.target.value)} />
+                      <Input type="text"
+                        placeholder="Tara"
+                        value={country}
+                        name="country"
+                        onChange={ev => setCountry(ev.target.value)} />
+                      <button className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer"
+                        onClick={saveAddress}>
+                        <p>   Salveaza</p>
+                      </button>
+                    </div>
+                  </div>)
+                  :
+                  (<div>
+                    <div className="w-[30rem] mt-5 flex items-center justify-center text-center flex-col ">
+                      <label >
+                        <p>Email</p>
+                      </label>
+                      <Input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        name="email"
+                        onChange={ev => setEmail(ev.target.value)}
+                        className="bg-transparent"
+                      />
+                      <label >
+                        <p>
+                          Parola
+                        </p>
+                      </label>
+                      <Input
+                        type="password"
+                        placeholder="Parolă"
+                        value={password}
+                        name="password"
+                        onChange={ev => setPassword(ev.target.value)}
+                        className="bg-transparent"
+                      />
+                      <div className="mt-5">
+                        <button onClick={() => signIn("google")}><p className="uppercase">Conectare</p></button>
+                      </div>
+                      <p className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer">Creare cont</p>
+                    </div>
+                  </div>)
+                }
+              </div>
+            </div>
           </div>
-        </div>
-      </div >
+        </div >
+      </Layout >
     </>
   );
 }
