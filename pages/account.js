@@ -85,23 +85,27 @@ export default function AccountPage() {
     <>
       <Header />
       <Layout>
-        <div className="flex flex-row items-center justify-center gap-4 w-full ">
-          <div className="w-[25vw] bg-[#252525] h-screen text-[#FDFCEA] flex items-center justify-center ">
-            <div className="mt-[10vh] flex flex-col items-center justify-center">
-              <p>Cont</p>
-              <p>Comenzi</p>
-              <p>Setari</p>
-              <p>Contact</p>
-              <button onClick={() => signOut("google")}>
-                <p className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase">Deconectare</p>
-              </button>
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-4 w-full ">
+          {session ? (
+            <div className="w-screen h-[25vh] lg:w-[25vw] lg:h-screen bg-[#252525]  text-[#FDFCEA] flex items-center justify-center ">
+              <div className="mt-[10vh] w-full grid grid-cols-3 lg:flex lg:flex-col items-center justify-center">
+                <p>Cont</p>
+                <p>Comenzi</p>
+                <p>Setari</p>
+                <p>Contact</p>
+                <button onClick={() => signOut("google")}>
+                  <p className="bg-[#595959] lg:min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase">Deconectare</p>
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="w-[75vw] h-screen border-[#595959] flex items-center justify-center ">
-            <div className=" text-[#595959] flex items-start justify-center  mt-[10vh] flex-col">
+          ) : (
+            ""
+          )}
+          <div className=" w-full lg:w-[75vw] h-screen border-[#595959] flex items-center justify-center ">
+            <div className=" text-[#595959] flex items-start justify-center w-auto  mt-[10vh] flex-col">
               <div className="w-auto mt-5 text-center">
                 {session ? (
-                  <h5 className="uppercase">Buna ziua,<br /> {session.user.name}</h5>
+                  <h4 className="uppercase">Buna ziua,<br /> {session.user.name}</h4>
                 ) : (
                   <h5 className="leading-[3rem] text-center">Va rugam sa va conectati sau sa va creati un cont</h5>
                 )}
@@ -148,7 +152,7 @@ export default function AccountPage() {
                         value={country}
                         name="country"
                         onChange={ev => setCountry(ev.target.value)} />
-                      <button className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer"
+                      <button className="bg-[#595959] lg:min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer"
                         onClick={saveAddress}>
                         <p>   Salveaza</p>
                       </button>
@@ -184,7 +188,7 @@ export default function AccountPage() {
                       <div className="mt-5">
                         <button onClick={() => signIn("google")}><p className="uppercase">Conectare</p></button>
                       </div>
-                      <p className="bg-[#595959] min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer">Creare cont</p>
+                      <p className="bg-[#595959] lg:min-w-[15rem] max-h-[10rem] text-[#FDFCEA] flex items-center justify-center px-3 py-2 rounded-md uppercase mt-5 cursor-pointer">Creare cont</p>
                     </div>
                   </div>)
                 }
