@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Header from "@/components/Basic/Header";
+import Button from "@/components/Basic/Button";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -43,28 +45,31 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen w-full bg-[#FBFAFD] text-black">
-      <div className="shadow-lg p-5 rounded-md bg-[#fff] min-w-[300px] min-h-[400px]">
-        <p className="my-5">
-          Register to <span className="font-bold uppercase">Zenboard</span>
-        </p>
-        <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
-          <input placeholder="Name" type="text" onChange={(e) => setName(e.target.value)} />
-          <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
-          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
-          <button className="w-full bg-blue-500 py-1 px-3 rounded-md text-center cursor-pointer">
-            <h5 className="text-white uppercase font-bold">Register</h5>
-          </button>
-          {error && (
-            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">{error}</div>
-          )}
-          <Link href={"/"}>
-            <p className="text-sm mt-3 text-right hover:text-blue-500 transition-all ease-in-out">
-              Already have an account ? <span className="underline">Login</span>
-            </p>
-          </Link>
-        </form>
+    <div>
+      <Header/>
+      <div className="flex items-center justify-center h-screen w-full text-[#595959]">
+        <div className="shadow-lg p-5 rounded-md  min-w-[300px] min-h-[400px]">
+          <p className="my-5">
+          Inregistrare
+          </p>
+          <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
+            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Nume" type="text" onChange={(e) => setName(e.target.value)} />
+            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
+            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Parola" type="password" onChange={(e) => setPassword(e.target.value)} />
+              <Button>
+             Inregistrare
+              </Button>
+            {error && (
+              <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mt-2">{error}</div>
+            )}
+            <Link href={"/account"}>
+              <p className=" mt-3 text-right  transition-all ease-in-out">
+                Cont existent ? <span className="underline">Conectati-va</span>
+              </p>
+            </Link>
+          </form>
+        </div>
       </div>
-    </div>
+  </div>
   );
 }
