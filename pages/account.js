@@ -1,17 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Button from "@/components/Basic/Button";
-import WhiteBox from "@/components/Layout/WhiteBox";
 import { RevealWrapper } from "next-reveal";
-import Input from "@/components/Layout/Input";
 import Spinner from "@/components/Basic/Spinner";
-import ProductBox from "@/components/Layout/ProductBox";
-import Tabs from "@/components/Layout/Tabs";
-import SingleOrder from "@/components/Cart/SingleOrder";
 import Header from "@/components/Basic/Header";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -161,7 +156,7 @@ await signOut('credentials')
             <div className="width-full flex items-center justify-center">
               <RevealWrapper delay={100}>
                 <div className="">
-                  <h4 className="uppercase bold">{session ? 'Detalii cont' : 'Conectare'}</h4>
+                  <h4 className="uppercase font-bold text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h4>
                   {!addressLoaded && (
                     <Spinner fullWidth={true} />
                   )}
@@ -238,23 +233,60 @@ await signOut('credentials')
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button type="submit">Sign In</button>
-      <button onClick={signIn}>Sign In</button>
-      {error && <p>{error}</p>}
-    </form>
+    <div>
+      <Header />
+      <div className="mt-[10rem] flex flex-col items-center justify-center">
+        <h4 className="uppercase font-bold text-[#595959]">
+            Autentificare
+          </h4>
+        <form onSubmit={handleSubmit} className="max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+              Parola
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Parola"
+            />
+          </div>
+          <div className="flex items-center justify-between flex-col gap-5 w-full">
+            <Button
+             
+              type="submit"
+            >
+              Conectare
+            </Button>
+            <Button
+
+              type="submit"
+            >
+            <Link href='/register'>
+                Inregistrare
+              </Link>
+            </Button>
+          </div>
+        
+          {error && <p className="text-red-500 text-xs italic mt-4">{error}</p>}
+        </form>
+     </div>
+   </div>
   );
 };
 
