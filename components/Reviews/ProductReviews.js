@@ -41,7 +41,7 @@ const ProductReviews = ({ product }) => {
 
   useEffect(() => {
     loadReviews();
-  }, [product]);
+  }, [product, loadReviews]);
 
   return (
     <div className='flex w-full items-center justify-center flex-col mt-[3rem]'>
