@@ -1,95 +1,70 @@
-import {  useState } from "react";
-import Header from "@/components/Basic/Header";
-import Layout from "@/components/Layout/Layout";
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
-export default function AccountPage() {
-    const[name,setName] = useState('')
-    const[email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
-    const [error, setError] = useState("");
+export default function RegisterPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        if (!name || !email || !password) {
-            setError("All fields are necessary.");
-            return;
-        }
+    if (!name || !email || !password) {
+      setError("All fields are necessary.");
+      return;
+    }
 
-        try {
-            const resUserExists = await fetch("/api/userExists", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email }),
-            });
+    try {
+      // Check if user already exists
+      const resUserExists = await axios.post("/api/userExists", { email });
 
-            if (!resUserExists.ok) {
-                const errorMessage = await resUserExists.text();
-                console.error('Error:', errorMessage);
-                return;
-            }
+      if (resUserExists.data.user) {
+        setError("User already exists.");
+        return;
+      }
 
-            const { user } = await resUserExists.json();
+      // Register user if user doesn't exist
+      const resRegister = await axios.post("/api/register", { name, email, password });
 
+      if (resRegister.status === 201) {
+        const form = e.target;
+        form.reset();
+        router.push("/");
+      } else {
+        console.log("User registration failed.");
+      }
+    } catch (error) {
+      console.log("Error during registration: ", error);
+    }
+  };
 
-            if (user) {
-                setError("User already exists.");
-                return;
-            }
-
-            const res = await fetch("/api/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    name,
-                    email,
-                    password,
-                }),
-            });
-
-            if (res.ok) {
-                const form = e.target;
-                form.reset();
-            } else {
-                console.log("User registration failed.");
-            }
-        } catch (error) {
-            console.log("Error during registration: ", error);
-        }
-    };
-
-    return (
-        <>
-            <Header />
-            <Layout>
-                <div className="w-screen h-screen flex items-center justify-center">
-                    <form onSubmit={handleSubmit} className='w-full flex items-center justify-center'>
-                        <div className="w-[50%] h-screen flex flex-col items-center justify-start">
-                            <div className="mt-[10rem] w-full flex items-center  justify-center flex-col gap-5">
-                                <input type="text" placeholder="Nume" onChange={(e) => setName(e.target.value)}  className="w-[70%] bg-transparent border-[0.1rem] border-[#dbdbdb] py-3 px-3" />
-                                <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}  className="w-[70%] bg-transparent border-[0.1rem] border-[#dbdbdb] py-3 px-3" />
-                                <input type="password" placeholder="Parola " onChange={(e) => setPassword(e.target.value)} className="w-[70%] bg-transparent border-[0.1rem] border-[#dbdbdb] py-3 px-3" />
-                                <h3>
-                                    {error}
-                                </h3>
-                            </div>
-                            <div className="border-t-[0.15rem] w-[70%] border-[#dbdbdb] flex items-center justify-center mt-[2rem]">
-                                <div className="mt-[1rem]">
-                                
-                                        <button>
-                                            Creaza cont
-                                        </button>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                  </form>
-                </div>
-            </Layout >
-        </>
-    );
+  return (
+    <div className="flex items-center justify-center h-screen w-full bg-[#FBFAFD] text-black">
+      <div className="shadow-lg p-5 rounded-md bg-[#fff] min-w-[300px] min-h-[400px]">
+        <p className="my-5">
+          Register to <span className="font-bold uppercase">Zenboard</span>
+        </p>
+        <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
+          <input placeholder="Name" type="text" onChange={(e) => setName(e.target.value)} />
+          <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
+          <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+          <button className="w-full bg-blue-500 py-1 px-3 rounded-md text-center cursor-pointer">
+            <h5 className="text-white uppercase font-bold">Register</h5>
+          </button>
+          {error && (
+            <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">{error}</div>
+          )}
+          <Link href={"/"}>
+            <p className="text-sm mt-3 text-right hover:text-blue-500 transition-all ease-in-out">
+              Already have an account ? <span className="underline">Login</span>
+            </p>
+          </Link>
+        </form>
+      </div>
+    </div>
+  );
 }

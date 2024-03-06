@@ -1,21 +1,26 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 import Button from "@/components/Basic/Button";
+import WhiteBox from "@/components/Layout/WhiteBox";
+import { RevealWrapper } from "next-reveal";
 import Input from "@/components/Layout/Input";
 import Spinner from "@/components/Basic/Spinner";
 import ProductBox from "@/components/Layout/ProductBox";
 import Tabs from "@/components/Layout/Tabs";
 import SingleOrder from "@/components/Cart/SingleOrder";
 import Header from "@/components/Basic/Header";
-import Layout from "@/components/Layout/Layout";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function AccountPage() {
-  const { data: session } = useSession();
+const AccountPage = () => {
+  const router = useRouter();
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { data: session, status } = useSession();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [streetAddress, setStreetAddress] = useState('');
@@ -26,85 +31,231 @@ export default function AccountPage() {
   const [wishedProducts, setWishedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('Orders');
   const [orders, setOrders] = useState([]);
-  const [phone, setPhone] = useState([]);
 
-  async function register() {
-  // Implement your registration logic here
+  async function logout() {
+await signOut('credentials')
   }
-
+  async function login() {
+    await signIn('google');
+  }
   function saveAddress() {
-    const data = { name, email, city, streetAddress, postalCode, country, phone };
+    const data = { name, email, city, streetAddress, postalCode, country,phone };
     axios.put('/api/address', data);
   }
-
-  function fetchAddressData() {
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+    setAddressLoaded(false);
+    setWishlistLoaded(false);
+    setOrderLoaded(false);
     axios.get('/api/address').then(response => {
-      const { name, email, city, postalCode, streetAddress, country, phone } = response.data;
-      setName(name);
-      setEmail(email);
-      setCity(city);
-      setPostalCode(postalCode);
-      setStreetAddress(streetAddress);
-      setCountry(country);
-      setCountry(phone);
+      setName(response.data.name);
+      setEmail(response.data.email);
+      setPhone(response.data.phone);
+      setCity(response.data.city);
+      setPostalCode(response.data.postalCode);
+      setStreetAddress(response.data.streetAddress);
+      setCountry(response.data.country);
       setAddressLoaded(true);
     });
-  }
-
-  function fetchWishlistData() {
     axios.get('/api/wishlist').then(response => {
       setWishedProducts(response.data.map(wp => wp.product));
       setWishlistLoaded(true);
     });
-  }
-
-  function fetchOrdersData() {
     axios.get('/api/orders').then(response => {
       setOrders(response.data);
       setOrderLoaded(true);
     });
-  }
-
-  useEffect(() => {
-    if (session) {
-      setAddressLoaded(false);
-      setWishlistLoaded(false);
-      setOrderLoaded(false);
-      fetchAddressData();
-      fetchWishlistData();
-      fetchOrdersData();
-    }
   }, [session]);
-
   function productRemovedFromWishlist(idToRemove) {
     setWishedProducts(products => {
       return [...products.filter(p => p._id.toString() !== idToRemove)];
     });
   }
 
-  return (
-    <>
-      <Header />
-      <Layout>
-        <div className="w-screen h-screen flex items-center justify-center">
-          <div className="w-[50%] h-screen flex flex-col items-center justify-start">
-            <div className="mt-[10rem] w-full flex items-center  justify-center flex-col gap-5">
-              <input type="text" placeholder="Email" className="w-[70%] bg-transparent border-[0.1rem] border-[#dbdbdb] py-3 px-3" />
-              <input type="text" placeholder="Parola" className="w-[70%] bg-transparent border-[0.1rem] border-[#dbdbdb] py-3 px-3" />
-            </div>
-            <div className="w-full flex items-center justify-center mt-[3rem] flex-col gap-5">
-              <Button>Conectare</Button>
-              <Button>Conectare cu google</Button>
-            </div>
-            <div className="border-t-[0.15rem] w-[70%] border-[#dbdbdb] flex items-center justify-center mt-[2rem]">
-              <div className="mt-[1rem]">
-                <Link href={'/register'}>
-                  <Button>Creaza cont</Button></Link>
-              </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
+      if (result?.error) {
+        setError("Invalid Credentials");
+      } else {
+        router.push("/"); // Redirect to dashboard upon successful login
+      }
+    } catch (error) {
+      console.error("Error during login: ", error);
+      setError("An error occurred during login");
+    }
+  };
+
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+
+  if (session) {
+    return (
+      <>
+        <Header />
+        <div className="mt-[10rem] ">
+          <div className=" flex flex-row items-center justify-center w-full">
+            {/* <div>
+              <RevealWrapper delay={0}>
+                <div className='bg-transparent'>
+                  <Tabs
+                    tabs={['Orders', 'Wishlist']}
+                    active={activeTab}
+                    onChange={setActiveTab}
+                  />
+                  {activeTab === 'Comenzi' && (
+                    <>
+                      {!orderLoaded && (
+                        <Spinner fullWidth={true} />
+                      )}
+                      {!session && (
+                        <div>
+                          {orders.length === 0 && (
+                            <p>Login to see your orders</p>
+                          )}
+                          {orders.length > 0 && orders.map(o => (
+                            <SingleOrder {...o} />
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  )}
+                  {activeTab === 'Wishlist' && (
+                    <>
+                      {!wishlistLoaded && (
+                        <Spinner fullWidth={true} />
+                      )}
+                      {wishlistLoaded && (
+                        <>
+                          <WishedProductsGrid>
+                            {wishedProducts.length > 0 && wishedProducts.map(wp => (
+                              <ProductBox key={wp._id} {...wp} wished={true} onRemoveFromWishlist={productRemovedFromWishlist} />
+                            ))}
+                          </WishedProductsGrid>
+                          {wishedProducts.length === 0 && (
+                            <>
+                              {session && (
+                                <p>Your wishlist is empty</p>
+                              )}
+                              {!session && (
+                                <p>Login to add products to your wishlist</p>
+                              )}
+                            </>
+                          )}
+                        </>
+                      )}
+                    </>
+                  )}
+                </div>
+              </RevealWrapper>
+            </div> */}
+            <div className="width-full flex items-center justify-center">
+              <RevealWrapper delay={100}>
+                <div className="">
+                  <h4 className="uppercase bold">{session ? 'Detalii cont' : 'Conectare'}</h4>
+                  {!addressLoaded && (
+                    <Spinner fullWidth={true} />
+                  )}
+                  {addressLoaded && session && (
+                    <div className="flex flex-col items-center justify-center gap-3 w-full">
+                      <input type="text"
+                        placeholder="Name"
+                        value={name}
+                        name="name"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                        onChange={ev => setName(ev.target.value)} />
+                      <input type="text"
+                        placeholder="Email"
+                        value={email}
+                        name="email"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                        onChange={ev => setEmail(ev.target.value)} />
+                      <input type="text"
+                        placeholder="Numar de telefon"
+                        value={phone}
+                        name="phone"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                        onChange={ev => setPhone(ev.target.value)} />
+                      <div className='flex flex-col gap-3 w-full'>
+                        <input type="text"
+                          placeholder="City"
+                          value={city}
+                          name="city"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                          onChange={ev => setCity(ev.target.value)} />
+                        <input type="text"
+                          placeholder="Postal Code"
+                          value={postalCode}
+                          name="postalCode"
+                            className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                          onChange={ev => setPostalCode(ev.target.value)} />
+                      </div>
+                     <div className="flex flex-col gap-3 w-full">
+                       <input type="text"
+                        placeholder="Street Address"
+                        value={streetAddress}
+                        name="streetAddress"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                        onChange={ev => setStreetAddress(ev.target.value)} />
+                      <input type="text"
+                        placeholder="Country"
+                        value={country}
+                        name="country"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                        onChange={ev => setCountry(ev.target.value)} />
+                     </div>
+                      <Button black block
+                        onClick={saveAddress}>
+                        Salveaza
+                      </Button>
+                      <hr />
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center justify-center" >
+                    {session && (
+                    <Button primary onClick={logout}>Deconectare</Button>
+                  )}
+                  {!session && (
+                    <Button primary onClick={login}>Conectare</Button>
+                  )}
+                  </div>
+                </div>
+              </RevealWrapper>
             </div>
           </div>
         </div>
-      </Layout >
-    </> 
+      </>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button type="submit">Sign In</button>
+      <button onClick={signIn}>Sign In</button>
+      {error && <p>{error}</p>}
+    </form>
   );
-}
+};
+
+export default AccountPage;
