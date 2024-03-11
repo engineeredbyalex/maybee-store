@@ -34,9 +34,9 @@ export default function ProductPage({ product }) {
                   <ProductImages images={product.images} />
                 </div>
                 <div className="w-full lg:w-1/2 h-full flex flex-col items-center justify-center text-center">
-                  <h4 className="font-bold uppercase leading-[4rem] text-[#595959]">{product.title}</h4>
+                  <h5 className="font-bold uppercase leading-[2rem] text-[#595959]">{product.title}</h5>
                   <SmallSpacer>
-                    <p className="text-[#595959]">{product.description}</p>
+                    <p className="text-[#595959] leading-[2rem] mb-5">{product.description}</p>
                   </SmallSpacer>
                   {product.weight ? (
                     <p className="text-[#595959]">Gramaj ceară: {product.weight} gr</p>

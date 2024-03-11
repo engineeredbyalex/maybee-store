@@ -42,7 +42,7 @@ export default function ProductsPage({ products, wishedProducts }) {
       <Layout>
         <div className="w-full flex items-center justify-center flex-col overflow-x-hidden text-center">
           <div className="w-full flex items-center justify-start mt-[15rem]">
-            <h4 className="uppercase font-bold text-[#595959]">
+            <h4 className="uppercase text-left leading-[3.5rem] font-bold text-[#595959]">
               Toate produsele
             </h4>
           </div>

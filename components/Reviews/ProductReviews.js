@@ -41,7 +41,7 @@ const ProductReviews = ({ product }) => {
 
   useEffect(() => {
     loadReviews();
-  }, [product, loadReviews]);
+  }, [product]);
 
   return (
     <div className='flex w-full items-center justify-center flex-col mt-[3rem]'>
@@ -49,7 +49,7 @@ const ProductReviews = ({ product }) => {
       <div className=''>
         <div>
           <div className='flex flex-col items-center justify-center'>
-            <h4 className='uppercase leading-[3rem] font-bold text-[#595959]'>Adaugă o recenzie</h4>
+            <h4 className='uppercase leading-[3rem] text-center font-bold text-[#595959]'>Adaugă o recenzie</h4>
             <div>
               <StarsRating onChange={setStars} />
             </div>
@@ -77,8 +77,8 @@ const ProductReviews = ({ product }) => {
         {/* All reviews*/}
         < BigSpacer >
           <div className='flex flex-col text-[#595959] text-center'>
-            <h5 className='uppercase font-bold'>Toate recenzile :</h5>
-            {reviews.length === 0 && <p>Fii primul care a pune o recenzie.</p>}
+            <h5 className='uppercase font-medium'>Toate recenzile :</h5>
+            {reviews.length === 0 && <p>Fii primul care  pune o recenzie.</p>}
             {reviews.length > 0 &&
               reviews.map((review) => (
                 <div key={review._id}>
