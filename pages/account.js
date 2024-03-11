@@ -156,7 +156,7 @@ await signOut('credentials')
             <div className="width-full flex items-center justify-center">
               <RevealWrapper delay={100}>
                 <div className="">
-                  <h4 className="uppercase font-bold text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h4>
+                  <h5 className="uppercase font-bold text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h5>
                   {!addressLoaded && (
                     <Spinner fullWidth={true} />
                   )}
@@ -236,9 +236,9 @@ await signOut('credentials')
     <div>
       <Header />
       <div className="mt-[10rem] flex flex-col items-center justify-center">
-        <h4 className="uppercase font-bold text-[#595959]">
+        <h5 className="uppercase font-bold text-[#595959]">
             Autentificare
-          </h4>
+          </h5>
         <form onSubmit={handleSubmit} className="max-w-xs mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
