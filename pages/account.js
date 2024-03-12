@@ -25,6 +25,7 @@ const AccountPage = () => {
   const [wishedProducts, setWishedProducts] = useState([]);
   const [activeTab, setActiveTab] = useState('Orders');
   const [orders, setOrders] = useState([]);
+  const [error, setError] = useState(null);
 
   async function logout() {
     await signOut('credentials');
@@ -79,18 +80,18 @@ const AccountPage = () => {
       });
 
       if (result?.error) {
-        setError("Invalid Credentials");
+        setError("Date greşite.");
       } else {
         router.push("/"); // Redirect to dashboard upon successful login
       }
     } catch (error) {
-      console.log("Error during login: ", error);
-      setError("An error occurred during login");
+      console.log("A apărut o problemă la conectare: ", error);
+      setError("A apărut o problemă la conectare.");
     }
   };
 
   if (status === "loading") {
-    return <div>Loading...</div>;
+    return <div>Încărcare...</div>;
   }
 
   if (session) {
@@ -109,7 +110,7 @@ const AccountPage = () => {
                   {addressLoaded && session && (
                     <div className="flex flex-col items-center justify-center gap-3 w-full">
                       <input type="text"
-                        placeholder="Name"
+                        placeholder="Nume complect"
                         value={name || ''}
                         name="name"
                         className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
@@ -121,20 +122,20 @@ const AccountPage = () => {
                         className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
                         onChange={ev => setEmail(ev.target.value)} />
                       <input type="text"
-                        placeholder="Numar de telefon"
+                        placeholder="Număr de telefon"
                         value={phone || ''}
                         name="phone"
                         className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
                         onChange={ev => setPhone(ev.target.value)} />
                       <div className='flex flex-col gap-3 w-full'>
                         <input type="text"
-                          placeholder="City"
+                          placeholder="Oraş"
                           value={city || ''}
                           name="city"
                           className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
                           onChange={ev => setCity(ev.target.value)} />
                         <input type="text"
-                          placeholder="Postal Code"
+                          placeholder="Cod Poştal"
                           value={postalCode || ''}
                           name="postalCode"
                           className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
@@ -142,21 +143,21 @@ const AccountPage = () => {
                       </div>
                       <div className="flex flex-col gap-3 w-full">
                         <input type="text"
-                          placeholder="Street Address"
-                          value={streetAddress || ''}
-                          name="streetAddress"
-                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                          onChange={ev => setStreetAddress(ev.target.value)} />
-                        <input type="text"
-                          placeholder="Country"
+                          placeholder="Judeţul"
                           value={country || ''}
                           name="country"
                           className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
                           onChange={ev => setCountry(ev.target.value)} />
+                        <input type="text"
+                          placeholder="Adresa"
+                          value={streetAddress || ''}
+                          name="streetAddress"
+                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
+                          onChange={ev => setStreetAddress(ev.target.value)} />
                       </div>
                       <Button
                         onClick={saveAddress}>
-                        Salveaza
+                        Salvează
                       </Button>
                       <hr />
                     </div>
@@ -174,29 +175,7 @@ const AccountPage = () => {
             </div>
           </div>
         </div>
-        <div>
-          {/* Tab for Orders */}
-          <button onClick={() => setActiveTab('Orders')}>Orders</button>
-          {/* Content for Orders Tab */}
-          {activeTab === 'Orders' && (
-            <div>
-              {!orderLoaded && (
-                <Spinner fullWidth={true} />
-              )}
-              {orderLoaded && (
-                <div>
-                  <h2>Orders</h2>
-                  {orders.map(order => (
-                    <div key={order._id}>
-                      <p>{order.orderNumber}</p>
-                      {/* Add more order details here */}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+      
       </>
     );
   }
@@ -232,7 +211,7 @@ const AccountPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Parola"
+              placeholder="Parolă"
             />
           </div>
           <div className="flex items-center justify-between flex-col gap-5 w-full">
@@ -245,7 +224,7 @@ const AccountPage = () => {
               type="submit"
             >
               <Link href='/register'>
-                Inregistrare
+                Înregistrare
               </Link>
             </Button>
           </div>
