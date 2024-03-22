@@ -3,7 +3,8 @@ import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from "bcrypt";
-import { Account } from "@/models/Account";
+import { Account } from '@/models/Account';
+
 export const authOptions = {
     providers: [
         GoogleProvider({
@@ -35,7 +36,7 @@ export const authOptions = {
                     return {
                         id: user._id, // This should be unique identifier for the user
                         email: user.email, // Include any other user-related data you need in the session
-                        name: user.name, // Include any other user-related data you need in the session
+                        name:user.name,
                         // Add any other data you want to access in the session
                     };
                 } catch (error) {
@@ -50,7 +51,7 @@ export const authOptions = {
     },
     secret: process.env.SECRET,
     pages: {
-        signIn: "/",
+        signIn: "/account",
     },
 };
 
