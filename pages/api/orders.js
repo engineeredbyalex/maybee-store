@@ -1,12 +1,27 @@
-import {mongooseConnect} from "@/lib/mongoose";
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
-import {Order} from "@/models/Order";
+import { mongooseConnect } from "@/lib/mongoose";
+import { Order } from "@/models/Order";
 
 export default async function handle(req, res) {
-  await mongooseConnect();
-  const {user} = await getServerSession(req, res, authOptions);
-  res.json(
-    await Order.find({userEmail:user.email})
-  );
+  try {
+    await mongooseConnect();
+
+    console.log('Received request:', req.body);
+
+    const { method } = req;
+
+    if (method === "GET") {
+      if (req.query?.id) {
+        const data = await Order.findOne({ _id: req.query.id, userEmail: req.headers['user-email'] });
+        res.json(data);
+      } else {
+        const data = await Order.find({ userEmail: req.headers['user-email'] });
+        res.json(data);
+      }
+    } else {
+      res.status(400).json({ error: 'Invalid method' });
+    }
+  } catch (error) {
+    console.error('Error handling request:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }

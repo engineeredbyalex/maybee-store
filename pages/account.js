@@ -66,7 +66,7 @@ const AccountPage = () => {
                 <div className="w-full flex flex-col items-center justify-center text-[#595959]">
                   <h3 className="uppercase ">Bună {session.user.name}</h3>
                   <h4>
-                    În acest panou de control al contului tău poţi accesa <span ><Link className="underline" href="/orders">comenzile recente</Link></span>, să îţi administrezi <span ><Link className="underline" href="/address">adresele de livrare şi de facturare</Link></span>  Èi <span ><Link className="underline" href="/details">să îţi editezi parola şi detaliile contului.</Link></span>
+                    În acest panou de control al contului tău poţi accesa <span ><Link className="underline" href="/orders">comenzile recente</Link></span>, să îţi administrezi <span ><Link className="underline" href="/address">adresele de livrare şi de facturare</Link></span>  şi <span ><Link className="underline" href="/details">să îţi editezi parola şi detaliile contului.</Link></span>
                   </h4>
                 </div>
                 <div className="flex w-full text-left mt-10 text-[#595959]">
@@ -74,14 +74,11 @@ const AccountPage = () => {
                     <li className="underline list-disc">
                       <Link href='/orders'><h4>Comenzile recente</h4></Link>
                     </li>
-                    <li className="underline list-disc">
+                    {/* <li className="underline list-disc">
                       <Link href='/'><h4>Adresele de livrare şi de facturare</h4></Link>
-                    </li>
+                    </li> */}
                     <li className="underline list-disc">
-                      <Link href='/'><h4>Comenzile recente</h4></Link>
-                    </li>
-                    <li className="underline list-disc">
-                      <p onClick={() => logout()} href='/'><h4>Deconectează-te</h4></p>
+                      <p onClick={() => logout()}><h4>Deconectează-te</h4></p>
                     </li>
                   </ul>
                 </div>
@@ -140,7 +137,7 @@ const AccountPage = () => {
               type="submit"
             >
               <Link href='/register'>
-                Inregistrare
+                Înregistrare
               </Link>
             </Button>
           </div>
