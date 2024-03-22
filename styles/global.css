@@ -27,25 +27,57 @@ body {
     z-index: 13;
 }
 }
+input {
+  @apply bg-transparent border-black border-[0.1rem] py-[0.5rem] px-2 rounded-md w-full
+}
+/* Mobile-first approach */
+ h1 {
+        font-size: 2.2rem; /* Adjust according to your design */
+    }
 
-h1 {
-    @apply  text-[18rem] 
-}
-h2 {
-    @apply  text-[11rem] lg:text-[5.5rem]
-}
-h3 {
-    @apply  text-[3rem]  lg:text-[4.5rem]
-}
-h4 {
-    @apply  text-[4rem] 
-}
-h5{
-    @apply  text-[2.6rem]
-}
-h6{
-    @apply  text-[1.6rem] 
-}
-p {
-    @apply  text-[1.8rem] lg:text-[1.4rem]
+    h2 {
+        font-size: 2rem; /* Adjust according to your design */
+    }
+
+    h3 {
+        font-size: 1.7rem; /* Adjust according to your design */
+    }
+
+    h4 {
+        font-size: 1.5rem; /* Adjust according to your design */
+    }
+
+    h5 {
+        font-size: 1.3rem; /* Adjust according to your design */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust according to your design */
+    }
+
+/* Desktop styles */
+@media screen and (min-width: 768px) {
+    h1 {
+        font-size: 2.5rem; /* Adjust according to your design */
+    }
+
+    h2 {
+        font-size: 2rem; /* Adjust according to your design */
+    }
+
+    h3 {
+        font-size: 1.7rem; /* Adjust according to your design */
+    }
+
+    h4 {
+        font-size: 1.5rem; /* Adjust according to your design */
+    }
+
+    h5 {
+        font-size: 1.3rem; /* Adjust according to your design */
+    }
+
+    p {
+        font-size: 1rem; /* Adjust according to your design */
+    }
 }

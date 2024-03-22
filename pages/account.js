@@ -1,12 +1,11 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Button from "@/components/Basic/Button";
-import { RevealWrapper } from "next-reveal";
-import Spinner from "@/components/Basic/Spinner";
 import Header from "@/components/Basic/Header";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Layout from "@/components/Layout/Layout";
+import Footer from "@/components/Basic/Footer";
 
 const AccountPage = () => {
   const { data: session, status } = useSession();
@@ -14,61 +13,20 @@ const AccountPage = () => {
   const [name, setName] = useState(null);
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const [phone, setPhone] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [streetAddress, setStreetAddress] = useState('');
-  const [country, setCountry] = useState('');
-  const [addressLoaded, setAddressLoaded] = useState(true);
-  const [wishlistLoaded, setWishlistLoaded] = useState(true);
-  const [orderLoaded, setOrderLoaded] = useState(true);
-  const [wishedProducts, setWishedProducts] = useState([]);
-  const [activeTab, setActiveTab] = useState('Orders');
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState(null);
+  const [error,setError] = useState([])
+
 
   async function logout() {
     await signOut('credentials');
   }
 
-  function saveAddress() {
-    const data = { name, email, city, streetAddress, postalCode, country, phone };
-    axios.put('/api/address', data);
-  }
 
   useEffect(() => {
     if (!session) {
       return;
     }
-    setAddressLoaded(false);
-    setWishlistLoaded(false);
-    setOrderLoaded(false);
-    axios.get('/api/address').then(response => {
-      setName(response.data?.name);
-      setEmail(response.data?.email);
-      setPhone(response.data?.phone);
-      setCity(response.data?.city);
-      setPostalCode(response.data?.postalCode);
-      setStreetAddress(response.data?.streetAddress);
-      setCountry(response.data?.country);
-      setAddressLoaded(true);
-    });
-    axios.get('/api/wishlist').then(response => {
-      setWishedProducts(response.data.map(wp => wp.product));
-      setWishlistLoaded(true);
-    });
-    // Fetch orders for the user
-    axios.get('/api/orders').then(response => {
-      setOrders(response.data);
-      setOrderLoaded(true);
-    });
   }, [session]);
 
-  function productRemovedFromWishlist(idToRemove) {
-    setWishedProducts(products => {
-      return [...products.filter(p => p._id.toString() !== idToRemove)];
-    });
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -80,102 +38,53 @@ const AccountPage = () => {
       });
 
       if (result?.error) {
-        setError("Date greşite.");
+        setError("Date invalide");
       } else {
-        router.push("/"); // Redirect to dashboard upon successful login
+        router.push("/account"); // Redirect to dashboard upon successful login
       }
     } catch (error) {
-      console.log("A apărut o problemă la conectare: ", error);
+      console.log("Error during login: ", error);
       setError("A apărut o problemă la conectare.");
     }
   };
 
   if (status === "loading") {
-    return <div>Încărcare...</div>;
+    return <div>Se încarcă...</div>;
   }
 
   if (session) {
     return (
       <>
         <Header />
-        <div className="mt-[10rem] ">
-          <div className=" flex flex-row items-center justify-center w-full">
-            <div className="width-full flex items-center justify-center">
-              <RevealWrapper delay={100}>
-                <div className="">
-                  <h5 className="uppercase font-bold text-[#595959]">{session ? 'Detalii cont' : 'Conectare'}</h5>
-                  {!addressLoaded && (
-                    <Spinner fullWidth={true} />
-                  )}
-                  {addressLoaded && session && (
-                    <div className="flex flex-col items-center justify-center gap-3 w-full">
-                      <input type="text"
-                        placeholder="Nume complect"
-                        value={name || ''}
-                        name="name"
-                        className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                        onChange={ev => setName(ev.target.value)} />
-                      <input type="text"
-                        placeholder="Email"
-                        value={email || ''}
-                        name="email"
-                        className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                        onChange={ev => setEmail(ev.target.value)} />
-                      <input type="text"
-                        placeholder="Număr de telefon"
-                        value={phone || ''}
-                        name="phone"
-                        className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                        onChange={ev => setPhone(ev.target.value)} />
-                      <div className='flex flex-col gap-3 w-full'>
-                        <input type="text"
-                          placeholder="Oraş"
-                          value={city || ''}
-                          name="city"
-                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                          onChange={ev => setCity(ev.target.value)} />
-                        <input type="text"
-                          placeholder="Cod Poştal"
-                          value={postalCode || ''}
-                          name="postalCode"
-                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                          onChange={ev => setPostalCode(ev.target.value)} />
-                      </div>
-                      <div className="flex flex-col gap-3 w-full">
-                        <input type="text"
-                          placeholder="Judeţul"
-                          value={country || ''}
-                          name="country"
-                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                          onChange={ev => setCountry(ev.target.value)} />
-                        <input type="text"
-                          placeholder="Adresa"
-                          value={streetAddress || ''}
-                          name="streetAddress"
-                          className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]"
-                          onChange={ev => setStreetAddress(ev.target.value)} />
-                      </div>
-                      <Button
-                        onClick={saveAddress}>
-                        Salvează
-                      </Button>
-                      <hr />
-                    </div>
-                  )}
-                  <div className="flex flex-col items-center justify-center" >
-                    {session && (
-                      <Button primary onClick={logout}>Deconectare</Button>
-                    )}
-                    {!session && (
-                      <Button primary onClick={login}>Conectare</Button>
-                    )}
-                  </div>
-                </div>
-              </RevealWrapper>
+       <Layout>
+         <div className="mt-[10rem] flex flex-row items-center justify-center w-full mb-[10rem]">
+          <div className=" flex flex-col items-center justify-center w-full">
+            <div className="w-full flex flex-col items-center justify-center text-[#595959]">
+              <h3 className="uppercase ">Bună {session.user.name} (nu ești {session.user.name} <span ><button className="underline uppercase" onClick={() => logout()}>Deconectează-te</button></span>)</h3>
+              <h4>
+                  În acest panou de control al contului tău poți accesa <span ><Link className="underline" href="/orders">comenzile recente</Link></span>, să-ți administrezi <span ><Link className="underline" href="/address">adresele de livrare și de facturare</Link></span>  și <span ><Link className="underline" href="/details">să-ți editezi parola și detaliile contului.</Link></span> 
+              </h4>
+            </div>
+            <div className="flex w-full text-left mt-10 text-[#595959]">
+              <ul>
+                <li className="underline list-disc">
+                  <Link href='/'><h4>Comenzile recente</h4></Link>
+                </li>
+                <li className="underline list-disc">
+                  <Link href='/'><h4>Adresele de livrare și de facturare</h4></Link>
+                </li>
+                <li className="underline list-disc">
+                  <Link href='/'><h4>Comenzile recente</h4></Link>
+                </li>
+                  <li className="underline list-disc">
+                    <Link href='/'><h4>Deconectează-te</h4></Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-      
+        </Layout>
+        <Footer/>
       </>
     );
   }
@@ -211,7 +120,7 @@ const AccountPage = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Parolă"
+              placeholder="Parola"
             />
           </div>
           <div className="flex items-center justify-between flex-col gap-5 w-full">
@@ -224,7 +133,7 @@ const AccountPage = () => {
               type="submit"
             >
               <Link href='/register'>
-                Înregistrare
+                Inregistrare
               </Link>
             </Button>
           </div>
@@ -236,3 +145,4 @@ const AccountPage = () => {
 };
 
 export default AccountPage;
+
