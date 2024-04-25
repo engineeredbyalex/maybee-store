@@ -2,6 +2,7 @@
 import Header from "@/components/Basic/Header";
 import Layout from "@/components/Layout/Layout";
 import Footer from "@/components/Basic/Footer";
+import Banner from "@/components/Basic/Banner";
 
 
 
