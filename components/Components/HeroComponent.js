@@ -1,5 +1,6 @@
 import { RevealWrapper } from "next-reveal";
 import HeroImage from '@/public/images/heroPhoto.jpg'
+import Button from "../Basic/Button";
 
 export default function MainHeader() {
   const logo = "https://maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com/logoBig.png";
@@ -21,6 +22,9 @@ export default function MainHeader() {
       <RevealWrapper origin='bottom' delay={200} duration={1000}>
         <h5 className="text-[#FDFCED] uppercase font-bold text-center">Creat cu grijă şi atenţie</h5>
         <img alt="logo" width={300} height={300} src={logo} />
+        <Button variant="outline_light">
+          Vezi toate produsele
+          </Button>
       </RevealWrapper>
     </div>
   );

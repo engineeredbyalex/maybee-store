@@ -43,7 +43,7 @@ const AccountPage = () => {
       if (result?.error) {
         setError("Invalid Credentials");
       } else {
-        router.push("/"); 
+        router.push("/account"); 
       }
     } catch (error) {
       console.error("Error during login: ", error);

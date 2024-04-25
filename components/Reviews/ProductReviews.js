@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+// importing useState and useEffect
+import { useState, useEffect } from 'react';
+// importing input
 import Input from '@/components/Layout/Input';
-import WhiteBox from '@/components/Layout/WhiteBox';
+// importing StarsRating
 import StarsRating from '@/components/Reviews/StarsRating';
+// importing Textarea
 import Textarea from '@/components/Layout/Textarea';
+// importing button
 import Button from '@/components/Basic/Button';
+// importing axios
 import axios from 'axios';
-import Center from '../Layout/Center';
-import Wrapper from '../Layout/Wrapper';
+// importing spacers
 import { BigSpacer, SmallSpacer } from '../Layout/Spacer';
 
 
