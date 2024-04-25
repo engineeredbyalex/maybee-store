@@ -3,6 +3,7 @@ import Layout from "@/components/Layout/Layout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import Banner from "@/components/Basic/Banner";
 
 export default function Orders() {
     const [orders, setOrders] = useState([]);
