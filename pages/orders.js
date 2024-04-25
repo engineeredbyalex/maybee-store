@@ -51,6 +51,7 @@ export default function Orders() {
 
     return (
         <>
+            <Banner />
             <Header />
             <Layout>
                 <div className="container mx-auto mt-[10rem]">

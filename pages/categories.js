@@ -12,6 +12,7 @@ import { useLayoutEffect } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
 import Layout from "@/components/Layout/Layout";
 import { SmallSpacer } from "@/components/Layout/Spacer";
+import Banner from "@/components/Basic/Banner";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
   useLayoutEffect(() => {
@@ -35,7 +36,7 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
 
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       <Header />
       <Layout>
         <div className="w-full flex items-center justify-start mt-[15rem]">

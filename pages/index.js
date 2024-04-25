@@ -36,6 +36,7 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
 
   return (
     <div>
+      <Banner/>
       <Header />
       <HeroComponent product={featuredProduct} />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />

@@ -7,7 +7,7 @@ import Layout from "@/components/Layout/Layout";
 export default function AboutUsPage() {
     return (
         <div>
-            {/* <Banner /> */}
+            <Banner />
             <Header />
             <Layout>
                 <div className="flex w-full h-full flex-col items-center justify-center">

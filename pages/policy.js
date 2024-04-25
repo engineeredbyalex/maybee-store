@@ -10,7 +10,7 @@ import Footer from "@/components/Basic/Footer";
 export default function Policy() {
     return (
         <div>
-            {/* <Banner /> */}
+            <Banner />
             <Header />
             <Layout>
                 <div className="mt-[10rem] mb-[10rem] text-[#595959] text-center">

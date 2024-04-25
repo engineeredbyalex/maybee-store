@@ -155,7 +155,7 @@ const CartPage = () => {
   if (isSuccess) {
     return (
       <>
-        {/* <Banner /> */}
+        <Banner />
         <Header />
         <div className="mt-[10rem]">
           <Center>
@@ -173,7 +173,7 @@ const CartPage = () => {
 
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       <Header />
       <Layout>
         <div className="w-full min-h-screen mt-[15rem] text-[#595959]">

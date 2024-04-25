@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Header from "@/components/Basic/Header";
 import Button from "@/components/Basic/Button";
+import Banner from "@/components/Basic/Banner";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -46,6 +47,7 @@ export default function RegisterPage() {
 
   return (
     <div>
+      <Banner/>
       <Header/>
       <div className="flex items-center justify-center h-screen w-full text-[#595959]">
         <div className="shadow-lg p-5 rounded-md  min-w-[300px] min-h-[400px]">

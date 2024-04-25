@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "@/components/Layout/Layout";
 import Footer from "@/components/Basic/Footer";
+import Banner from "@/components/Basic/Banner";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -59,6 +60,7 @@ const AccountPage = () => {
     if (session) {
       return (
         <>
+          <Banner />
           <Header />
           <Layout>
             <div className="mt-[10rem] flex flex-row items-center justify-center w-full mb-[10rem]">
@@ -93,6 +95,7 @@ const AccountPage = () => {
 
   return (
     <div>
+      <Banner />
       <Header />
       <div className="mt-[10rem] flex flex-col items-center justify-center">
         <h4 className="uppercase font-bold text-[#595959]">
