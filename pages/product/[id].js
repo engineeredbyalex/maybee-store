@@ -55,9 +55,9 @@ export default function ProductPage({ product }) {
                             <div
                               key={valueIndex}
                               onClick={() => handlePropertyValueChange(property.name, value)}
-                              className={`px-3 py-2 rounded-md text-white cursor-pointer w-[10rem] ${selectedValues[property.name] === value
-                                ? 'bg-[#595959]'
-                                : 'bg-slate-300'
+                              className={`px-3 py-2 rounded-md  cursor-pointer w-[10rem] ${selectedValues[property.name] === value
+                                ? 'bg-[#595959] text-white'
+                                : 'bg-slate-300 text-[#595959]'
                                 }`}
                             >
                               {value}
