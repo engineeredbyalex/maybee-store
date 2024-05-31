@@ -7,21 +7,23 @@ export default function ProductImages({ images }) {
     <>
       <div className="text-center">
         <img
+          objectFit="cover"
+          layout="fill"
           src={activeImage}
-          className="max-w-full max-h-full"
-          alt="Big Image"
+          className="w-full h-full lg:w-[30rem] lg:h-[30rem]"
+          alt="Product Image"
         />
       </div>
 
-      <div className="flex flex-wrap gap-10 mt-10">
+      <div className="w-[30rem] flex justify-between mt-10">
         {images?.map((image) => (
-          <div
-            key={image}
-            onClick={() => setActiveImage(image)}
-            className={`h-50 ${image === activeImage ? "" : "border-transparent"
-              } cursor-pointer rounded-md`}
-          >
-            <img src={image} className="w-[4rem] lg:w-[8rem] h-[4rem] lg:h-[8rem]" alt="product image" />
+          <div key={image} onClick={() => setActiveImage(image)}>
+            <img
+              src={image}
+              objectFit="cover"
+              layout="fill"
+              className="w-[4rem] lg:h-[5rem] h-[4rem] lg:w-[5rem]"
+              alt="Product Image Small" />
           </div>
         ))}
       </div>

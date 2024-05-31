@@ -1,3 +1,5 @@
+const withSvgr = require('@svgr/webpack');
+
 const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
@@ -17,8 +19,17 @@ const nextConfig = {
         hostname: 'maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com',
         port: '',
         pathname: '/*',
-      }
+      },
     ],
   },
-}
-module.exports = nextConfig
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;

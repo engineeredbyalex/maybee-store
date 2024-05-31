@@ -26,7 +26,7 @@ export default function ProductPage({ product }) {
     <>
       <Banner/>
       <Header />
-      <div className="flex items-center justify-center w-full flex-col  min-h-[100vh] bg-[#FDFCEA] mt-[10rem]">
+      <div className="flex items-center justify-center w-full flex-col  min-h-[100vh] bg-[#FDFCEA] mt-[5vh]">
         <Layout>
           <div className="flex flex-col items-center justify-between w-full min-h-screen ">
             <div className="flex flex-row items-center justify-between mt-[5rem]">
@@ -50,12 +50,12 @@ export default function ProductPage({ product }) {
                         </div>
                       </SmallSpacer>
                       <SmallSpacer>
-                        <div className=" flex flex-col lg:grid grid-cols-3 gap-3">
+                        <div className="flex flex-col lg:grid grid-cols-2 gap-3">
                           {property.values?.map((value, valueIndex) => (
                             <div
                               key={valueIndex}
                               onClick={() => handlePropertyValueChange(property.name, value)}
-                              className={`px-3 py-2 rounded-md  cursor-pointer w-[10rem] ${selectedValues[property.name] === value
+                              className={`lg:w-[10rem] w-auto flex items-center justify-center px-3 py-2 rounded-md  cursor-pointer ${selectedValues[property.name] === value
                                 ? 'bg-[#595959] text-white'
                                 : 'bg-slate-300 text-[#595959]'
                                 }`}
@@ -117,15 +117,6 @@ export default function ProductPage({ product }) {
         <Footer />
       </div>
     </>
-  );
-}
-
-function ScentCard({ name, description }) {
-  return (
-    <div className="scent-card mb-4">
-      <h3 className="text-lg font-semibold">{name}</h3>
-      <p>{description}</p>
-    </div>
   );
 }
 

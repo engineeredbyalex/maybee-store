@@ -1,7 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+// importing React useState
+import React, { useState } from "react";
+// importing Link
 import Link from "next/link";
+// importing axios
 import axios from "axios";
-
+// importing image
+import Image from "next/image";
 
 export default function ProductBox({
   _id,
@@ -9,44 +13,28 @@ export default function ProductBox({
   price,
   images,
   wished = false,
-  onRemoveFromWishlist = () => { },
-}) {
-  const url = "/product/" + _id
-  const [isWished, setIsWished] = useState(wished);
 
-  function addToWishlist(ev) {
-    ev.preventDefault();
-    ev.stopPropagation();
-    const nextValue = !isWished;
-    if (nextValue === false && onRemoveFromWishlist) {
-      onRemoveFromWishlist(_id);
-    }
-    axios.post("/api/wishlist", {
-      product: _id,
-    }).then(() => { });
-    setIsWished(nextValue);
-  }
+}) {
+  const url = "/product/" + _id;
 
   return (
-    <div className="w-full  flex items-center justify-center flex-col">
+    <div className="w-full flex items-center justify-center flex-col">
       <Link href={url}>
-        <div className="h-auto w-autoflex items-center justify-center rounded-2xl relative overflow-hidden">
-          <img src={images?.[0]} alt={title} className="max-w-full max-h-full" />
+        <div className="w-[50%] h-[50%] md:w-[15rem] md:h-[15rem] lg:w-[30rem] lg:h-[30rem] rounded-2xl relative overflow-hidden flex items-center justify-center  ">
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={images?.[0]}
+            alt={title}
+          />
         </div>
       </Link>
-      <div className=" max-w-[25rem] text-center flex flex-col items-center justify-center">
-        <Link href={url} className="text-[#595959] no-underline">
+      <div className="max-w-[25rem] min-h-[8rem] text-center flex flex-col items-center justify-start ">
+        <Link href={url} className="text-[#595959]">
           <p className="font-bold">{title}</p>
         </Link>
-        <div className="flex items-center justify-center w-full ">
-          <p className=" font-semibold text-[#595959]">{price} Ron</p>
-          {/* <button
-            className={`ml-2 p-2 bg-transparent border-0  absolute top-10 right-0 ${isWished ? "text-red-500" : "text-white"
-              }`}
-            onClick={addToWishlist}
-          >
-            {isWished ? <HeartSolidIcon /> : <HeartOutlineIcon />}
-          </button> */}
+        <div className="flex items-center justify-center w-full">
+          <p className="font-medium text-[#595959]">{price} Ron</p>
         </div>
       </div>
     </div>
