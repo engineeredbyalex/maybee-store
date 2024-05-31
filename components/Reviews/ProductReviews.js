@@ -15,6 +15,7 @@ import { BigSpacer, SmallSpacer } from '../Layout/Spacer';
 
 
 const ProductReviews = ({ product }) => {
+  const [name, setName] = useState('');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [stars, setStars] = useState(0);
@@ -22,8 +23,9 @@ const ProductReviews = ({ product }) => {
   const [reviewsLoading, setReviewsLoading] = useState(false);
 
   const submitReview = () => {
-    const data = { title, description, stars, product: product._id };
+    const data = { name,title, description, stars, product: product._id };
     axios.post('/api/reviews', data).then((res) => {
+      setName('');
       setTitle('');
       setDescription('');
       setStars(0);
@@ -55,8 +57,14 @@ const ProductReviews = ({ product }) => {
           <div className='flex flex-col items-center justify-center'>
             <h4 className='uppercase leading-[3rem] text-center font-bold text-[#595959]'>Adaugă o recenzie</h4>
             <div>
-              <StarsRating onChange={setStars} />
+              {/* <StarsRating onChange={setStars} /> */}
             </div>
+            <Input
+              value={name}
+              onChange={(ev) => setName(ev.target.value)}
+              placeholder="Nume"
+              className="border text-base w-full bg-transparent"
+            />
             <Input
               value={title}
               onChange={(ev) => setTitle(ev.target.value)}
@@ -71,28 +79,27 @@ const ProductReviews = ({ product }) => {
             />
             <div>
               <SmallSpacer>
-                <Button primary onClick={submitReview}>
+                <button className='bg-[#C23535] text-[#FDFCEA] px-3 py-2 rounded-lg'  onClick={submitReview}>
                   <p className='uppercase'>Trimite recenzia</p>
-                </Button>
+                </button>
               </SmallSpacer>
             </div>
           </div>
         </div>
         {/* All reviews*/}
         < BigSpacer >
-          <div className='flex flex-col text-[#595959] text-center'>
+          <div className='flex flex-col text-[#595959] text-left gap-[5rem]'>
             <h5 className='uppercase font-medium'>Toate recenzile :</h5>
             {reviews.length === 0 && <p>Fii primul care  pune o recenzie.</p>}
             {reviews.length > 0 &&
               reviews.map((review) => (
-                <div key={review._id}>
-                  <div >
-                    <time >
-                      {(new Date(review.createdAt)).toLocaleString('sv-SE')}
-                    </time>
-                  </div>
+                <div className='' key={review._id}>
+                  <p>{review.name}</p>
                   <p>{review.title}</p>
                   <p>{review.description}</p>
+                    {/* <time >
+                      {(new Date(review.createdAt)).toLocaleString('sv-SE')}
+                    </time> */}
                 </div>
               ))}
           </div>

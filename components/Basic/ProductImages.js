@@ -10,19 +10,19 @@ export default function ProductImages({ images }) {
           objectFit="cover"
           layout="fill"
           src={activeImage}
-          className="w-full h-full lg:w-[30rem] lg:h-[30rem]"
+          className="w-[25rem] h-[25rem] lg:w-[30rem] lg:h-[30rem]"
           alt="Product Image"
         />
       </div>
 
-      <div className="w-[30rem] flex justify-between mt-10">
+      <div className="w-[25rem] lg:w-[30rem] gap-5 grid grid-cols-4 lg:flex justify-evenly mt-10">
         {images?.map((image) => (
           <div key={image} onClick={() => setActiveImage(image)}>
             <img
               src={image}
               objectFit="cover"
               layout="fill"
-              className="w-[4rem] lg:h-[5rem] h-[4rem] lg:w-[5rem]"
+              className="w-[5rem] lg:h-[5rem] h-[5rem] lg:w-[5rem]"
               alt="Product Image Small" />
           </div>
         ))}

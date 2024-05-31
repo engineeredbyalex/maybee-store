@@ -5,8 +5,8 @@ export default async function handle(req, res) {
   await mongooseConnect();
 
   if (req.method === 'POST') {
-    const {title,description,stars,product} = req.body;
-    res.json(await Review.create({title,description,stars,product}));
+    const {name,title,description,stars,product} = req.body;
+    res.json(await Review.create({ name,title,description,stars,product}));
   }
 
   if (req.method === 'GET') {

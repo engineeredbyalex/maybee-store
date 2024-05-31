@@ -1,17 +1,31 @@
+// import react useState useEffext
 import React, { useState, useEffect } from "react";
+// import Header
 import Header from "@/components/Basic/Header";
+// import
 import { mongooseConnect } from "@/lib/mongoose";
+// import
 import { Product } from "@/models/Product";
+// import
 import Image from "next/image";
+// import
 import ProductImages from "@/components/Basic/ProductImages";
+// import
 import FlyingButton from "@/components/Basic/MainButton";
+// import
 import ProductReviews from "@/components/Reviews/ProductReviews";
+// import
 import Footer from "@/components/Basic/Footer";
+// import
 import Banner from "@/components/Basic/Banner";
-import StickerOne from '@/public/images/caution_1.png';
-import StickerTwo from '@/public/images/caution_2.png';
+// import
+import INTRETINERELUMANARI from '@/public/images/instruction_1.svg';
+// import
+import INTRETINERECEARA from '@/public/images/instruction_2.svg';
+// import
 import Layout from "@/components/Layout/Layout";
-import { SmallSpacer } from "@/components/Layout/Spacer";
+// import
+import { BigSpacer, SmallSpacer } from "@/components/Layout/Spacer";
 
 export default function ProductPage({ product }) {
   const [selectedValues, setSelectedValues] = useState({});
@@ -95,18 +109,12 @@ export default function ProductPage({ product }) {
                 ))}
               </div>
             </div>
-            <div className="mt-10">
-              <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[10rem] lg:flex-row  ">
-                <Image
-                  src={StickerOne}
-                  alt="Sticker One"
-                  className="w-[24rem] h-[12rem] lg:scale-[1.2]"
-                />
-                <Image
-                  src={StickerTwo}
-                  alt="Sticker Two"
-                  className="w-[24rem] h-[12rem] lg:scale-[1.2]"
-                />
+            <div className="mt-10  flex flex-col items-center justify-center">
+              <h5 className="text-[#595959] font-bold uppercase">Detalii despre întreţinere</h5>
+              <BigSpacer/>
+              <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[5rem] ">
+                <INTRETINERELUMANARI className="w-[100%] lg:w-[40rem] " />
+                <INTRETINERECEARA className="w-[100%] lg:w-[40rem] " />
               </div>
             </div>
             <ProductReviews product={product} />
