@@ -20,7 +20,7 @@ export default function ProductBox({
   return (
     <div className="w-full flex items-center justify-center flex-col">
       <Link href={url}>
-        <div className="w-[50%] h-[50%] md:w-[15rem] md:h-[15rem] lg:w-[30rem] lg:h-[30rem] rounded-2xl relative overflow-hidden flex items-center justify-center  ">
+        <div className="w-[25rem] h-[25rem] rounded-2xl relative overflow-hidden flex items-center justify-center">
           <Image
             layout="fill"
             objectFit="cover"

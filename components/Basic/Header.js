@@ -25,7 +25,7 @@ export default function Header() {
       } else {
         gsap.to(navigationBar, { height: '7vh' });
         gsap.to(navigationBar, { backgroundColor: "#FDFCED", duration: 0.2, duration: 0.5, delay: 0.5 });
-        gsap.to(".logo_svg", { fill: "#595959", duration: 0.5, delay: 0.5 });
+        gsap.to(".logo_svg", { fill: "#595959", duration: 0.5,  });
       }
     }
   }, [toggle]);
@@ -43,17 +43,17 @@ export default function Header() {
 
   return (
     <div ref={navigationBarRef} className="navigation_bar drop-shadow-md">
-      <div className="w-full flex items-center justify-center h-[7vh] gap-[60px] absolute top-0">
-        <div className="w-1/2 lg:w-1/3 flex items-center justify-center">
+      <div className="w-full h-[7vh] absolute top-0 flex items-center justify-center ">
+        <div className="w-1/3 flex items-center justify-center">
           <LogoSvg className="w-[3rem] md:w-[4rem] lg:w-[3.5rem] h-[3rem] md:h-[4rem] lg:h-[3.5rem] logo_svg" />
         </div>
-        <div className={toggle ? "w-screen h-auto absolute top-[50vh] bottom-0 left-0 right-0 text-[#FDFCEA] uppercase  flex flex-col items-center justify-center  z-[5]" : "gap-3 w-1/3 text-[#595959] uppercase font-medium hidden lg:flex items-center justify-center "}>
+        <div className={toggle ? "w-screen h-auto absolute top-[50vh] bottom-0 left-0 right-0 text-[#FDFCEA] uppercase  flex flex-col items-center justify-center  z-[5]" : "gap-3 w-1/2 text-[#595959] uppercase font-medium hidden lg:flex items-center justify-center "}>
           <Link href="/"><p className="link-item">Acasă</p></Link>
           <Link href="/products"><p className="link-item">Produse</p></Link>
           <Link href="/categories"><p className="link-item">Catalog</p></Link>
           <Link href="/aboutus"><p className="link-item">Despre noi</p></Link>
         </div>
-        <div className=" w-1/2 lg:w-1/3 z-[1] gap-5 flex items-center justify-center">
+        <div className="w-1/3 z-[1] gap-5 flex items-center justify-center">
           <Link className="flex items-center justify-center" href="/cart">
             <MdOutlineShoppingCart size={35} color={!toggle ? '#595959' : '#FDFCEA'} />
             <p className={!toggle ? "text-[#595959]" :"text-[#FDFCEA]"}>({cartProducts.length})</p>

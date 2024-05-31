@@ -6,9 +6,10 @@ import HeroImage from '@/public/images/heroPhoto.jpg'
 import Button from "../Basic/Button";
 // importing link
 import Link from "next/link";
+// importing Logo
+import LogoSvg from "@/public/images/Logo.svg"
 
 export default function MainHeader() {
-  const logo = "https://maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com/logoBig.png";
 
   const divStyle = {
     backgroundImage: `url(${HeroImage.src})`,
@@ -16,7 +17,7 @@ export default function MainHeader() {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     height: '100vh',
-    width: '100%',
+    width: '100vw',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -24,14 +25,10 @@ export default function MainHeader() {
 
   return (
     <div style={divStyle}>
-      <RevealWrapper origin='bottom' delay={200} duration={1000}>
-        <h5 className="text-[#FDFCED] uppercase font-bold text-center">Creat cu grijă şi atenţie</h5>
-        <img alt="logo" width={300} height={300} src={logo} />
-        <Button variant="outline_light">
-          <Link href='/products' >
-            Vezi toate produsele
-          </Link>
-          </Button>
+      <RevealWrapper className="w-full h-full flex  flex-col items-center justify-center" origin='bottom' delay={200} duration={1000}>
+        <LogoSvg className= "h-[10rem] fill-[#FDFCED]" />
+        <h5 className="text-[#FDFCED]  uppercase font-bold text-center">Creat cu grijă şi atenţie</h5>
+
       </RevealWrapper>
     </div>
   );

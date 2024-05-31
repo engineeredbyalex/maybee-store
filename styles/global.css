@@ -17,6 +17,7 @@ body {
     width: 100vw;
     height:7vh;
     position: absolute;
+    background-color: #FDFCED;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,6 +25,7 @@ body {
 @media screen and (min-width:1024px) {
     width: 100vw;
     height:7vh;
+    background-color: #FDFCED;
     position: absolute;
     display: flex;
     align-items: center;
@@ -53,7 +55,7 @@ input {
     }
 
     h4 {
-        font-size: 1.5rem; /* Adjust according to your design */
+        font-size: 1.4rem; /* Adjust according to your design */
     }
 
     h5 {
