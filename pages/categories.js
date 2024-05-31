@@ -33,7 +33,6 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   return (
     <>
       <Banner />

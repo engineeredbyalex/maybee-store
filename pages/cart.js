@@ -132,13 +132,13 @@ const CartPage = () => {
 
     if (response.data.url) {
       window.location = response.data.url;
-      clearCart();
-      localStorage.removeItem("cartProducts");
+      // clearCart();
+      // localStorage.removeItem("cartProducts");
     }
   }
 
   async function clearCartHandler() {
-    clearCart();
+    // clearCart();
     localStorage.removeItem("cartProducts");
     setProducts([]);
   }

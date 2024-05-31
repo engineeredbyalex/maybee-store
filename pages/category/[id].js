@@ -52,9 +52,10 @@ export default function CategoryPage({
       setLoadingProducts(false);
     });
   }, [filtersValues, sort, filtersChanged, category._id, subCategories]);
+
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       <Header />
       <Center>
         <div className="flex items-center justify-between mt-[5rem] mb-[5rem]">
