@@ -15,7 +15,7 @@ body {
 
 .navigation_bar{
     width: 100vw;
-    height:7vh;
+    height:4rem;
     position: absolute;
     background-color: #FDFCED;
     display: flex;
@@ -24,7 +24,7 @@ body {
     z-index: 13;
 @media screen and (min-width:1024px) {
     width: 100vw;
-    height:7vh;
+    height:4rem;
     background-color: #FDFCED;
     position: absolute;
     display: flex;

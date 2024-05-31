@@ -23,7 +23,7 @@ export default function Header() {
         gsap.to(".logo_svg", { fill: "#FDFCED", duration: 0.5, });
         gsap.fromTo(".link-item", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, delay: 1 });
       } else {
-        gsap.to(navigationBar, { height: '7vh' });
+        gsap.to(navigationBar, { height: '4rem' });
         gsap.to(navigationBar, { backgroundColor: "#FDFCED", duration: 0.2, duration: 0.5, delay: 0.5 });
         gsap.to(".logo_svg", { fill: "#595959", duration: 0.5,  });
       }
@@ -43,7 +43,7 @@ export default function Header() {
 
   return (
     <div ref={navigationBarRef} className="navigation_bar drop-shadow-md">
-      <div className="w-full h-[7vh] absolute top-0 flex items-center justify-center ">
+      <div className="w-full h-[4rem] absolute top-0 flex items-center justify-center ">
         <div className="w-1/2 lg:w-1/3 flex items-center justify-center">
           <LogoSvg className="w-[3rem] md:w-[4rem] lg:w-[3.5rem] h-[3rem] md:h-[4rem] lg:h-[3.5rem] logo_svg" />
         </div>
