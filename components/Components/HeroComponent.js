@@ -26,7 +26,7 @@ export default function MainHeader() {
   return (
     <div style={divStyle}>
       <RevealWrapper className="w-full h-full flex  flex-col items-center justify-center" origin='bottom' delay={200} duration={1000}>
-        <LogoSvg className= "h-[10rem] fill-[#FDFCED]" />
+        <LogoSvg className= "h-[5rem] md:h-[10rem] lg:h-[15rem] xl:h-[25rem] fill-[#FDFCED]" />
         <h5 className="text-[#FDFCED]  uppercase font-bold text-center">Creat cu grijă şi atenţie</h5>
 
       </RevealWrapper>
