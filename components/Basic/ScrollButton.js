@@ -37,7 +37,7 @@ const ScrollButton = () => {
         <div className="scroll-to-top absolute right-0 ">
             {isVisible && (
                 <div className="w-full flex items-center justify-end">
-                    <button onClick={scrollToTop} className="w-[50px] h-[50px] text-white font-bold  rounded-full bg-[#595959] flex items-center justify-center mr-[30px] ">
+                    <button onClick={scrollToTop} className="w-[50px] h-[50px] text-[#000] font-bold  rounded-full bg-[#fff] flex items-center justify-center mr-[30px] mt-5 ">
                         <AiOutlineArrowUp size={30} />
                     </button>
                 </div>

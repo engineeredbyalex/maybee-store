@@ -1,19 +1,33 @@
-import { Product } from "@/models/Product";
-import { mongooseConnect } from "@/lib/mongoose";
-import { WishedProduct } from "@/models/WishedProduct";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { Setting } from "@/models/Setting";
-import Header from "@/components/Basic/Header";
-import HeroComponent from "@/components/Components/HeroComponent";
-import NewProducts from "@/components/Components/NewProducts";
-import Footer from "@/components/Basic/Footer";
-import AboutUs from "@/components/Components/AboutUs";
+// importing useLayoutEffect useState
 import { useLayoutEffect, useState } from "react";
-import ScrollButton from "@/components/Basic/ScrollButton";
+// importing WishedProduct
+import Header from "@/components/Basic/Header";
+// importing WishedProduct
 import Banner from "@/components/Basic/Banner";
+// importing WishedProduct
+import Footer from "@/components/Basic/Footer";
+// importing WishedProduct
+import AboutUs from "@/components/Sections/AboutUs";
+// importing Page
+import Page from "@/components/Layout/Page";
+// importing NewProducts
+import NewProducts from "@/components/Sections/NewProducts";
+// importing Product model
+import { Product } from "@/models/Product";
+// importing mongooseConnect
+import { mongooseConnect } from "@/lib/mongoose";
+// importing WishedProduct
+import { WishedProduct } from "@/models/WishedProduct";
+// importing WishedProduct
+import { getServerSession } from "next-auth";
+// importing WishedProduct
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+// importing WishedProduct
+import { Setting } from "@/models/Setting";
+// importing scroll button
+import ScrollButton from "@/components/Basic/ScrollButton";
 
-export default function HomePage({ featuredProduct, newProducts, wishedNewProducts }) {
+export default function HomePage({ newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -35,17 +49,20 @@ export default function HomePage({ featuredProduct, newProducts, wishedNewProduc
   }, []);
 
   return (
-    <div>
-      <Banner/>
+    <>
+      <Banner />
       <Header />
-      <HeroComponent product={featuredProduct} />
-      <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      <Page>
+        <h1 className="text-[#fff] text-center mt-[10rem] uppercase font-bold absolute top-[25%]">
+          Lumanari parfumate <br /> create cu grija si atentie
+        </h1>
+        <div className="hero_background" />
+        <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      </Page>
       <AboutUs />
-      <ScrollButton />
-      <div className="mt-[30px] lg:mt-[60px]">
-        <Footer />
-      </div>
-    </div>
+      <ScrollButton/>
+      <Footer />
+    </>
   );
 }
 

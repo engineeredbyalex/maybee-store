@@ -1,5 +1,4 @@
 import Header from "@/components/Basic/Header";
-import Center from "@/components/Layout/Center";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/components/Cart/CartContext";
 import axios from "axios";

@@ -6,29 +6,31 @@ import logo3 from "@/public/images/logo3.webp"
 
 export default function Footer() {
     return (
-        <div className=" h-auto w-full flex flex-col items-center justify-center bg-[#bebbaa] text-[#FDFCEA]">
+        <div className=" h-auto w-full flex flex-col items-center justify-center bg-[#000] text-[#FDFCEA]">
             <div className="flex flex-col lg:flex-row items-center justify-center  w-full text-center h-auto py-5">
                 <div className="w-full lg:w-1/3 flex flex-col items-center justify-start h-auto py-3 gap-2">
-                    <div><p className="font-bold uppercase">Link-uri utile</p></div>
-                    <Link href={'/aboutus'}><p className=" hover:text-[#DB572E] transition-all ease-in-out">Despre noi</p></Link>
-                    <Link href={'/policy'}>  <p className=" hover:text-[#DB572E] transition-all ease-in-out">Termeni și condiții</p></Link>
-                    <Link href={'/policy'}> <p className=" hover:text-[#DB572E] transition-all ease-in-out">Politica de Confidențialitate și Prelucrare a Datelor cu Caracter Personal</p></Link>
+                    <div><h5 className="font-medium uppercase">Link-uri utile</h5></div>
+                    <Link href={'/aboutus'}><p className=" transition-all ease-in-out">Despre noi</p></Link>
+                    <Link href={'/policy'}>  <p className=" transition-all ease-in-out">Termeni și condiții</p></Link>
+                    <Link href={'/policy'}> <p className=" transition-all ease-in-out">Politica de Confidențialitate și Prelucrare a Datelor cu Caracter Personal</p></Link>
                     {/* <Link href={'/'}>  <p className=" hover:text-[#DB572E] transition-all ease-in-out"> Politica de cookies</p></Link> */}
                 </div>
 
-                <div className="w-full lg:w-1/3 flex flex-col items-center justify-start h-auto py-3 gap-2">
-                    <div><p className="font-bold uppercase">În magazin</p></div>
-                    <Link href={'/account'}><p className=" hover:text-[#DB572E] transition-all ease-in-out">Contul meu</p></Link>
-                    <Link href={'/products'}> <p className=" hover:text-[#DB572E] transition-all ease-in-out">Produse noi</p></Link>
+                <div className="w-full lg:w-1/3 flex flex-col items-center justify-start h-full py-3 gap-2">
+                    <div><h5 className="font-medium uppercase">În magazin</h5></div>
+                    <Link href={'/account'}><p className=" transition-all ease-in-out">Acasă</p></Link>
+                    <Link href={'/account'}><p className=" transition-all ease-in-out">Contul meu</p></Link>
+                    <Link href={'/products'}> <p className=" transition-all ease-in-out">Produse noi</p></Link>
+                    <Link href={'/products'}> <p className=" transition-all ease-in-out">Categorii</p></Link>
                     {/* <Link href={'/'}><p className=" hover:text-[#DB572E] transition-all ease-in-out">Harta site-ului</p></Link> */}
                 </div>
                 <div className="w-full lg:w-1/3 flex flex-col items-center justify-start h-auto py-3 gap-2">
-                    <div><p className="font-bold uppercase">Date contact</p></div>
-                    <p className=" hover:text-[#DB572E] transition-all ease-in-out">Maybee</p>
-                    <p className=" hover:text-[#DB572E] transition-all ease-in-out">mixedarts.events@gmail.com</p>
-                    <p className=" hover:text-[#DB572E] transition-all ease-in-out">Mixed Arts Events SRL</p>
-                    <p className=" hover:text-[#DB572E] transition-all ease-in-out">CUI : 38795036</p>
-                    <p className=" hover:text-[#DB572E] transition-all ease-in-out">Adresă : Timișoara, jud Timiș</p>
+                    <div><h5 className="font-medium uppercase">Date contact</h5></div>
+                    <p className=" transition-all ease-in-out">Maybee</p>
+                    <p className=" transition-all ease-in-out">mixedarts.events@gmail.com</p>
+                    <p className=" transition-all ease-in-out">Mixed Arts Events SRL</p>
+                    <p className=" transition-all ease-in-out">CUI : 38795036</p>
+                    <p className=" transition-all ease-in-out">Adresă : Timișoara, jud Timiș</p>
                 </div>
             </div>
 

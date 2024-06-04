@@ -1,18 +1,10 @@
-// importing useState and useEffect
 import { useState, useEffect } from 'react';
-// importing input
 import Input from '@/components/Layout/Input';
-// importing StarsRating
 import StarsRating from '@/components/Reviews/StarsRating';
-// importing Textarea
 import Textarea from '@/components/Layout/Textarea';
-// importing button
 import Button from '@/components/Basic/Button';
-// importing axios
 import axios from 'axios';
-// importing spacers
 import { BigSpacer, SmallSpacer } from '../Layout/Spacer';
-
 
 const ProductReviews = ({ product }) => {
   const [name, setName] = useState('');
@@ -23,7 +15,7 @@ const ProductReviews = ({ product }) => {
   const [reviewsLoading, setReviewsLoading] = useState(false);
 
   const submitReview = () => {
-    const data = { name,title, description, stars, product: product._id };
+    const data = { name, title, description, stars, product: product._id };
     axios.post('/api/reviews', data).then((res) => {
       setName('');
       setTitle('');
@@ -50,60 +42,66 @@ const ProductReviews = ({ product }) => {
   }, [product]);
 
   return (
-    <div className='flex w-full items-center justify-center flex-col mt-[3rem]'>
-      {/* Review Add */}
-      <div className=''>
-        <div>
-          <div className='flex flex-col items-center justify-center'>
-            <h4 className='uppercase leading-[3rem] text-center font-bold text-[#595959]'>Adaugă o recenzie</h4>
-            <div>
-              {/* <StarsRating onChange={setStars} /> */}
-            </div>
+    <div className='flex w-full items-center justify-center flex-col mt-[3rem] px-4'>
+      {/* Add Review */}
+      <div className='w-full p-6'>
+        <div className='gap-3 flex flex-col items-center'>
+          <h4 className='uppercase leading-[3rem] text-center font-bold text-[#000]'>Adaugă o recenzie</h4>
+          <StarsRating onChange={setStars} value={stars} />
+          <div className='w-full'>
             <Input
               value={name}
               onChange={(ev) => setName(ev.target.value)}
               placeholder="Nume"
-              className="border text-base w-full bg-transparent"
+              className="border text-base w-full bg-gray-100 p-2 mt-2"
             />
+          </div>
+          <div className='w-full'>
             <Input
               value={title}
               onChange={(ev) => setTitle(ev.target.value)}
               placeholder="Titlu"
-              className="border text-base w-full bg-transparent"
+              className="border text-base w-full bg-gray-100 p-2 mt-2"
             />
-            <Textarea
+          </div>
+          <div className='w-full'>
+            <Input
               value={description}
               onChange={(ev) => setDescription(ev.target.value)}
               placeholder="Părerea dvs."
-              className="border text-base w-full bg-transparent"
+              className="border text-base w-full bg-gray-100 p-2 mt-2"
             />
-            <div>
-              <SmallSpacer>
-                <button className='bg-[#C23535] text-[#FDFCEA] px-3 py-2 rounded-lg'  onClick={submitReview}>
-                  <p className='uppercase'>Trimite recenzia</p>
-                </button>
-              </SmallSpacer>
-            </div>
+          </div>
+          <div className='w-full'>
+            <Button
+              onClick={submitReview}
+              className='w-full bg-[#C23535] text-[#FDFCEA] px-3 py-2 rounded-lg hover:bg-[#A01C1C] transition-colors'
+            >
+              <p className='uppercase'>Trimite recenzia</p>
+            </Button>
           </div>
         </div>
-        {/* All reviews*/}
-        < BigSpacer >
-          <div className='flex flex-col text-[#595959] text-left gap-[5rem]'>
-            <h5 className='uppercase font-medium'>Toate recenzile :</h5>
-            {reviews.length === 0 && <p>Fii primul care  pune o recenzie.</p>}
-            {reviews.length > 0 &&
-              reviews.map((review) => (
-                <div className='' key={review._id}>
-                  <p>{review.name}</p>
-                  <p>{review.title}</p>
-                  <p>{review.description}</p>
-                    {/* <time >
-                      {(new Date(review.createdAt)).toLocaleString('sv-SE')}
-                    </time> */}
-                </div>
-              ))}
-          </div>
-        </ BigSpacer>
+      </div>
+
+      {/* All Reviews */}
+      <div className='mb-10'>
+        <div className='w-full flex flex-col items-center justify-center rounded-lg p-6 '>
+          <h5 className='uppercase font-medium text-[#000] mb-4'>Toate recenziile:</h5>
+          {reviews.length === 0 ? (
+            <p className='text-[#595959]'>Fii primul care pune o recenzie.</p>
+          ) : (
+            reviews.map((review) => (
+              <div className='border-b border-gray-200 py-4' key={review._id}>
+                <p className='text-[#000] font-semibold'>{review.name}</p>
+                <p className='text-[#000] font-medium'>{review.title}</p>
+                <p className='text-[#000]'>{review.description}</p>
+                <time className='text-[#000] text-sm'>
+                  {(new Date(review.createdAt)).toLocaleString('sv-SE')}
+                </time>
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );

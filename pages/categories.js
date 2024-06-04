@@ -1,5 +1,5 @@
 import Header from "@/components/Basic/Header";
-import ProductBox from "@/components/Layout/ProductBox";
+import ProductBox from "@/components/Product/ProductBox";
 import Link from "next/link";
 import { mongooseConnect } from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
@@ -38,20 +38,15 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
       <Banner />
       <Header />
       <Layout>
-        <div className="w-full flex items-center justify-start mt-[15rem]">
-          <h4 className="uppercase font-bold text-[#595959]">
-            Catalog
-          </h4>
-        </div>
-        <SmallSpacer>
-          <div className="w-full flex items-center justify-center flex-col">
+          <div className="w-full flex items-start justify-center flex-col mt-[5rem]">
+            <h4 className="mb-5">Catalog</h4>
             {mainCategories.map((cat) => (
               <div key={cat._id} className="mb-8 w-full">
                 <div className="flex justify-between items-center mb-4">
                   <div className="w-full flex flex-col">
-                    <h5 className=" font-bold text-[#595959]">{cat.name}</h5>
+                    <h5 className=" font-bold text-[#000]">{cat.name}</h5>
                     <Link href={'/category/' + cat._id}>
-                      <p className="text-[#595959]">Arată toate</p>
+                      <p className="text-[#000]">Arată toate</p>
                     </Link>
                   </div>
                 </div>
@@ -63,10 +58,9 @@ export default function CategoriesPage({ mainCategories, categoriesProducts, wis
               </div>
             ))}
           </div>
-        </SmallSpacer>
       </Layout>
       <ScrollButton />
-      <div className="mt-[30px] lg:mt-[60px]">
+      <div >
         <Footer />
       </div>
     </ >
@@ -88,7 +82,7 @@ export async function getServerSideProps(ctx) {
     const products = await Product.find(
       { category: categoriesIds },
       null,
-      { limit: 2, sort: { _id: -1 } }
+      { limit: 3, sort: { _id: -1 } }
     );
     allFetchedProductsId.push(...products.map((p) => p._id.toString()));
     categoriesProducts[mainCat._id] = products;

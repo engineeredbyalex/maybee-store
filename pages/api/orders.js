@@ -7,7 +7,7 @@ export default async function handle(req, res) {
 
     console.log('Received request:', req.body);
 
-    const { method } = req;
+      const { method } = req;
 
     if (method === "GET") {
       if (req.query?.id) {

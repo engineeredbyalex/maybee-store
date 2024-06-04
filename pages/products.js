@@ -1,10 +1,8 @@
 import Header from "@/components/Basic/Header";
 import { useLayoutEffect, useState } from "react";
-import Center from "@/components/Layout/Center";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-import ProductsGrid from "@/components/Layout/ProductsGrid";
-
+import ProductsGrid from "@/components/Product/ProductsGrid";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
@@ -40,12 +38,8 @@ export default function ProductsPage({ products, wishedProducts }) {
       <Banner />
       <Header />
       <Layout>
-        <div className="w-full flex items-center justify-center flex-col overflow-x-hidden text-center">
-          <div className="w-full flex items-center justify-start mt-[15rem]">
-            <h4 className="uppercase text-left leading-[3.5rem] font-bold text-[#595959]">
-              Toate produsele
-            </h4>
-          </div>
+        <div className="w-full flex items-start justify-center flex-col mt-[5rem]">
+          <h4 className="mb-5">Toate produsele</h4>
           <SmallSpacer>
             <ProductsGrid products={products} wishedProducts={wishedProducts} />
           </SmallSpacer>

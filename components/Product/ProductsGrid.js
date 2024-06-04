@@ -1,5 +1,5 @@
 import React from "react";
-import ProductBox from "@/components/Layout/ProductBox";
+import ProductBox from "@/components/Product/ProductBox";
 
 export default function ProductsGrid({ products, wishedProducts = [] }) {
   return (

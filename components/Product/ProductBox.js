@@ -30,11 +30,11 @@ export default function ProductBox({
         </div>
       </Link>
       <div className="max-w-[25rem] min-h-[8rem] text-center flex flex-col items-center justify-start ">
-        <Link href={url} className="text-[#595959]">
+        <Link href={url} className="text-[#000]">
           <p className="font-bold">{title}</p>
         </Link>
         <div className="flex items-center justify-center w-full">
-          <p className="font-medium text-[#595959]">{price} Ron</p>
+          <p className="font-medium text-[#000]">{price} Ron</p>
         </div>
       </div>
     </div>

@@ -1,12 +1,12 @@
 import React from "react";
 
 export default function Button({ children, variant = "solid", ...rest }) {
-  let buttonClassName = "min-w-[15rem] max-h-[10rem] text-center flex items-center justify-center px-3 py-2 rounded-md";
+  let buttonClassName = "w-full w-[3rem] text-center flex items-center justify-center px-3 py-2 rounded-md";
 
   // Add styles based on variant
   switch (variant) {
     case "solid_dark":
-      buttonClassName += " bg-[#595959] text-[#FDFCED]";
+      buttonClassName += " bg-[#000] text-[#fff]";
       break;
     case "outline_dark":
       buttonClassName += " border-[0.2rem] border-[#595959] text-[#595959] hover:bg-[#595959] hover:text-[#FDFCEA] transition-all ease-in-out";
