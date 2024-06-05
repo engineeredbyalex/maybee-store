@@ -78,7 +78,7 @@ export default function CategoryPage({
             ))}
           </div>
         </div>
-        {loadingProducts && <div/> />}
+        {loadingProducts && <div />}
         {!loadingProducts && (
           <div>
             {products.length > 0 ? (
