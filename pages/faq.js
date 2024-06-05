@@ -1,21 +1,11 @@
-import Center from "@/components/Layout/Center";
+
 import Footer from "@/components/Basic/Footer";
 import Header from "@/components/Basic/Header";
-import styled from "styled-components";
+
 import Banner from "@/components/Basic/Banner";
 import Layout from "@/components/Layout/Layout";
-import { BigSpacer } from "@/components/Layout/Spacer";
 
-const StyledFaq = styled.div`
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
-text-align:center;
-`
-const StyledAnswer = styled.div`
 
-`
 
 export default function Faq() {
     return (
