@@ -1,14 +1,12 @@
 import Header from "@/components/Basic/Header";
-import Title from "@/components/Basic/Title";
-import Center from "@/components/Layout/Center";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
 import ProductsGrid from "@/components/Product/ProductsGrid";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "@/components/Basic/Spinner";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Banner";
+import Layout from "@/components/Layout/Layout";
 
 export default function CategoryPage({
   category,
@@ -57,7 +55,7 @@ export default function CategoryPage({
     <>
       <Banner />
       <Header />
-      <Center>
+      <Layout>
         <div className="flex items-center justify-between mt-[5rem] mb-[5rem]">
           <h1 className="text-5xl font-normal text-uppercase">{category.name}</h1>
           <div className="flex gap-4">
@@ -90,7 +88,7 @@ export default function CategoryPage({
             )}
           </div>
         )}
-      </Center>
+      </Layout>
       <Footer />
     </>
   );
