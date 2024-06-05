@@ -6,7 +6,7 @@ import logo3 from "@/public/images/logo3.webp"
 
 export default function Footer() {
     return (
-        <div className=" h-auto w-full flex flex-col items-center justify-center bg-[#000] text-[#FDFCEA]">
+        <div className=" h-auto w-full flex flex-col items-center justify-center bg-[#000] text-[#fff]">
             <div className="flex flex-col lg:flex-row items-center justify-center  w-full text-center h-auto py-5">
                 <div className="w-full lg:w-1/3 flex flex-col items-center justify-start h-auto py-3 gap-2">
                     <div><h5 className="font-medium uppercase">Link-uri utile</h5></div>
@@ -42,9 +42,9 @@ export default function Footer() {
                     <Image width={200} height={200} src={logo3} alt="logo" />
                 </a>
             </div>
-            <div className="w-full flex items-center justify-center flex-col bg-black text-[#FDFCEA]">
-                <p>CONSTRUIT DE :</p>
-                <Link target="_blank" href="https://www.alexlazarescu.com/" className="text-[#FDFCEA]">alexlazarescu.com</Link>
+            <div className="w-full flex items-center justify-center flex-col bg-black text-[#fff]">
+                {/* <p>CONSTRUIT DE :</p>
+                <Link target="_blank" href="https://www.alexlazarescu.com/" className="text-[#fff]">alexlazarescu.com</Link> */}
             </div>
         </div>
     );
