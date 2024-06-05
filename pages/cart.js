@@ -157,14 +157,14 @@ const CartPage = () => {
         <Banner />
         <Header />
         <div className="mt-[10rem]">
-          <Center>
+          <Layout>
             <div>
               <div>
                 <h1>Mulțumim pentru comandă</h1>
                 <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
               </div>
             </div>
-          </Center>
+          </Layout>
         </div>
       </>
     );
