@@ -11,7 +11,7 @@ export default function Banner() {
         const fetchData = async () => {
             try {
                 const response = await axios.get("/api/customization");
-                const firstItem = response.data[0]; // Assuming you want to get the first item from the array
+                const firstItem = response.data[response.data.lenght - 1]; // Assuming you want to get the first item from the array
                 if (firstItem && firstItem.bannerText) {
                     setBannerText(firstItem.bannerText);
                 } else {
