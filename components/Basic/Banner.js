@@ -3,7 +3,6 @@ import axios from "axios";
 // Importing useState and useEffect
 import { useEffect, useState } from "react";
 
-
 export default function Banner() {
     const [bannerText, setBannerText] = useState("");
 
@@ -11,9 +10,9 @@ export default function Banner() {
         const fetchData = async () => {
             try {
                 const response = await axios.get("/api/customization");
-                const firstItem = response.data[response.data.lenght - 1]; // Assuming you want to get the first item from the array
-                if (firstItem && firstItem.bannerText) {
-                    setBannerText(firstItem.bannerText);
+                const lastItem = response.data[response.data.length - 1]; // Get the last item from the array
+                if (lastItem && lastItem.bannerText) {
+                    setBannerText(lastItem.bannerText);
                 } else {
                     setBannerText('Banner text not found');
                 }
@@ -27,7 +26,7 @@ export default function Banner() {
 
     return (
         <div className="w-[100vw] min-h-[5vh] bg-[#7F1515] flex items-center justify-center">
-            <p className="text-[#fff] font-normal uppercase">
+            <p className="text-[#fff] font-light uppercase">
                 {bannerText}
             </p>
         </div>
