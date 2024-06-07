@@ -22,10 +22,12 @@ export default function Header() {
         gsap.to(navigationBar, { height: '95vh', backgroundColor: "#000", overflowY: 'hidden', duration: 0.5, delay: 0.5 });
         gsap.to(".svg_icon", { fill: "#fff", duration: 0.5 });
         gsap.fromTo(".link-item", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, delay: 1 });
+        document.body.style.overflow = 'hidden';  // Disable scrolling
       } else {
         gsap.to(navigationBar, { height: '4rem' });
         gsap.to(navigationBar, { backgroundColor: "#fff", duration: 0.5, delay: 0.5 });
         gsap.to(".svg_icon", { fill: "#000", duration: 0.5 });
+        document.body.style.overflowX = 'hidden';  // Enable scrolling
       }
     }
   }, [toggle]);
