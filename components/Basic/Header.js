@@ -46,10 +46,10 @@ export default function Header() {
             <LogoSvg className="w-[3rem] md:w-[4rem] lg:w-[3.5rem] h-[3rem] md:h-[4rem] lg:h-[3.5rem] svg_icon" />
           </div>
           <div className={toggle ? "w-screen h-auto absolute top-[50vh] bottom-0 left-0 right-0 text-[#fff] uppercase flex flex-col items-center justify-center z-[5]" : "gap-3 w-1/2 text-[#000] uppercase font-medium hidden lg:flex items-center justify-center "}>
-            <Link href="/"><p className="font-[400] link-item">Acasă</p></Link>
-            <Link href="/products"><p className="font-[400] link-item">Produse</p></Link>
-            <Link href="/categories"><p className="font-[400] link-item">Catalog</p></Link>
-            <Link href="/aboutus"><p className="font-[400] link-item">Despre noi</p></Link>
+            <Link href="/"><p className="font-[400] text-xl link-item">Acasă</p></Link>
+            <Link href="/products"><p className="font-[400] text-xl link-item">Produse</p></Link>
+            <Link href="/categories"><p className="font-[400] text-xl link-item">Catalog</p></Link>
+            <Link href="/aboutus"><p className="font-[400] text-xl link-item">Despre noi</p></Link>
           </div>
           <div className="w-1/2 lg:w-1/3 z-[1] gap-3 flex items-center justify-center">
             <Link className="flex items-center justify-center" href="/cart">

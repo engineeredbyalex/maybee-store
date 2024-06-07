@@ -3,8 +3,10 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Header from "@/components/Basic/Header";
-import Button from "@/components/Basic/Button";
+import Page from "@/components/Layout/Page";
 import Banner from "@/components/Basic/Banner";
+import Container from "@/components/Layout/Container";
+import Footer from "@/components/Basic/Footer";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -47,31 +49,79 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <Banner/>
-      <Header/>
-      <div className="flex items-center justify-center h-screen w-full text-[#595959]">
-        <div className="shadow-lg p-5 rounded-md  min-w-[300px] min-h-[400px]">
-          <p className="my-5">
-          Inregistrare
-          </p>
-          <form onSubmit={handleSubmit} className="flex flex-col items-center gap-5">
-            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Nume" type="text" onChange={(e) => setName(e.target.value)} />
-            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} />
-            <input className="w-full py-2 px-3 bg-transparent border-[#595959] border-[0.1rem]" placeholder="Parola" type="password" onChange={(e) => setPassword(e.target.value)} />
-              <Button>
-             Inregistrare
-              </Button>
+      <Banner />
+      <Header />
+      <Page>
+        <Container>
+          <h5 className="text-[#000] mt-[1rem] mb-[0.5rem]">Înregistrare</h5>
+          <Link className="" href="/account">
+            <p className="text-[#000] underline underline-offset-4 underline-[#000]">
+              Conectare
+            </p>
+          </Link>
+          <form
+            onSubmit={handleSubmit}
+            className="mt-10 w-sfull"
+          >
+            <div className="w-[100%] mb-4 flex flex-col ">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="name"
+              >
+                Email
+              </label>
+              <input
+                className="w-full py-2 px-3 appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                type="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Nume şi prenume"
+              />
+            </div>
+            <div className="w-[100%] mb-4 flex flex-col ">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Email
+              </label>
+              <input
+                className="w-full py-2 px-3 appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
+              />
+            </div>
+            <div className="mb-6">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="password"
+              >
+                Parola
+              </label>
+              <input
+                className=" border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Parola"
+              />
+            </div>
+            <div className="flex items-center justify-start  w-full">
+              <button type="submit">Înregistrare</button>
+
+            </div>
             {error && (
-              <div className="bg-red-500 text-white w-full text-sm py-1 px-3 rounded-md mt-2">{error}</div>
+              <p className="text-red-500 text-xs italic mt-4">{error}</p>
             )}
-            <Link href={"/account"}>
-              <p className=" mt-3 text-right  transition-all ease-in-out">
-                Cont existent ? <span className="underline">Conectati-va</span>
-              </p>
-            </Link>
           </form>
-        </div>
-      </div>
-  </div>
+        </Container>
+      </Page>
+      <Footer />
+    </div>
   );
 }

@@ -1,11 +1,10 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Button from "@/components/Basic/Button";
+
 import Header from "@/components/Basic/Header";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Layout from "@/components/Layout/Layout";
+
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Banner";
 import Page from "@/components/Layout/Page";
@@ -108,6 +107,7 @@ const AccountPage = () => {
             </div>
           </Container>
         </Page>
+        <Footer/>
       </>
     );
   }
@@ -118,9 +118,9 @@ const AccountPage = () => {
       <Header />
       <Page>
         <Container>
-          <h5 className="text-[#595959] mt-[1rem] mb-[0.5rem]">Conectare</h5>
+          <h5 className="text-[#000] mt-[1rem] mb-[0.5rem]">Conectare</h5>
           <Link className="" href="/register">
-            <p className="text-[#595959] underline underline-offset-4 underline-[#595959]">
+            <p className="text-[#000] underline underline-offset-4 underline-[#000]">
               Crează un cont
             </p>
           </Link>
@@ -170,6 +170,7 @@ const AccountPage = () => {
           </form>
         </Container>
       </Page>
+      <Footer />
     </div>
   );
 };
