@@ -54,7 +54,7 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
       <Header />
       <Page>
         <h1 className="text-[#fff] text-center mt-[10rem] uppercase font-bold absolute top-[25%]">
-          Lumanari parfumate <br /> create cu grija si atentie
+          Lumanari parfumate <br /> produse create cu grijă şi atenţie.
         </h1>
         <div className="hero_background" />
         <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />

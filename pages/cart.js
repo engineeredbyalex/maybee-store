@@ -131,13 +131,10 @@ const CartPage = () => {
 
     if (response.data.url) {
       window.location = response.data.url;
-      // clearCart();
-      // localStorage.removeItem("cartProducts");
     }
   }
 
   async function clearCartHandler() {
-    // clearCart();
     localStorage.removeItem("cartProducts");
     setProducts([]);
   }
@@ -175,7 +172,8 @@ const CartPage = () => {
       <Banner />
       <Header />
       <Layout>
-        <div className="w-full min-h-screen mt-[15rem] text-[#595959]">
+        <div className="w-full min-h-screen mt-[15rem] text-[#000
+        ]">
           <div className="bg-transparent mt-4 p-4">
             <h4 className=" font-bold mb-4">Coș de cumpărături</h4>
             {cartProducts.length === 0 && (
@@ -189,16 +187,16 @@ const CartPage = () => {
                   );
                   return cartItemsForProduct.map((cartItem, index) => (
                     <div key={cartItem.localId} className="border-b">
-                      <div className="flex  mb-4 items-center justify-evenly py-3">
+                      <div className=" flex flex-col mb-4 items-start justify-evenly py-3">
                         <div className="flex-shrink-0">
                           <img
-                            className="w-16 h-16 mr-4"
+                            className="w-auto lg:w-[25rem] h-auto lg:h-[25rem] mr-4"
                             src={product.images[0]}
                             alt=""
                           />
                         </div>
                         <div className="flex-grow">
-                          <p>{product.title}</p>
+                          <h5>{product.title}</h5>
                           {Object.keys(cartItem.selectedValues).map(
                             (key, index) => (
                               <p key={index}>
@@ -207,23 +205,27 @@ const CartPage = () => {
                             )
                           )}
                         </div>
-                        <div className="flex items-center">
-                          <button
-                            onClick={() => lessOfThisProduct(cartItem.localId)}
-                            className="px-2 py-1 bg-orange-300 text-black mr-2"
-                          >
-                            -
-                          </button>
-                          <p>{cartItem.quantity}</p>
-                          <button
-                            onClick={() => moreOfThisProduct(cartItem.localId)}
-                            className="px-2 py-1 bg-orange-300 text-black ml-2"
-                          >
-                            +
-                          </button>
-                        </div>
-                        <div className="flex-shrink-0 ml-2">
-                          {product.price} RON
+                        <div className="w-full flex items-center justify-between">
+                          <div className="flex items-center">
+                            <button
+                              onClick={() => lessOfThisProduct(cartItem.localId)}
+                              className="px-2 py-1 bg-orange-300 text-[#000] mr-2"
+                            >
+                              -
+                            </button>
+                            <p>{cartItem.quantity}</p>
+                            <button
+                              onClick={() => moreOfThisProduct(cartItem.localId)}
+                              className="px-2 py-1 bg-orange-300 text-[#000] ml-2"
+                            >
+                              +
+                            </button>
+                          </div>
+                          <div className="">
+                            <h5>
+                              {product.price} RON
+                           </h5>
+                          </div>
                         </div>
                       </div>
                     </div>
