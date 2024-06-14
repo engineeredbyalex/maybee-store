@@ -39,7 +39,7 @@ export default function ProductsPage({ products, wishedProducts }) {
       <Header />
       <Layout>
         <div className="w-full flex items-start justify-center flex-col mt-[5rem]">
-          <h4 className="mb-5">Toate produsele</h4>
+          <h4 className="mb-5">Produse noi</h4>
           <SmallSpacer>
             <ProductsGrid products={products} wishedProducts={wishedProducts} />
           </SmallSpacer>
