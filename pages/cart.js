@@ -224,7 +224,7 @@ const CartPage = () => {
                           <div className="">
                             <h5>
                               {product.price} RON
-                           </h5>
+                            </h5>
                           </div>
                         </div>
                       </div>
@@ -252,7 +252,7 @@ const CartPage = () => {
             <div className="p-4">
               <h5 className=" font-medium mb-4">Informații comandă</h5>
               <div className="mb-4">
-                <input 
+                <input
                   type="text"
                   placeholder="Nume"
                   value={name}
@@ -262,7 +262,7 @@ const CartPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <input 
+                <input
                   type="text"
                   placeholder="Email"
                   value={email}
@@ -272,7 +272,7 @@ const CartPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <input 
+                <input
                   type="text"
                   placeholder="Număr de telefon"
                   value={phone}
@@ -282,7 +282,7 @@ const CartPage = () => {
                 />
               </div>
               <div className="mb-4 flex flex-col md:flex-row md:space-x-4 bg-transparent">
-                <input 
+                <input
                   type="text"
                   placeholder="Oraș"
                   value={city}
@@ -290,7 +290,7 @@ const CartPage = () => {
                   onChange={(ev) => setCity(ev.target.value)}
                   className="border rounded-lg p-2 mb-4 md:mb-0 w-full bg-transparent"
                 />
-                <input 
+                <input
                   type="text"
                   placeholder="Cod Poștal"
                   value={postalCode}
@@ -300,7 +300,7 @@ const CartPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <input 
+                <input
                   type="text"
                   placeholder="Adresă Stradală"
                   value={streetAddress}
@@ -310,7 +310,7 @@ const CartPage = () => {
                 />
               </div>
               <div className="mb-4">
-                <input 
+                <input
                   type="text"
                   placeholder="Țară"
                   value={country}
