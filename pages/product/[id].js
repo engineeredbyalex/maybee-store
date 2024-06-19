@@ -41,7 +41,7 @@ export default function ProductPage({ product }) {
   };
 
   return (
-    <div className=" text-[#000]">
+    <div className=" text-[#000] overflow-x-hidden">
       <Banner />
       <Header />
       <Page>
@@ -89,7 +89,11 @@ export default function ProductPage({ product }) {
                 </FlyingButton>
               </div>
             </div>
-            <div>
+
+          </div>
+        </Container>
+        <Container>
+          <div className="flex items-center justify-center overflow-hidden">
               <div className="w-full flex flex-col items-center justify-center text-center mb-5">
                 {product?.scent && Object.entries(product.scent).map(([scentName, scentDescription]) => (
                   <div className="w-1/2" key={scentName}>
@@ -99,7 +103,6 @@ export default function ProductPage({ product }) {
                 ))}
               </div>
             </div>
-          </div>
         </Container>
         <Container>
           <div className="w-full flex flex-col items-center justify-center gap-5">
