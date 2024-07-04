@@ -6,41 +6,40 @@
 
 body {
     background-color: #ffffff;
-
+    font-size: 62.5%;
     font-family: "Poppins";
 }
 .playfair{
     font-family: "Playfair Display", serif;
 
 }
-
-.input_cart {
-  @apply bg-transparent border-[#595959] border-[0.1rem] py-[0.5rem] px-2 rounded-md
+h1{
+    font-size: 64px;
+    line-height: 64px;
 }
-
-h1 {
-    @apply text-[3rem] md:text-[4rem] lg:text-[5rem] leading-[3rem] md:leading-[4rem] lg:leading-[5rem]
+h2{
+      font-size: 56px;
+    line-height: 56px;
 }
-
-h2 {
-    @apply text-[2.5rem] md:text-[2.75rem] lg:text-[3.75rem] leading-[2.5rem] md:leading-[2.75rem] lg:leading-[3.75rem]
+h3{
+      font-size: 48px;
+    line-height: 48px;
 }
-
-
-h3 {
-    @apply text-[2rem] md:text-[2.5rem] lg:text-[3rem] leading-[2rem] md:leading-[2.5rem] lg:leading-[3rem]
+h4{
+      font-size: 40px;
+    line-height: 40px;
 }
-
-h4 {
-    @apply text-[1.75rem] md:text-[2rem] lg:text-[2.5rem] leading-[1.57rem] md:leading-[2rem] lg:leading-[2.5rem]
+h5{
+      font-size: 32px;
+    line-height: 32px;
 }
-
-h5 {
-    @apply text-[1.5rem] md:text-[1.25rem] lg:text-[1.75rem];
+h6{
+      font-size: 28px;
+    line-height: 28px;
 }
-
-p {
-    @apply text-[1rem] md:text-[1.25rem] lg:text-[1.5rem];
+p{
+    font-size:20px;
+    line-height:20px;
 }
 .input_search{
     background-color: transparent;
@@ -52,16 +51,16 @@ p {
 
 .navigation_bar{
     width: 100vw;
-    height:4rem;
+    height:72px;
     position: absolute;
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 13;
-@media screen and (min-width:1024px) {
+    @media screen and (min-width:1024px) {
     width: 100vw;
-    height:4rem;
+    height:72px;
     background-color: #fff;
     position: absolute;
     display: flex;
@@ -75,13 +74,12 @@ p {
     fill: #000;
   }
   .svg_icon {
-    fill:#000
+    fill:#000;
+    color: #000;
   }
-
   .hero_background{
     height:100vh;
     width: 100vw;
-    position: absolute;
     top: 0;
     left: 0;
     z-index: -1;

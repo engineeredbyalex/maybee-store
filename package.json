@@ -10,6 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@madzadev/image-slider": "^2.0.1",
     "@next-auth/mongodb-adapter": "^1.1.1",
     "@vercel/analytics": "^1.1.2",
     "axios": "^1.3.4",

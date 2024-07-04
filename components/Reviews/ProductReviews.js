@@ -88,7 +88,7 @@ const ProductReviews = ({ product }) => {
         <div className='w-full flex flex-col items-center justify-center rounded-lg p-6 '>
           <h5 className='uppercase font-medium text-[#000] mb-4'>Toate recenziile:</h5>
           {reviews.length === 0 ? (
-            <p className='text-[#595959]'>Fii primul care pune o recenzie.</p>
+            <p className='text-[#767676] text-center'>Fii primul care pune o recenzie.</p>
           ) : (
             reviews.map((review) => (
               <div className='border-b border-gray-200 py-4' key={review._id}>

@@ -26,6 +26,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Setting } from "@/models/Setting";
 // importing scroll button
 import ScrollButton from "@/components/Basic/ScrollButton";
+import Landing from "@/components/Sections/Landing";
 
 export default function HomePage({ newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {
@@ -49,20 +50,14 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
   }, []);
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Banner />
       <Header />
-      <Page>
-        <h1 className="text-[#fff] text-center mt-[10rem] uppercase font-bold absolute top-[25%]">
-          Lumanari parfumate <br /> produse create cu grijă şi atenţie.
-        </h1>
-        <div className="hero_background" />
-        <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
-      </Page>
+      <Landing/>
+      <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
       <AboutUs />
-      <ScrollButton/>
-      <Footer />
-    </>
+      <Footer/>
+    </div>
   );
 }
 

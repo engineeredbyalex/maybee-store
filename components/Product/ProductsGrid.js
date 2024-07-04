@@ -3,9 +3,13 @@ import ProductBox from "@/components/Product/ProductBox";
 
 export default function ProductsGrid({ products, wishedProducts = [] }) {
   return (
-    <div className="w-full h-full gap-[5rem] flex xl:grid xl:grid-cols-3 lg:grid lg:grid-cols-2 flex-col items-center justify-center">
-      {products?.map((product, index) => (
-        <ProductBox key={product._id}  {...product} wished={wishedProducts.includes(product._id)} />
+    <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-hidden">
+      {products?.slice(0, 4).map((product) => (
+        <ProductBox
+          key={product._id}
+          {...product}
+          wished={wishedProducts.includes(product._id)}
+        />
       ))}
     </div>
   );

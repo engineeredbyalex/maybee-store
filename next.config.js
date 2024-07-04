@@ -16,6 +16,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'maybee-nextjs-ecommerce.s3.eu-north-1.amazonaws.com',
         port: '',
         pathname: '/*',

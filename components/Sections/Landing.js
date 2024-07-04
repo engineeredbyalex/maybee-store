@@ -5,10 +5,12 @@ export default function Landing() {
 
   return (
     <Page>
-      <h1 className="text-[#FDFCED] text-center mt-[10rem] uppercase font-bold absolute top-[25%]">
-        Lumanari parfumate <br /> produse create cu grijă şi atenţie
-      </h1>
-      <div className="hero_background" />
+      <div className="w-full h-full flex items-center justify-center">
+        <h3 className="text-[#fff] font-bold uppercase text-center absolute left-0 top-[20rem] right-0 bottom-0">
+          Lumanari parfumate <br /> produse create cu grijă şi atenţie
+        </h3>
+        <div className="hero_background" />
+      </div>
     </Page>
   );
 }

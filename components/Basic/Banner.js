@@ -25,7 +25,7 @@ export default function Banner() {
     }, []);
 
     return (
-        <div className="w-[100vw] min-h-[5vh] bg-[#7F1515] flex items-center justify-center">
+        <div className="w-[100vw] min-h-[5vh] bg-[#7F1515]  flex items-center justify-center">
             <p className="text-[#fff] font-light uppercase">
                 {bannerText}
             </p>

@@ -56,7 +56,7 @@ export default function ProductPage({ product }) {
               <div className="w-full h-auto flex flex-col">
                 <h5 className="font-medium text-center lg:text-left text-black mb-[1rem]">{product.title}</h5>
                 <p className=" text-center lg:text-left text-[#767676]">{product.description}</p>
-              </div>
+             </div>
               {product.weight && (
                 <p className="text-[#000]">Gramaj ceară: {product.weight} gr</p>
               )}
@@ -108,17 +108,17 @@ export default function ProductPage({ product }) {
               </div>
             </div>
           </Container>)
-          :
-          ("")
-        }
+            :
+            ("")
+          }
         <div>
-          <div className="gap-5 flex flex-col items-center justify-center">
+            <div className="gap-5 flex flex-col items-center justify-center">
             <h5 className="text-[#000] font-bold uppercase text-center">Detalii despre întreţinere</h5>
-            <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[5rem] ">
-              <INTRETINERELUMANARI className="w-[100%] lg:w-[40rem] " />
-              <INTRETINERECEARA className="w-[100%] lg:w-[40rem] " />
+              <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[5rem] ">
+                <INTRETINERELUMANARI className="w-[100%] lg:w-[40rem] " />
+                <INTRETINERECEARA className="w-[100%] lg:w-[40rem] " />
+              </div>
             </div>
-          </div>
         </div>
         <div className="w-full md:w-3/4 lg:w-2/4">
           <ProductReviews product={product} />
