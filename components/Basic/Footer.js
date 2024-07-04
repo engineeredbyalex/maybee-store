@@ -10,14 +10,16 @@ export default function Footer() {
     return (
         <div className="w-screen h-auto pt-12 gap-4 bg-white  flex items-center justify-center flex-col overflow-hidden">
             <div className="w-full h-full gap-4 flex items-center justify-center flex-col lg:flex-row ">
-                <div className="w-full lg:w-1/4 h-auto gap-4 flex items-center justify-center flex-col">
-                    <LogoSvg className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 svg_icon" />
-                    <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
-                        <Image width={200} height={200} src={logo2} alt="logo" />
-                    </a>
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank">
-                        <Image width={200} height={200} src={logo3} alt="logo" />
-                    </a>
+                <div className="w-full lg:w-1/4 h-auto gap-4 flex items-center justify-center flex-row">
+                    <LogoSvg className="w-16 h-16 svg_icon" />
+                    <div>
+                        <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
+                            <Image width={200} height={200} src={logo2} alt="logo" />
+                        </a>
+                        <a href="https://anpc.ro/ce-este-sal/" target="_blank">
+                            <Image width={200} height={200} src={logo3} alt="logo" />
+                        </a>
+                </div>
                 </div>
                 <div className="w-full lg:w-1/4 h-auto gap-2 flex flex-col items-center lg:items-start justify-center">
                     <p className="font-normal text-black">
