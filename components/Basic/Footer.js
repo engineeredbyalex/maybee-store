@@ -3,12 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import logo2 from "@/public/images/logo2.png"
 import logo3 from "@/public/images/logo3.webp"
+import LogoSvg from "../../public/images/Logo.svg";
+import Layout from "../Layout/Layout";
 
 export default function Footer() {
     return (
         <div className="w-screen h-auto pt-12 gap-4 bg-white  flex items-center justify-center flex-col overflow-hidden">
             <div className="w-full h-full gap-4 flex items-center justify-center flex-col lg:flex-row ">
                 <div className="w-full lg:w-1/4 h-auto gap-4 flex items-center justify-center flex-col">
+                    <LogoSvg className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 svg_icon" />
                     <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
                         <Image width={200} height={200} src={logo2} alt="logo" />
                     </a>
