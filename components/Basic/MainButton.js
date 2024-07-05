@@ -9,20 +9,21 @@ export default function FlyingButton(props) {
 
   useEffect(() => {
     if (toggle) {
-      gsap.timeline()
-        .to(".cartButton", { backgroundColor: "#34C759", duration: 0.5 })
-        .to(".cartIcon", { scale: 1.2, duration: 0.2 }, "-=0.5") // Scale up the icon slightly
-        .to(".cartIcon", { scale: 1, duration: 0.2 }) // Scale back to original
-        .to(".cartButton", { backgroundColor: "#000", delay: 0.5, duration: 0.5 });
+      const tl = gsap.timeline();
+      tl.to(".cartButton", { backgroundColor: "#34C759", duration: 0.5 })
+        .to(".cartIcon", { scale: 1.5, duration: 0.5 }, "-=0.5") // Scale up the icon to 1.5 times
+        .to(".cartButton", { backgroundColor: "#000", duration: 0.5, delay: 0.5 })
+        .to(".cartIcon", { scale: 1, duration: 0.5 }, "-=0.5"); // Scale back the icon to original
     } else {
       gsap.to(".cartButton", { backgroundColor: "#000", duration: 0.5 });
+      gsap.to(".cartIcon", { scale: 1, duration: 0.5 });
     }
   }, [toggle]);
 
   const handleClick = () => {
     addProduct(props._id, props.selectedValues);
     setToggle(true);
-    setTimeout(() => setToggle(false), 1000); // Reset toggle after 1 second
+    setTimeout(() => setToggle(false), 1500); // Reset toggle after 1.5 seconds
   };
 
   return (
