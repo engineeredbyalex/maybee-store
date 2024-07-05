@@ -4,7 +4,7 @@ export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
 
   return (
-    <div className="gap-4 flex flex-col  items-center justify-center">
+    <div className="gap-4 flex flex-col  items-start justify-center">
       <div className="text-center">
         <img
           src={activeImage}

@@ -32,10 +32,10 @@ export default function ProductPage({ product }) {
       <div className="py-20 min-h-screen">
         <Layout>
           <div className="flex flex-col justify-start items-center w-full md:w-1/2">
-            <ProductImages images={product.images} />\
-            <div className="w-full h-auto flex flex-col">
-              <p className="font-medium text-center lg:text-left text-black mb-[1rem]">{product.title}</p>
-              <div className="mt-5 w-[100%] flex items-center justify-center gap-2">
+            <ProductImages images={product.images} />
+            <div className="w-full h-auto mt-4 flex flex-col">
+              <p className="font-medium text-left text-black">{product.title}</p>
+              <div className="w-[100%] mt-4 flex items-center justify-center">
                 <FlyingButton
                   main
                   _id={product._id}
@@ -43,7 +43,7 @@ export default function ProductPage({ product }) {
                   selectedValues={selectedValues}
                   src={product.images?.[0]}
                 >
-                  <p className="uppercase text-white font-medium">Adaugă în coș</p>
+                  <p className="uppercase text-white font-light">Adaugă în coș</p>
                 </FlyingButton>
               </div>
             </div>
