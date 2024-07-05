@@ -9,8 +9,11 @@ export default function FlyingButton(props) {
 
   useEffect(() => {
     if (toggle) {
-      gsap.to(".cartButton", { backgroundColor: "#33B249", duration: 0.5 });
-      // gsap.to(".cartButton", { backgroundColor: "#000", delay: 1, duration: 0.5 });
+      gsap.timeline()
+        .to(".cartButton", { backgroundColor: "#34C759", duration: 0.5 })
+        .to(".cartIcon", { scale: 1.2, duration: 0.2 }, "-=0.5") // Scale up the icon slightly
+        .to(".cartIcon", { scale: 1, duration: 0.2 }) // Scale back to original
+        .to(".cartButton", { backgroundColor: "#000", delay: 0.5, duration: 0.5 });
     } else {
       gsap.to(".cartButton", { backgroundColor: "#000", duration: 0.5 });
     }
@@ -19,7 +22,7 @@ export default function FlyingButton(props) {
   const handleClick = () => {
     addProduct(props._id, props.selectedValues);
     setToggle(true);
-    setTimeout(() => setToggle(false), 1000); // Reset toggle after 1.5 seconds
+    setTimeout(() => setToggle(false), 1000); // Reset toggle after 1 second
   };
 
   return (
@@ -32,7 +35,7 @@ export default function FlyingButton(props) {
         <div className="w-2/3 flex items-center justify-center">
           {props.children}
         </div>
-        <Cart className="ml-2" />
+        <Cart className="cartIcon ml-2 h-7 w-7 transition-transform duration-300" />
       </button>
     </div>
   );

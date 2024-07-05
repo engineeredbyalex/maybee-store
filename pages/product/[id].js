@@ -43,7 +43,7 @@ export default function ProductPage({ product }) {
                   selectedValues={selectedValues}
                   src={product.images?.[0]}
                 >
-                  <p className="uppercase text-white font-light">Adaugă în coș</p>
+                  <p className=" text-white font-normal">Adaugă în coș</p>
                 </FlyingButton>
               </div>
             </div>
