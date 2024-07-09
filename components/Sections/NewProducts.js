@@ -7,7 +7,7 @@ export default function NewProducts({ products, wishedProducts }) {
     <div className="py-12 w-screen h-auto flex flex-col items-center justify-center overflow-x-hidden">
       <Layout>
         <div className="flex flex-col gap-8">
-          <h4 className="font-bold">Produse noi</h4>
+          <h2 className="font-semibold uppercase">Produse noi</h2>
           <ProductsGrid products={products} wishedProducts={wishedProducts} />
         </div>
       </Layout>

@@ -2,7 +2,7 @@ import Header from "@/components/Basic/Header";
 import { useLayoutEffect, useState } from "react";
 import { mongooseConnect } from "@/lib/mongoose";
 import { Product } from "@/models/Product";
-import ProductsGrid from "@/components/Product/ProductsGrid";
+import ProductsGrid from "@/components/Product/ProductsGrid copy";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";

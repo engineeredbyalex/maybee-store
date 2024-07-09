@@ -27,6 +27,8 @@ import { Setting } from "@/models/Setting";
 // importing scroll button
 import ScrollButton from "@/components/Basic/ScrollButton";
 import Landing from "@/components/Sections/Landing";
+import CategoriesPage from "./categories";
+import CategoriesSection from "@/components/Sections/CategoriesSection";
 
 export default function HomePage({ newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {
@@ -55,6 +57,7 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
       <Header />
       <Landing/>
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
+      <CategoriesSection/>
       <AboutUs />
       <Footer/>
     </div>
@@ -82,3 +85,5 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
+
+

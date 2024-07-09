@@ -1,6 +1,6 @@
 import { CartContext } from "../Cart/CartContext";
 import { useContext, useState, useEffect } from "react";
-import Cart from "../../public/images/Cart.svg";
+import Cart from "../../public/icons/shopping_cart_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
 import { gsap } from "gsap";
 
 export default function FlyingButton(props) {

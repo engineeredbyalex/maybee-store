@@ -43,7 +43,7 @@ export default function ProductPage({ product }) {
               <div className="flex flex-col gap-5">
                 {product.properties?.map((property, index) => (
                   <div key={index} className="flex flex-col gap-2">
-                    <h5 className="font-semibold uppercase text-[#000]">{property.name}</h5>
+                    <h5 className="font-semibold uppese text-[#000]">{property.name}</h5>
                     <div className="flex flex-wrap gap-3">
                       {property.values?.map((value, valueIndex) => (
                         <div
@@ -70,6 +70,34 @@ export default function ProductPage({ product }) {
                 </FlyingButton>
               </div>
             </div>
+          </div>
+          {product.scent ?
+            (<Container>
+              <div className="flex items-center justify-center overflow-hidden">
+                <div className="w-full flex flex-col items-center justify-center text-center mb-5">
+                  {product?.scent && Object.entries(product.scent).map(([scentName, scentDescription]) => (
+                    <div className="w-1/2" key={scentName}>
+                      <h3 className="text-[#000]">{scentName}</h3>
+                      <p className="text-[#000]">{scentDescription}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Container>)
+            :
+            ("")
+          }
+          <div className="mt-16">
+            <div className="gap-5 flex flex-col items-center justify-center">
+              <h5 className="text-[#000] font-bold uppercase text-center">Detalii despre întreţinere</h5>
+              <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[5rem] ">
+                <INTRETINERELUMANARI className="w-[100%] lg:w-[40rem] " />
+                <INTRETINERECEARA className="w-[100%] lg:w-[40rem] " />
+              </div>
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-center ">
+            <ProductReviews product={product} />
           </div>
         </Layout>
       </div>

@@ -11,7 +11,6 @@ import Footer from "@/components/Basic/Footer";
 import { useLayoutEffect } from "react";
 import ScrollButton from "@/components/Basic/ScrollButton";
 import Layout from "@/components/Layout/Layout";
-import { SmallSpacer } from "@/components/Layout/Spacer";
 import Banner from "@/components/Basic/Banner";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {

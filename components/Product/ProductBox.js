@@ -13,8 +13,8 @@ export default function ProductBox({
 
   return (
     <div className="w-full flex items-center justify-start flex-col overflow-x-hidden">
-      <Link href={url} className="h-auto max-w-full gap-2 flex flex-col overflow-hidden">
-        <div className="w-full h-[24rem] sm:h-[20rem] md:h-[18rem] lg:h-[20rem] relative rounded-xl overflow-hidden flex items-center justify-center">
+      <Link href={url} className="h-auto w-full gap-2 flex flex-col overflow-hidden">
+        <div className="w-full  h-[24rem] sm:h-[20rem] md:h-[18rem] lg:h-[20rem] relative rounded-xl overflow-hidden flex items-center justify-center">
           <Image
             layout="fill"
             objectFit="cover"
@@ -23,9 +23,9 @@ export default function ProductBox({
             className="w-full h-full"
           />
         </div>
-        <div className="w-screen text-left flex flex-col items-start justify-center gap-1 ">
-          <p className="font-semibold">{title}</p>
-          <p className="font-medium text-[#000] ">{price} Ron</p>
+        <div className="w-full text-left flex flex-col items-start justify-center">
+          <h3 className="font-semibold">{title}</h3>
+          <h4 className="font-semibold text-[#000]">{price} RON</h4>
         </div>
       </Link>
     </div>
