@@ -24,7 +24,7 @@ export default function CategoriesSection() {
         <div className="py-12">
             <Layout>
                 <div className="w-full h-full flex flex-col items-center justify-center gap-6 text-left">
-                    <h2 className="w-full font-semibold uppercase">Categorii</h2>
+                    <h3 className="w-full font-semibold uppercase">Categorii</h3>
                     {error ? (
                         <p className="text-red-500">{error}</p>
                     ) : (
@@ -38,7 +38,7 @@ export default function CategoriesSection() {
                                         className="w-full min-h-[10rem] sm:min-h-[15rem] lg:min-h-[20rem] bg-cover bg-center"
                                         style={{ backgroundImage: 'url(https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2F1698693286725.jfif?alt=media&token=069df4d9-eff4-4679-899d-c56a7f1f237f)' }}
                                     />
-                                    <h3 className="mt-2 text-center text-black">{cat.name}</h3>
+                                    <h4 className="mt-2 text-center text-black">{cat.name}</h4>
                                 </div>
                             ))}
                         </div>

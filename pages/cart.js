@@ -26,7 +26,6 @@ const CartPage = () => {
   const [country, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [shippingFee, setShippingFee] = useState(null);
-
   const [isTicked, setIsTicked] = useState(false);
 
   useEffect(() => {
@@ -172,10 +171,9 @@ const CartPage = () => {
       <Banner />
       <Header />
       <Layout>
-        <div className="w-full min-h-screen mt-[15rem] text-[#000
-        ]">
+        <div className="w-full min-h-screen mt-[15rem] text-[#000]">
           <div className="bg-transparent mt-4 p-4">
-            <h4 className=" font-bold mb-4">Coș de cumpărături</h4>
+            <h4 className="font-bold mb-4">Coș de cumpărături</h4>
             {cartProducts.length === 0 && (
               <p className="text-lg font-light mb-4">Coșul dvs. este gol.</p>
             )}
@@ -187,7 +185,7 @@ const CartPage = () => {
                   );
                   return cartItemsForProduct.map((cartItem, index) => (
                     <div key={cartItem.localId} className="border-b">
-                      <div className=" flex flex-col mb-4 items-start justify-evenly py-3">
+                      <div className="flex flex-col mb-4 items-start justify-evenly py-3">
                         <div className="flex-shrink-0">
                           <img
                             className="w-auto lg:w-[25rem] h-auto lg:h-[25rem] mr-4"
@@ -197,14 +195,13 @@ const CartPage = () => {
                         </div>
                         <div className="flex-grow">
                           <h5>{product.title}</h5>
-                          {Object.keys(cartItem.selectedValues).map(
-                            (key, index) => (
-                              <p key={index}>
-                                {`${key}: ${cartItem.selectedValues[key]}`}
-                              </p>
-                            )
-                          )}
+                          {cartItem.selectedValues && Object.keys(cartItem.selectedValues).map((key, index) => (
+                            <p key={index}>
+                              {`${key}: ${cartItem.selectedValues[key]}`}
+                            </p>
+                          ))}
                         </div>
+
                         <div className="w-full flex items-center justify-between">
                           <div className="flex items-center">
                             <button
@@ -250,7 +247,7 @@ const CartPage = () => {
           </div>
           {cartProducts.length > 0 && (
             <div className="p-4">
-              <h5 className=" font-medium mb-4">Informații comandă</h5>
+              <h5 className="font-medium mb-4">Informații comandă</h5>
               <div className="mb-4">
                 <input
                   type="text"
@@ -351,7 +348,7 @@ const CartPage = () => {
           )}
         </div>
       </Layout>
-      <div className=" mt-[30px] lg:mt-[60px]">
+      <div className="mt-[30px] lg:mt-[60px]">
         <Footer />
       </div>
     </>

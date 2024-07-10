@@ -14,10 +14,10 @@ export default function Banner() {
                 if (lastItem && lastItem.bannerText) {
                     setBannerText(lastItem.bannerText);
                 } else {
-                    setBannerText('Banner text not found');
+                    setBannerText("Banner text not found");
                 }
             } catch (error) {
-                setBannerText('Failed to fetch banner text');
+                setBannerText("Failed to fetch banner text");
             }
         };
 
@@ -25,10 +25,8 @@ export default function Banner() {
     }, []);
 
     return (
-        <div className="w-[100vw] min-h-[5vh] bg-[#7F1515]  flex items-center justify-center">
-            <p className="text-[#fff] font-light uppercase">
-                {bannerText}
-            </p>
+        <div className="w-full min-h-[5vh] bg-[#7F1515] flex items-center justify-center">
+            <p className="text-white font-light uppercase">{bannerText}</p>
         </div>
     );
 }

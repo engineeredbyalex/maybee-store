@@ -1,30 +1,16 @@
-// importing useLayoutEffect useState
 import { useLayoutEffect, useState } from "react";
-// importing WishedProduct
 import Header from "@/components/Basic/Header";
-// importing WishedProduct
 import Banner from "@/components/Basic/Banner";
-// importing WishedProduct
 import Footer from "@/components/Basic/Footer";
-// importing WishedProduct
 import AboutUs from "@/components/Sections/AboutUs";
-// importing Page
 import Page from "@/components/Layout/Page";
-// importing NewProducts
 import NewProducts from "@/components/Sections/NewProducts";
-// importing Product model
 import { Product } from "@/models/Product";
-// importing mongooseConnect
 import { mongooseConnect } from "@/lib/mongoose";
-// importing WishedProduct
 import { WishedProduct } from "@/models/WishedProduct";
-// importing WishedProduct
 import { getServerSession } from "next-auth";
-// importing WishedProduct
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-// importing WishedProduct
 import { Setting } from "@/models/Setting";
-// importing scroll button
 import ScrollButton from "@/components/Basic/ScrollButton";
 import Landing from "@/components/Sections/Landing";
 import CategoriesPage from "./categories";
@@ -34,7 +20,6 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
   useLayoutEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-
       localStorage.setItem("scrollPosition", scrollPosition);
     };
 
@@ -55,11 +40,11 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
     <div className="overflow-x-hidden">
       <Banner />
       <Header />
-      <Landing/>
+      <Landing />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
-      <CategoriesSection/>
-      <AboutUs />
-      <Footer/>
+      {/* <CategoriesSection />
+      <AboutUs /> */}
+      {/* <Footer /> */}
     </div>
   );
 }
@@ -85,5 +70,3 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
-
-

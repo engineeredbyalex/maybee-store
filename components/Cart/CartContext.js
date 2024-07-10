@@ -25,11 +25,11 @@ export function CartContextProvider({ children }) {
     }
   }, [ls]);
 
-  function addProduct(productId, selectedValues) {
-  // Check if you are constructing cartProduct correctly
+  function addProduct(productId, productTitle, selectedValues) {
     const existingProductIndex = cartProducts.findIndex(
       (item) =>
         item.productId === productId &&
+        item.productTitle === productTitle &&
         item.selectedValues &&
         item.selectedValues.name === selectedValues.name &&
         item.selectedValues.values &&
@@ -49,12 +49,14 @@ export function CartContextProvider({ children }) {
         {
           localId: generateLocalId(),
           productId,
+          productTitle,
           selectedValues,
           quantity: 1,
         },
       ]);
     }
   }
+
   function updateQuantity(localId, newQuantity) {
     if (newQuantity <= 0) {
       removeProduct(localId);
@@ -79,14 +81,11 @@ export function CartContextProvider({ children }) {
 
     if (ls) {
       console.log("Local storage exists");
-      ls.removeItem("cart"); // Clear cart data from local storage
+      ls.removeItem("cart");
 
       const storedCartAfterClear = ls.getItem("cart");
-    } else {
-
     }
   }
-
 
   return (
     <CartContext.Provider
@@ -94,7 +93,9 @@ export function CartContextProvider({ children }) {
         cartProducts,
         setCartProducts,
         addProduct,
-        clearCart
+        updateQuantity,
+        removeProduct,
+        clearCart,
       }}
     >
       {children}

@@ -4,10 +4,10 @@ import ProductsGrid from "../Product/ProductsGrid";
 export default function NewProducts({ products, wishedProducts }) {
 
   return (
-    <div className="py-12 w-screen h-auto flex flex-col items-center justify-center overflow-x-hidden">
+    <div className="w-screen h-auto flex flex-col items-center justify-center overflow-x-hidden py-[2rem]">
       <Layout>
-        <div className="flex flex-col gap-8">
-          <h2 className="font-semibold uppercase">Produse noi</h2>
+        <div className="flex flex-col gap-[2rem]">
+          <h3 className="font-semibold uppercase">Produse noi</h3>
           <ProductsGrid products={products} wishedProducts={wishedProducts} />
         </div>
       </Layout>

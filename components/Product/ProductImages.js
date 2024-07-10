@@ -8,7 +8,7 @@ export default function ProductImages({ images }) {
       <div className="text-center">
         <img
           src={activeImage}
-          className="w-full object-cover rounded-xl"
+          className="w-full object-cover"
           alt="Product Image"
         />
       </div>
