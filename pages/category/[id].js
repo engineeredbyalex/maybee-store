@@ -4,7 +4,7 @@ import Header from "@/components/Basic/Header";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Banner";
 import Layout from "@/components/Layout/Layout";
-import ProductsGrid from "@/components/Product/ProductsGrid copy";
+import ProductsGrid from "@/components/Product/ProductsGridAll";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
 
