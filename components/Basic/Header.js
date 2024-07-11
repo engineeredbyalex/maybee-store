@@ -94,9 +94,9 @@ export default function Header() {
             <Link href="/categories">
               <h6 className="font-normal link-item">Catalog</h6>
             </Link>
-            <Link href="/blog">
+            {/* <Link href="/blog">
               <h6 className="font-normal link-item">Blog</h6>
-            </Link>
+            </Link> */}
             <Link href="/aboutus">
               <h6 className="font-normal text-center link-item">Despre noi</h6>
             </Link>
@@ -106,7 +106,7 @@ export default function Header() {
               <Cart className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 svg_icon" />
               <p className="absolute -top-2 -right-2 w-6 h-6 md:w-6 md:h-6 lg:w-7 lg:h-7 flex items-center justify-center bg-orange-300 text-white rounded-full text-xs md:text-sm lg:text-base">{cartProducts ? cartProducts.length : 0}</p>
               {isCartHovered && (
-                <div className="absolute right-0 top-full mt-2 w-64 bg-white text-black shadow-lg p-4">
+                <div className="absolute right-0 top-full mt-2 w-64 bg-white text-black shadow-lg p-4 hidden lg:flex">
                   {cartProducts.length > 0 ? (
                     <div>
                       {cartProducts.map((item) => (
@@ -118,7 +118,7 @@ export default function Header() {
 
                     </div>
                   ) : (
-                    <div>No items in cart</div>
+                      <div>Nu există produse în coş</div>
                   )}
                 </div>
               )}

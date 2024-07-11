@@ -42,9 +42,9 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
       <Header />
       <Landing />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
-      {/* <CategoriesSection />
-      <AboutUs /> */}
-      {/* <Footer /> */}
+      <CategoriesSection />
+      <AboutUs /> 
+      <Footer />
     </div>
   );
 }

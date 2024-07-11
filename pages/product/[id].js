@@ -35,10 +35,15 @@ export default function ProductPage({ product }) {
             <div className="w-full lg:w-1/2 flex justify-center">
               <ProductImages images={product.images} />
             </div>
-            <div className="w-full lg:w-1/2 flex flex-col gap-6">
+            <div className="w-full lg:w-1/2 flex flex-col">
               <div className="flex flex-col gap-2">
                 <h4 className=" text-black font-semibold ">{product.title}</h4>
                 <h5 className="font-medium text-black">{product.price} RON</h5>
+                <div>
+                  <h5 className="font-normal text-black">{product.weight} grame</h5>
+                  <h5 className="font-normal text-black">Timp de ardere :{product.weight}</h5>
+         </div>
+
               </div>
               <div className="flex flex-col gap-5">
                 {product.properties?.map((property, index) => (
@@ -69,6 +74,7 @@ export default function ProductPage({ product }) {
                   <h6 className="text-white font-normal">Adaugă în coș</h6>
                 </FlyingButton>
               </div>
+              <h5 className="font-normal text-black mt-5">{product.description} RON</h5>
             </div>
           </div>
           {product.scent ?
@@ -88,9 +94,9 @@ export default function ProductPage({ product }) {
             ("")
           }
           <div className="mt-16">
-            <div className="gap-5 flex flex-col items-center justify-center">
-              <h5 className="text-[#000] font-bold uppercase text-center">Detalii despre întreţinere</h5>
-              <div className="flex items-center justify-center gap-[5rem] flex-col lg:gap-[5rem] ">
+            <div className="gap-5 flex flex-col items-start justify-center">
+              <h4 className="text-[#000] font-normal  text-left">Detalii despre întreţinere</h4>
+              <div className="w-full flex items-center justify-between gap-[5rem] flex-col lg:flex-row lg:gap-[5rem] ">
                 <INTRETINERELUMANARI className="w-[100%] lg:w-[40rem] " />
                 <INTRETINERECEARA className="w-[100%] lg:w-[40rem] " />
               </div>

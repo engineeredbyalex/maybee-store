@@ -23,7 +23,7 @@ export default function Button({ children, variant = "solid", ...rest }) {
 
   return (
     <button className={buttonClassName} {...rest}>
-      <h5 className="uppercase">{children}</h5>
+      {children}
     </button>
   );
 }

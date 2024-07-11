@@ -19,13 +19,13 @@ export default function Landing() {
             </Button>
           </div>
         </div>
-        <div className='w-full xl:w-1/2 xl:h-[40rem] absolute inset-0 lg:relative'>
+        <div className='w-full xl:w-1/2 xl:h-[40rem] absolute inset-0 lg:relative '>
           <Image
             src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FFree_Candle_Mockup_3.png?alt=media&token=5783c6a9-b718-41b5-afb3-0cb1b7dc6d78" // Update with the correct image path
             alt="Hero Background"
             layout="fill"
             objectFit="cover"
-            className="z-0"
+            className="z-0 xl:rounded-xl "
           />
         </div>
       </div>
