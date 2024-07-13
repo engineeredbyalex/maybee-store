@@ -1,20 +1,28 @@
+// pages/api/orders.js
 import { mongooseConnect } from "@/lib/mongoose";
 import { Order } from "@/models/Order";
+import { getSession } from "next-auth/react";
 
 export default async function handle(req, res) {
   try {
     await mongooseConnect();
 
-    console.log('Received request:', req.body);
-
-      const { method } = req;
+    const { method } = req;
 
     if (method === "GET") {
+      const session = await getSession({ req });
+
+      if (!session) {
+        return res.status(401).json({ error: "Unauthorized" });
+      }
+
+      const userEmail = session.user.email;
+
       if (req.query?.id) {
-        const data = await Order.findOne({ _id: req.query.id, userEmail: req.headers['user-email'] });
+        const data = await Order.findOne({ _id: req.query.id, userEmail });
         res.json(data);
       } else {
-        const data = await Order.find({ userEmail: req.headers['user-email'] });
+        const data = await Order.find({ userEmail });
         res.json(data);
       }
     } else {

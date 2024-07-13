@@ -10,7 +10,7 @@ export default function Banner() {
         const fetchData = async () => {
             try {
                 const response = await axios.get("/api/customization");
-                const lastItem = response.data[response.data.length - 1]; // Get the last item from the array
+                const lastItem = response.data[response.data.length - 1];
                 if (lastItem && lastItem.bannerText) {
                     setBannerText(lastItem.bannerText);
                 } else {

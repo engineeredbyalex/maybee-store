@@ -74,15 +74,15 @@ export default function ProductPage({ product }) {
                   <h6 className="text-white font-normal">Adaugă în coș</h6>
                 </FlyingButton>
               </div>
-              <h5 className="font-normal text-black mt-5">{product.description} RON</h5>
+              <p className="font-normal text-black mt-5">{product.description} RON</p>
             </div>
           </div>
           {product.scent ?
             (<Container>
               <div className="flex items-center justify-center overflow-hidden">
-                <div className="w-full flex flex-col items-center justify-center text-center mb-5">
+                <div className="w-full flex flex-col items-center justify-center text-center mb-5 lg:grid grid-cols-2">
                   {product?.scent && Object.entries(product.scent).map(([scentName, scentDescription]) => (
-                    <div className="w-1/2" key={scentName}>
+                    <div className="w-1/2 lg:w-full" key={scentName}>
                       <h3 className="text-[#000]">{scentName}</h3>
                       <p className="text-[#000]">{scentDescription}</p>
                     </div>

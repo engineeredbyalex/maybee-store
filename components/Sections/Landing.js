@@ -13,7 +13,7 @@ export default function Landing() {
           </h2>
           <div className='w-full px-[1.5rem] lg:px-0'>
             <Button variant="solid_dark">
-              <Link href="/aboutus" passHref>
+              <Link href="/products" passHref>
                 <h5 className="uppercase">Cumpără acum</h5>
               </Link>
             </Button>

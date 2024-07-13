@@ -152,7 +152,7 @@ const CartPage = () => {
       <>
         <Banner />
         <Header />
-        <div className="mt-[10rem]">
+        <div className="mt-[5rem]">
           <Layout>
             <div>
               <div>
@@ -171,11 +171,11 @@ const CartPage = () => {
       <Banner />
       <Header />
       <Layout>
-        <div className="w-full min-h-screen mt-[15rem] text-[#000]">
-          <div className="bg-transparent mt-4 p-4">
-            <h4 className="font-bold mb-4">Coș de cumpărături</h4>
+        <div className="w-full min-h-screen mt-[5rem] text-[#000]">
+          <div className="mt-4 p-4">
+            <h4 className="mb-4">Coș de cumpărături</h4>
             {cartProducts.length === 0 && (
-              <p className="text-lg font-light mb-4">Coșul dvs. este gol.</p>
+              <p className="font-light mb-4">Coșul dvs. este gol.</p>
             )}
             {products?.length > 0 && (
               <div className="">

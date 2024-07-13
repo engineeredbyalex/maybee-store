@@ -15,7 +15,6 @@ export default function Header() {
   const [isCartHovered, setIsCartHovered] = useState(false);
   const navigationBarRef = useRef(null);
   const { cartProducts } = useContext(CartContext);
-  console.log(cartProducts)
 
   const handleToggle = () => {
     setToggle(!toggle);
@@ -94,9 +93,9 @@ export default function Header() {
             <Link href="/categories">
               <h6 className="font-normal link-item">Catalog</h6>
             </Link>
-            {/* <Link href="/blog">
+            <Link href="/blog">
               <h6 className="font-normal link-item">Blog</h6>
-            </Link> */}
+            </Link>
             <Link href="/aboutus">
               <h6 className="font-normal text-center link-item">Despre noi</h6>
             </Link>

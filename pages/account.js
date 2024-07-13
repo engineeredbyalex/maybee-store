@@ -58,42 +58,42 @@ const AccountPage = () => {
       <>
         <Banner />
         <Header />
-        <Page>
+        <div className="mt-[5rem]">
           <Layout>
-            <div className="mt-20 w-full flex flex-col items-center justify-center">
-              <div className="w-full max-w-3xl flex flex-col items-center justify-center text-center bg-white p-8 rounded-lg shadow-md">
-                <h4 className="uppercase text-2xl mb-4">Bună, {session.user?.name}</h4>
-                <p className="mb-8">
+            <div className=" w-full flex flex-col items-center justify-center">
+              <div className="w-full flex flex-col items-start justify-center text-left bg-white p-8 rounded-lg shadow-md">
+                <h4 className="mb-4">Bună, {session.user?.name}</h4>
+                <p className="mb-8 ">
                   În acest panou de control al contului tău poţi accesa{" "}
-                  <Link className="underline" href="/orders">
+                  <Link className="" href="/orders">
                     comenzile recente
                   </Link>
                   , să îţi administrezi{" "}
-                  <Link className="underline" href="/address">
+                  <Link className="" href="/address">
                     adresele de livrare şi de facturare
                   </Link>{" "}
                   şi{" "}
-                  <Link className="underline" href="/details">
+                  <Link className="" href="/details">
                     să îţi editezi parola şi detaliile contului.
                   </Link>
                 </p>
-                <ul className="w-full flex flex-col items-center text-left space-y-4">
-                  <li className="underline list-disc">
+                <ul className="w-full flex flex-col items-start text-left space-y-4">
+                  <li className="list-disc">
                     <Link href="/orders">
                       <h4>Comenzile recente</h4>
                     </Link>
                   </li>
-                  <li className="underline list-disc">
+                  <li className="list-disc">
                     <Link href="/address">
                       <h4>Adresele de livrare şi de facturare</h4>
                     </Link>
                   </li>
-                  <li className="underline list-disc">
+                  <li className="list-disc">
                     <Link href="/details">
                       <h4>Editează parola şi detaliile contului</h4>
                     </Link>
                   </li>
-                  <li className="underline list-disc">
+                  <li className="list-disc">
                     <button onClick={logout} className="focus:outline-none">
                       <h4>Deconectează-te</h4>
                     </button>
@@ -102,7 +102,7 @@ const AccountPage = () => {
               </div>
             </div>
           </Layout>
-        </Page>
+        </div>
         <Footer />
       </>
     );
@@ -111,8 +111,7 @@ const AccountPage = () => {
     <div>
       <Banner />
       <Header />
-      <Page>
-          <div className="w-full h-auto py-12 mt-[1rem] flex items-start justify-center">
+      <div className="mt-[5rem] mb-[5rem]">
         <Layout>
             <h5 className="text-[#000] mt-[1rem] mb-[0.5rem]">Conectare</h5>
      
@@ -167,7 +166,6 @@ const AccountPage = () => {
             </form>
         </Layout>
           </div>
-      </Page>
       <Footer />
     </div>
   );

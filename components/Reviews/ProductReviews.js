@@ -65,7 +65,7 @@ const ProductReviews = ({ product }) => {
             />
           </div>
           <div className='w-full'>
-            <Input
+            <Textarea
               value={description}
               onChange={(ev) => setDescription(ev.target.value)}
               placeholder="Părerea dvs."
@@ -85,21 +85,23 @@ const ProductReviews = ({ product }) => {
 
       {/* All Reviews */}
       <div className='mb-10'>
-        <div className='w-full flex flex-col items-center justify-center rounded-lg p-6 '>
+        <div className='w-full flex flex-col items-center justify-center rounded-lg p-6'>
           <h5 className='uppercase font-medium text-[#000] mb-4'>Toate recenziile:</h5>
           {reviews.length === 0 ? (
             <p className='text-[#767676] text-center'>Fii primul care pune o recenzie.</p>
           ) : (
-            reviews.map((review) => (
-              <div className='border-b border-gray-200 py-4' key={review._id}>
-                <p className='text-[#000] font-semibold'>{review.name}</p>
-                <p className='text-[#000] font-medium'>{review.title}</p>
-                <p className='text-[#000]'>{review.description}</p>
-                <time className='text-[#000] text-sm'>
-                  {(new Date(review.createdAt)).toLocaleString('sv-SE')}
-                </time>
-              </div>
-            ))
+            <div className='flex flex-wrap gap-4'>
+              {reviews.map((review) => (
+                <div className='border border-gray-200 p-4 rounded-lg w-full lg:w-[48%] xl:w-[32%]' key={review._id}>
+                  <p className='text-[#000] font-semibold'>{review.name}</p>
+                  <p className='text-[#000] font-medium'>{review.title}</p>
+                  <p className='text-[#000]'>{review.description}</p>
+                  <time className='text-[#000] text-sm'>
+                    {(new Date(review.createdAt)).toLocaleString('sv-SE')}
+                  </time>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
