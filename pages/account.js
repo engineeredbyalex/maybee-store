@@ -19,9 +19,6 @@ const AccountPage = () => {
     await signOut('credentials');
   }
 
-  async function login() {
-    await signIn('google');
-  }
 
   useEffect(() => {
     if (!session) {

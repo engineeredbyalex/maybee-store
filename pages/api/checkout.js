@@ -40,7 +40,7 @@ export default async function handler(req, res) {
           price_data: {
             currency: 'ron',
             product_data: { name: productInfo.title },
-            unit_amount: productInfo.price * 100,  // Corrected
+            unit_amount: productInfo.price * 100,
           },
         });
 
@@ -69,7 +69,7 @@ export default async function handler(req, res) {
       line_items: lineItemsForStripe,
       mode: 'payment',
       customer_email: email,
-      success_url: process.env.PUBLIC_URL + '/cart',
+      success_url: process.env.PUBLIC_URL + '/success?order_id={CHECKOUT_SESSION_ID}',
       cancel_url: process.env.PUBLIC_URL + '/cart',
       allow_promotion_codes: true,
       payment_intent_data: {
@@ -98,11 +98,10 @@ export default async function handler(req, res) {
       postalCode,
       streetAddress,
       country,
-      paid: true,
+      paid: false,
       userEmail: session?.user?.email,
     });
 
-    // Now that `orderDoc` is defined, you can use it in metadata
     stripeSession.metadata = { orderId: orderDoc._id.toString() };
 
     res.json({

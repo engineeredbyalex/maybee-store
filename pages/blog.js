@@ -23,7 +23,7 @@ export default function Blog() {
       <Header />
       <Layout>
         <div className="w-full flex flex-col items-start justify-center mt-[5rem]">
-          <h4 className="mb-8 text-4xl font-bold">Blog</h4>
+          <h4 className="mb-5">Blog</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
             {articles.map((article) => (
               <div key={article._id} className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center justify-center">

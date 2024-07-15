@@ -1,12 +1,12 @@
-import Header from "@/components/Basic/Header";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/components/Cart/CartContext";
-import axios from "axios";
 import { useSession } from "next-auth/react";
+import axios from "axios";
 import Link from "next/link";
+import Header from "@/components/Basic/Header";
 import Footer from "@/components/Basic/Footer";
 import Layout from "@/components/Layout/Layout";
 import Banner from "@/components/Basic/Banner";
+import { CartContext } from "@/components/Cart/CartContext";
 
 const CartPage = () => {
   const {
@@ -15,6 +15,7 @@ const CartPage = () => {
     clearCart,
     setCartProducts,
   } = useContext(CartContext);
+
   const { data: session } = useSession();
   const [products, setProducts] = useState([]);
   const [name, setName] = useState("");
@@ -147,24 +148,22 @@ const CartPage = () => {
     return total;
   }, 0);
 
-  if (isSuccess) {
-    return (
-      <>
-        <Banner />
-        <Header />
-        <div className="mt-[5rem]">
-          <Layout>
-            <div>
-              <div>
-                <h1>Mulțumim pentru comandă</h1>
-                <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
-              </div>
-            </div>
-          </Layout>
-        </div>
-      </>
-    );
-  }
+  // if (isSuccess) {
+  //   return (
+  //     <>
+  //       <Banner />
+  //       <Header />
+  //       <div className="mt-[5rem]">
+  //         <Layout>
+  //           <div>
+  //             <h1>Mulțumim pentru comandă</h1>
+  //             <p>Vă vom trimite un email când comanda dvs. va fi expediată.</p>
+  //           </div>
+  //         </Layout>
+  //       </div>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
@@ -173,7 +172,7 @@ const CartPage = () => {
       <Layout>
         <div className="w-full min-h-screen mt-[5rem] text-[#000]">
           <div className="mt-4 p-4">
-            <h4 className="mb-4">Coș de cumpărături</h4>
+            <h3 className="mb-4">Coș de cumpărături</h3>
             {cartProducts.length === 0 && (
               <p className="font-light mb-4">Coșul dvs. este gol.</p>
             )}
@@ -195,33 +194,34 @@ const CartPage = () => {
                         </div>
                         <div className="flex-grow">
                           <h5>{product.title}</h5>
-                          {cartItem.selectedValues && Object.keys(cartItem.selectedValues).map((key, index) => (
-                            <p key={index}>
-                              {`${key}: ${cartItem.selectedValues[key]}`}
-                            </p>
-                          ))}
+                          {cartItem.selectedValues &&
+                            Object.keys(cartItem.selectedValues).map(
+                              (key, index) => (
+                                <p key={index}>
+                                  {`${key}: ${cartItem.selectedValues[key]}`}
+                                </p>
+                              )
+                            )}
                         </div>
 
                         <div className="w-full flex items-center justify-between">
-                          <div className="flex items-center">
+                          <div className="flex items-center gap-3">
                             <button
                               onClick={() => lessOfThisProduct(cartItem.localId)}
-                              className="px-2 py-1 bg-orange-300 text-[#000] mr-2"
+                              className="px-3 py-1 bg-orange-300 text-[#000] mr-2 text-2xl"
                             >
                               -
                             </button>
                             <p>{cartItem.quantity}</p>
                             <button
                               onClick={() => moreOfThisProduct(cartItem.localId)}
-                              className="px-2 py-1 bg-orange-300 text-[#000] ml-2"
+                              className="px-3 py-1 bg-orange-300 text-[#000] ml-2 text-2xl"
                             >
                               +
                             </button>
                           </div>
-                          <div className="">
-                            <h5>
-                              {product.price} RON
-                            </h5>
+                          <div>
+                            <h5>{product.price} RON</h5>
                           </div>
                         </div>
                       </div>
@@ -230,16 +230,28 @@ const CartPage = () => {
                 })}
                 <div className="mt-4">
                   <div className="flex justify-between">
-                    <div><p>Produse</p></div>
-                    <div><p>{productsTotal} RON</p></div>
+                    <div>
+                      <p>Produse</p>
+                    </div>
+                    <div>
+                      <p>{productsTotal} RON</p>
+                    </div>
                   </div>
                   <div className="flex justify-between">
-                    <div><p>Livrare</p></div>
-                    <div><p>{shippingFee} RON</p></div>
+                    <div>
+                      <p>Livrare</p>
+                    </div>
+                    <div>
+                      <p>{shippingFee} RON</p>
+                    </div>
                   </div>
                   <div className="flex justify-between">
-                    <div><p>Total</p></div>
-                    <div><p>{productsTotal + parseInt(shippingFee || 0)} RON</p></div>
+                    <div>
+                      <p>Total</p>
+                    </div>
+                    <div>
+                      <p>{productsTotal + parseInt(shippingFee || 0)} RON</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -255,7 +267,7 @@ const CartPage = () => {
                   value={name}
                   name="name"
                   onChange={(ev) => setName(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4">
@@ -265,7 +277,7 @@ const CartPage = () => {
                   value={email}
                   name="email"
                   onChange={(ev) => setEmail(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4">
@@ -275,7 +287,7 @@ const CartPage = () => {
                   value={phone}
                   name="phone"
                   onChange={(ev) => setPhone(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4 flex flex-col md:flex-row md:space-x-4 bg-transparent">
@@ -285,7 +297,7 @@ const CartPage = () => {
                   value={city}
                   name="city"
                   onChange={(ev) => setCity(ev.target.value)}
-                  className="border rounded-lg p-2 mb-4 md:mb-0 w-full bg-transparent"
+                  className="border rounded-lg p-2 mb-4 md:mb-0 w-full bg-transparent text-xl"
                 />
                 <input
                   type="text"
@@ -293,7 +305,7 @@ const CartPage = () => {
                   value={postalCode}
                   name="postalCode"
                   onChange={(ev) => setPostalCode(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4">
@@ -303,7 +315,7 @@ const CartPage = () => {
                   value={streetAddress}
                   name="streetAddress"
                   onChange={(ev) => setStreetAddress(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4">
@@ -313,13 +325,13 @@ const CartPage = () => {
                   value={country}
                   name="country"
                   onChange={(ev) => setCountry(ev.target.value)}
-                  className="border rounded-lg p-2 w-full bg-transparent"
+                  className="border rounded-lg p-2 w-full bg-transparent text-xl"
                 />
               </div>
               <div className="mb-4 flex items-center">
                 <div className="mr-2">
                   <Link href="/policy" className="text-blue-500">
-                    Sunt de acord cu termenii și condițiile
+                    <p>Sunt de acord cu termenii și condițiile</p>
                   </Link>
                 </div>
                 <input
@@ -334,13 +346,13 @@ const CartPage = () => {
                     onClick={goToPayment}
                     className="bg-black text-white px-4 py-2 rounded-lg w-full mb-4"
                   >
-                    Continuă la plată
+                    <p>Continuă la plată</p>
                   </button>
                   <button
                     onClick={clearCartHandler}
                     className="bg-red-500 text-white px-4 py-2 rounded-lg w-full"
                   >
-                    Golește coșul
+                    <p>Golește coșul</p>
                   </button>
                 </div>
               )}

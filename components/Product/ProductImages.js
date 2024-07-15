@@ -4,11 +4,11 @@ export default function ProductImages({ images }) {
   const [activeImage, setActiveImage] = useState(images?.[0]);
 
   return (
-    <div className="gap-4 flex flex-col  items-start justify-center">
+    <div className="gap-4 flex flex-col items-start justify-center">
       <div className="text-center">
         <img
           src={activeImage}
-          className="w-full object-cover"
+          className="w-[90%] md:w-[75%] lg:w-[60%] object-cover rounded-lg"
           alt="Product Image"
         />
       </div>

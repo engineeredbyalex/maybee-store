@@ -21,7 +21,7 @@ export default function Landing() {
         </div>
         <div className='w-full xl:w-1/2 xl:h-[40rem] absolute inset-0 lg:relative '>
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FFree_Candle_Mockup_3.png?alt=media&token=5783c6a9-b718-41b5-afb3-0cb1b7dc6d78" // Update with the correct image path
+            src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FWhatsApp%20Image%202024-07-09%20at%2017.29.10_ac0b9a25.jpg?alt=media&token=cbb97716-9d44-4909-9e5e-91f9eee93256" // Update with the correct image path
             alt="Hero Background"
             layout="fill"
             objectFit="cover"

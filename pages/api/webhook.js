@@ -3,9 +3,14 @@ import { Order } from "@/models/Order";
 const stripe = require('stripe')(process.env.STRIPE_SK);
 import { buffer } from 'micro';
 
-const endpointSecret = "whsec_634d3142fd2755bd61adaef74ce0504bd2044848c8aac301ffdb56339a0ca78d";
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(400).send('Method Not Allowed');
+    return;
+  }
+
   await mongooseConnect();
   const sig = req.headers['stripe-signature'];
 
@@ -14,21 +19,25 @@ export default async function handler(req, res) {
   try {
     event = stripe.webhooks.constructEvent(await buffer(req), sig, endpointSecret);
   } catch (err) {
+    console.error(`Webhook signature verification failed.`, err.message);
     res.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
 
-  // Handle the event
-  switch (event.type) {
-    case 'checkout.session.completed':
-      const data = event.data.object;
-      const orderId = data.metadata.orderId;
+  try {
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object;
+      const orderId = session.metadata.orderId;
       if (orderId) {
         await Order.findByIdAndUpdate(orderId, { paid: true });
       }
-      break;
-    default:
+    } else {
       console.log(`Unhandled event type ${event.type}`);
+    }
+  } catch (error) {
+    console.error("Error updating order status:", error);
+    res.status(500).send('Internal Server Error');
+    return;
   }
 
   res.status(200).send('ok');

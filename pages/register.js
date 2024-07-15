@@ -48,12 +48,12 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Banner />
       <Header />
       <Page>
-        <Container>
-          <h5 className="text-[#000] mt-[1rem] mb-[0.5rem]">Înregistrare</h5>
+        <Container className="w-full">
+          <h5 className="text-[#000] mt-[5rem] mb-[0.5rem]">Înregistrare</h5>
           <Link className="" href="/account">
             <p className="text-[#000] underline underline-offset-4 underline-[#000]">
               Conectare
@@ -61,25 +61,25 @@ export default function RegisterPage() {
           </Link>
           <form
             onSubmit={handleSubmit}
-            className="mt-10 w-sfull"
+            className="mt-10 w-full flex flex-col items-start justify-center"
           >
-            <div className="w-[100%] mb-4 flex flex-col ">
+            <div className="w-full mb-4 flex flex-col">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="name"
               >
-                Email
+                Nume şi prenume
               </label>
               <input
-                className="w-full py-2 px-3 appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-xl"
                 id="name"
-                type="name"
+                type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nume şi prenume"
               />
             </div>
-            <div className="w-[100%] mb-4 flex flex-col ">
+            <div className="w-full mb-4 flex flex-col">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="email"
@@ -87,7 +87,7 @@ export default function RegisterPage() {
                 Email
               </label>
               <input
-                className="w-full py-2 px-3 appearance-none border rounded  text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-xl"
                 id="email"
                 type="email"
                 value={email}
@@ -95,7 +95,7 @@ export default function RegisterPage() {
                 placeholder="Email"
               />
             </div>
-            <div className="mb-6">
+            <div className="w-full mb-6 flex flex-col">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
                 htmlFor="password"
@@ -103,7 +103,7 @@ export default function RegisterPage() {
                 Parola
               </label>
               <input
-                className=" border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-xl"
                 id="password"
                 type="password"
                 value={password}
@@ -111,9 +111,10 @@ export default function RegisterPage() {
                 placeholder="Parola"
               />
             </div>
-            <div className="flex items-center justify-start  w-full">
-              <button type="submit">Înregistrare</button>
-
+            <div className="w-full flex items-center justify-start">
+              <button className="w-full flex items-center justify-center bg-black text-white px-4 py-2 rounded-md transition-colors duration-500" type="submit">
+                <p>Crează cont</p>
+              </button>
             </div>
             {error && (
               <p className="text-red-500 text-xs italic mt-4">{error}</p>

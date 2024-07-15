@@ -6,11 +6,11 @@ import Image from "next/image";
 
 export default function AboutUs() {
   return (
-    <div className="bg-gray-100 py-10">
+    <div className="bg-gray-100 py-[3.5rem]">
       <Layout>
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 text-center lg:text-left">
-            <h3 className=" font-semibold text-black mb-6">Despre noi</h3>
+            <h3 className=" font-semibold text-black mb-[3.5rem]">Despre noi</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               MAYBEE a fost înființată în 2023 și creează manual produse precum săpunuri, lumânări și ceară parfumată.
               Ne specializăm în parfumuri personalizate și ambalaje frumoase pentru a aduce un sentiment special clienților noștri.
@@ -20,13 +20,13 @@ export default function AboutUs() {
             <div className="mt-8">
               <Link href="/aboutus" passHref>
                 <Button variant="solid_dark">
-                  <h5 className="uppercase text-lg">Află mai multe</h5>
+                  <h5 className="uppercase">Află mai multe</h5>
                 </Button>
               </Link>
             </div>
           </div>
-          <div className="lg:w-1/2 flex justify-end">
-            <div className="w-[18rem] h-[16rem] xl:w-[30rem] xl:h-[24rem] relative">
+          <div className="lg:w-1/2 flex justify-end mt-10 lg:mt-0">
+            <div className="w-[18rem] h-[18rem] xl:w-[30rem] xl:h-[30rem] relative">
               <Image
                 src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FIMG-20240709-WA0005.jpg?alt=media&token=49fecde3-b27f-4af0-98f5-a2f3449acc47"
                 alt="MAYBEE Image"

@@ -31,9 +31,10 @@ export default function ProductPage({ product }) {
       <Header />
       <div className="py-20 min-h-screen">
         <Layout>
-          <div className="flex flex-col lg:flex-row gap-10 w-full">
-            <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="flex items-start flex-col lg:flex-row gap-10 w-full">
+            <div className="w-full lg:w-1/2 flex flex-col justify-center">
               <ProductImages images={product.images} />
+              <p className="font-normal text-black mt-5 hidden lg:flex">{product.description}</p>
             </div>
             <div className="w-full lg:w-1/2 flex flex-col">
               <div className="flex flex-col gap-2">
@@ -42,7 +43,7 @@ export default function ProductPage({ product }) {
                 <div>
                   <h5 className="font-normal text-black">{product.weight} grame</h5>
                   <h5 className="font-normal text-black">Timp de ardere :{product.weight}</h5>
-         </div>
+                </div>
 
               </div>
               <div className="flex flex-col gap-5">
@@ -74,12 +75,12 @@ export default function ProductPage({ product }) {
                   <h6 className="text-white font-normal">Adaugă în coș</h6>
                 </FlyingButton>
               </div>
-              <p className="font-normal text-black mt-5">{product.description} RON</p>
+              <p className="font-normal text-black mt-5 lg:hidden">{product.description}</p>
             </div>
           </div>
           {product.scent ?
             (<Container>
-              <div className="flex items-center justify-center overflow-hidden">
+              <div className="mt-[3.5rem] flex items-center justify-center overflow-hidden">
                 <div className="w-full flex flex-col items-center justify-center text-center mb-5 lg:grid grid-cols-2">
                   {product?.scent && Object.entries(product.scent).map(([scentName, scentDescription]) => (
                     <div className="w-1/2 lg:w-full" key={scentName}>

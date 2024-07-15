@@ -3,7 +3,6 @@ import Link from "next/link";
 import logo2 from "@/public/images/logo2.png";
 import logo3 from "@/public/images/logo3.webp";
 import LogoSvg from "../../public/images/Logo.svg";
-import Layout from "../Layout/Layout";
 
 export default function Footer() {
     return (
@@ -21,40 +20,34 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="flex flex-col items-center lg:items-start">
-                    <p className="font-medium uppercase mb-2">Contact</p>
+                    <p className="font-medium  mb-2">Contact</p>
                     <p className="font-light text-gray-600">Maybee</p>
                     <p className="font-light text-gray-600">mixedarts.events@gmail.com</p>
                     <p className="font-light text-gray-600">Mixed Arts Events SRL</p>
-                    <p className="font-light text-gray-600">CUI : 38795036</p>
-                    <p className="font-light text-gray-600">Adresă : Timișoara, jud Timiș</p>
+                    <p className="font-light text-gray-600">CUI: 38795036</p>
+                    <p className="font-light text-gray-600">Adresă: Timișoara, jud Timiș</p>
                 </div>
                 <div className="flex flex-col items-center lg:items-start">
-                    <p className="font-medium uppercase mb-2">Customer Service</p>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">Contact Us</p>
+                    <p className="font-medium  mb-2">Servicii Clienți</p>
+                    {/* <Link href="/contact">
+                        <p className="font-light text-gray-600 mb-2">Contactați-ne</p>
                     </Link>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">Shipping & Returns</p>
-                    </Link>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">FAQ</p>
+                    <Link href="/shippingandreturns">
+                        <p className="font-light text-gray-600 mb-2">Livrare & Retururi</p>
+                    </Link> */}
+                    <Link href="/faq">
+                        <p className="font-light text-gray-600 mb-2">Întrebări frecvente</p>
                     </Link>
                 </div>
                 <div className="flex flex-col items-center lg:items-start">
-                    <p className="font-medium uppercase mb-2">About Us</p>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">Our Story</p>
-                    </Link>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">Careers</p>
-                    </Link>
-                    <Link href="/">
-                        <p className="font-light text-gray-600 mb-2">Press</p>
+                    <p className="font-medium  mb-2">Despre Noi</p>
+                    <Link href="/aboutus">
+                        <p className="font-light text-gray-600 mb-2">Povestea Noastră</p>
                     </Link>
                 </div>
             </div>
-            <div className="w-full mt-5 flex flex-col items-center justify-center bg-black text-white">
-                <p className="font-light">CONSTRUIT DE :</p>
+            <div className="w-full py-2 mt-5 flex flex-col items-center justify-center bg-black text-white">
+                <p className="font-light">CONSTRUIT DE:</p>
                 <Link href="auraagency.eu" target="_blank" rel="noopener noreferrer" className="font-normal">
                     <p>auraagency.eu</p>
                 </Link>
