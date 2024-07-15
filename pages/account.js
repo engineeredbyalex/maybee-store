@@ -62,17 +62,17 @@ const AccountPage = () => {
                 <h4 className="mb-4">Bună, {session.user?.name}</h4>
                 <p className="mb-8 ">
                   În acest panou de control al contului tău poţi accesa{" "}
-                  <Link className="" href="/orders">
+                  
                     comenzile recente
-                  </Link>
+                
                   , să îţi administrezi{" "}
-                  <Link className="" href="/address">
+                 
                     adresele de livrare şi de facturare
-                  </Link>{" "}
-                  şi{" "}
-                  <Link className="" href="/details">
+                
+                  şi
+                 
                     să îţi editezi parola şi detaliile contului.
-                  </Link>
+              
                 </p>
                 <ul className="w-full flex flex-col items-start text-left space-y-4">
                   <li className="list-disc">

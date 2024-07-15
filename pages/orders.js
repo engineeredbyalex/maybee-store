@@ -5,13 +5,14 @@ import Link from "next/link";
 import Header from "@/components/Basic/Header";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Banner";
-import Page from "@/components/Layout/Page";
 import Layout from "@/components/Layout/Layout";
 
 export default function Orders() {
     const { data: session, status } = useSession();
     const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+    const [loadingOrders, setLoadingOrders] = useState(true);
+    const [loadingProducts, setLoadingProducts] = useState(true);
 
     useEffect(() => {
         if (session) {
@@ -23,14 +24,26 @@ export default function Orders() {
                 })
                 .then((response) => {
                     setOrders(response.data);
-                    setLoading(false);
+                    setLoadingOrders(false);
                 })
                 .catch((error) => {
                     console.error("Error fetching orders:", error);
-                    setLoading(false);
+                    setLoadingOrders(false);
+                });
+
+            axios
+                .get("/api/products")
+                .then((response) => {
+                    setProducts(response.data);
+                    setLoadingProducts(false);
+                })
+                .catch((error) => {
+                    console.error("Error fetching products:", error);
+                    setLoadingProducts(false);
                 });
         } else {
-            setLoading(false);
+            setLoadingOrders(false);
+            setLoadingProducts(false);
         }
     }, [session]);
 
@@ -58,6 +71,11 @@ export default function Orders() {
         );
     }
 
+    const getProductTitle = (productId) => {
+        const product = products.find((product) => product._id === productId);
+        return product ? product.title : "Produs necunoscut";
+    };
+
     return (
         <div>
             <Banner />
@@ -66,7 +84,7 @@ export default function Orders() {
                 <Layout>
                     <div className="w-full flex flex-col items-start justify-center">
                         <h5 className="text-[#000] mb-4">Comenzile dvs.</h5>
-                        {loading ? (
+                        {loadingOrders || loadingProducts ? (
                             <div>Se încarcă comenzile...</div>
                         ) : orders.length === 0 ? (
                             <p>Nu a fost găsită nicio comandă.</p>
@@ -75,10 +93,19 @@ export default function Orders() {
                                 {orders.map((order) => (
                                     <li key={order._id} className="bg-white p-4 rounded-lg shadow-md w-full">
                                         <h4 className="text-lg font-bold mb-2">Comanda #{order._id}</h4>
-                                        <p className="mb-2">Data: {new Date(order.date).toLocaleDateString()}</p>
-                                        <p className="mb-2">Total: {order.total} RON</p>
+                                        <p className="mb-2">Data: {new Date(order.createdAt).toLocaleDateString()}</p>
+                                        <p className="mb-2">Total: {order.line_items.reduce((total, item) => total + item.price * item.quantity, 0)} RON</p>
+                                        <ul className="mb-4">
+                                            {order.line_items.map((item, index) => (
+                                                <li key={index} className="border-b border-gray-200 py-2">
+                                                    <p>Produs: {getProductTitle(item.productId)}</p>
+                                                    <p>Preț: {item.price} RON</p>
+                                                    <p>Cantitate: {item.quantity}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
                                         <Link href={`/orders/${order._id}`}>
-                                            <p className="text-blue-500 ">Vezi detaliile comenzii</p>
+                                            <p className="text-blue-500">Vezi detaliile comenzii</p>
                                         </Link>
                                     </li>
                                 ))}

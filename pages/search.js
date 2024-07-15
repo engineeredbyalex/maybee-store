@@ -45,7 +45,7 @@ export default function SearchPage() {
             placeholder="Caută produse...."
           />
         {!isLoading && phrase !== '' && products.length === 0 && (
-          <h2 className="text-xl font-semibold mt-6 text-center">Nu există produse care conțin fraza "{phrase}"</h2>
+          <h4 className="font-normal text-left">Nu există produse care conțin fraza "{phrase}"</h4>
         )}
         {isLoading && (
           <p>Se încarcă</p>

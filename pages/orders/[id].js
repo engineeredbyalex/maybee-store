@@ -5,13 +5,14 @@ import Header from "@/components/Basic/Header";
 import Footer from "@/components/Basic/Footer";
 import Banner from "@/components/Basic/Banner";
 import Layout from "@/components/Layout/Layout";
-import Page from "@/components/Layout/Page";
 
 export default function OrderDetails() {
     const router = useRouter();
     const { id } = router.query;
     const [order, setOrder] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState([]);
+    const [loadingOrder, setLoadingOrder] = useState(true);
+    const [loadingProducts, setLoadingProducts] = useState(true);
 
     useEffect(() => {
         if (id) {
@@ -19,16 +20,29 @@ export default function OrderDetails() {
                 .get(`/api/orders?id=${id}`)
                 .then((response) => {
                     setOrder(response.data);
-                    setLoading(false);
+                    setLoadingOrder(false);
                 })
                 .catch((error) => {
                     console.error("Error fetching order:", error);
-                    setLoading(false);
+                    setLoadingOrder(false);
                 });
         }
     }, [id]);
 
-    if (loading) {
+    useEffect(() => {
+        axios
+            .get("/api/products")
+            .then((response) => {
+                setProducts(response.data);
+                setLoadingProducts(false);
+            })
+            .catch((error) => {
+                console.error("Error fetching products:", error);
+                setLoadingProducts(false);
+            });
+    }, []);
+
+    if (loadingOrder || loadingProducts) {
         return <div>Se încarcă...</div>;
     }
 
@@ -36,13 +50,18 @@ export default function OrderDetails() {
         return <div>Nu a fost găsită nicio comandă.</div>;
     }
 
+    const getProductTitle = (productId) => {
+        const product = products.find((product) => product._id === productId);
+        return product ? product.title : "Produs necunoscut";
+    };
+
     return (
         <div className="text-[#000] overflow-x-hidden">
             <Banner />
             <Header />
             <div className="mt-[5rem]">
                 <Layout>
-                    <div className=" w-full flex flex-col items-center justify-center">
+                    <div className="w-full flex flex-col items-center justify-center">
                         <div className="w-full max-w-3xl flex flex-col items-start justify-center text-left bg-white p-8 rounded-lg shadow-md">
                             <h3 className="uppercase mb-4 text-le">Detalii Comandă</h3>
                             <div className="text-left w-full">
@@ -57,6 +76,7 @@ export default function OrderDetails() {
                                 <ul className="mb-4">
                                     {order.line_items.map((item) => (
                                         <li key={item.productId} className="mb-2">
+                                            <p>Produs: {getProductTitle(item.productId)}</p>
                                             {item.selectedValues.map((value) => (
                                                 <p key={value.propertyName}>
                                                     {value.propertyName}: {value.value},
