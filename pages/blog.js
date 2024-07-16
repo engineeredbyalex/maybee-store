@@ -11,10 +11,13 @@ export default function Blog() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    axios
-      .get('/api/blog')
-      .then((response) => setArticles(response.data))
-      .catch((error) => console.error('Error fetching articles:', error));
+    axios.get('/api/blog/')
+      .then(response => {
+        setArticles(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching blog articles:", error);
+      });
   }, []);
 
   return (
@@ -23,11 +26,11 @@ export default function Blog() {
       <Header />
       <Layout>
         <div className="w-full flex flex-col items-start justify-center mt-[5rem]">
-          <h4 className="mb-5">Blog</h4>
+          <h4 className="mb-5 text-3xl font-bold">Blog</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16">
             {articles.map((article) => (
               <div key={article._id} className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center justify-center">
-                <div className="relative w-64 h-64 mb-6">
+                <div className="relative w-full h-64 mb-6">
                   <Image
                     src={article.thumbnail}
                     alt={article.title}
@@ -37,10 +40,9 @@ export default function Blog() {
                   />
                 </div>
                 <h4 className="text-2xl font-semibold mb-4">{article.title}</h4>
-
                 <Link key={article._id} href={`/blog/${article._id}`} passHref>
-                  <button className="bg-[#7F1515] text-white w-64 px-6 py-3 rounded-md hover:bg-[#5b0e0e] transition-colors duration-200 ">
-                    <p>    Read More</p>
+                  <button className="bg-[#7F1515] text-white w-full px-6 py-3 rounded-md hover:bg-[#5b0e0e] transition-colors duration-200">
+                    Read More
                   </button>
                 </Link>
               </div>
