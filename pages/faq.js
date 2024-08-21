@@ -1,7 +1,7 @@
-import Footer from "@/components/Basic/Footer";
-import Header from "@/components/Basic/Header";
-import Banner from "@/components/Basic/Banner";
-import Layout from "@/components/Layout/Layout";
+import Footer from "@/components/basic/Footer";
+import Header from "@/components/basic/Header";
+import Banner from "@/components/basic/Banner";
+import Layout from "@/components/layout/Layout";
 
 export default function Faq() {
     return (

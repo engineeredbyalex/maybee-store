@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import Link from "next/link";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Layout from "@/components/Layout/Layout";
-import Banner from "@/components/Basic/Banner";
-import { CartContext } from "@/components/Cart/CartContext";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Layout from "@/components/layout/Layout";
+import Banner from "@/components/basic/Banner";
+import { CartContext } from "@/components/cart/CartContext";
 
 const CartPage = () => {
   const {

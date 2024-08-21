@@ -8,7 +8,7 @@ export default function ProductImages({ images }) {
       <div className="text-center">
         <img
           src={activeImage}
-          className="w-[90%] md:w-[75%] lg:w-[60%] object-cover rounded-lg"
+          className="w-[100%] lg:w-[40rem] object-cover "
           alt="Product Image"
         />
       </div>
@@ -18,7 +18,7 @@ export default function ProductImages({ images }) {
           <div key={image} onClick={() => setActiveImage(image)} className="cursor-pointer">
             <img
               src={image}
-              className="w-16 h-16 lg:w-20 lg:h-20 object-cover rounded-lg"
+              className="w-16 h-16 lg:w-20 lg:h-20 object-cover "
               alt="Product Thumbnail"
             />
           </div>

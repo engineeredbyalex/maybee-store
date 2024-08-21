@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from "@/components/Basic/Banner";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Layout from "@/components/Layout/Layout";
+import Banner from "@/components/basic/Banner";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Layout from "@/components/layout/Layout";
 
 const AboutUsPage = () => {
   return (
@@ -12,7 +12,7 @@ const AboutUsPage = () => {
       <Layout>
         <div className="w-full flex flex-col items-start justify-center mt-[5rem]">
           <h4 className="mb-5 text-left w-full">Despre Noi</h4>
-          <div className="w-full text-[#000] text-left  gap-5 mb-10 flex flex-col items-start justify-center">
+          <div className="w-full text-left  gap-5 mb-10 flex flex-col items-start justify-center">
             <AboutUsParagraph>
               MAYBEE a fost înființată în 2023 la încurajarea și susținerea persoanelor apropiate, care au încercat și validat produsele noastre și au fost încântate de fiecare detaliu. Ne mândrim cu faptul că aducem bucurie și frumusețe în casele clienților noștri prin produse de calitate și design unic.
             </AboutUsParagraph>
@@ -34,7 +34,7 @@ const AboutUsPage = () => {
 };
 
 const AboutUsParagraph = ({ children }) => (
-  <p className="mb-4">
+  <p className="mb-4 text-gray-600">
     {children}
   </p>
 );

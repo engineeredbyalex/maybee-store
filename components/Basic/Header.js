@@ -1,140 +1,207 @@
-// Header.js
-
-import { useContext, useEffect, useState, useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
+import { CartContext } from "@/components/cart/CartContext";
 import Link from "next/link";
-import { gsap } from "gsap";
-import LogoSvg from "../../public/images/Logo.svg";
-import Menu from "../../public/icons/menu_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
-import Search from "../../public/icons/search_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
-import Cart from "../../public/icons/shopping_cart_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
-import Account from "../../public/icons/account_circle_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
-import { CartContext } from "../Cart/CartContext";
+import {
+  HiMenu,
+  HiX,
+  HiOutlineUser,
+  HiOutlineHeart,
+  HiOutlineShoppingCart,
+  HiOutlineSearch,
+} from "react-icons/hi";
+import Logo from "@/public/images/Logo.svg";
+import Banner from "./Banner";
+import Login from "../ui/LoginPopup";
+import gsap from "gsap";
 
 export default function Header() {
-  const [toggle, setToggle] = useState(false);
-  const [isCartHovered, setIsCartHovered] = useState(false);
-  const navigationBarRef = useRef(null);
+  // State for header toggle and login modal
+  const [headerToggle, setHeaderToggle] = useState(false);
+  const [loginToggle, setLoginToggle] = useState(false);
+
+  // Get cart products from context
   const { cartProducts } = useContext(CartContext);
 
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
+  // Ref for mobile menu items
+  const menuRef = useRef(null);
 
-  useEffect(() => {
-    const navigationBar = navigationBarRef.current;
+  // Toggle functions for header and login
+  const toggleHeader = () => setHeaderToggle(prev => !prev);
+  const toggleLogin = () => setLoginToggle(prev => !prev);
 
-    if (navigationBar) {
-      if (toggle) {
-        gsap.to(navigationBar, { backgroundColor: "#000", duration: 0.2 });
-        gsap.to(navigationBar, {
-          height: "95vh",
-          backgroundColor: "#000",
-          overflowY: "hidden",
-          duration: 0.5,
-          delay: 0.5,
-        });
-        gsap.to(".svg_icon", { fill: "#fff", color: "#fff", duration: 0.5 });
-        gsap.fromTo(
-          ".link-item",
-          { opacity: 0, y: -20 },
-          { opacity: 1, y: 0, duration: 0.5, delay: 1 }
-        );
-        document.body.style.overflow = "hidden";
-      } else {
-        gsap.to(navigationBar, { height: "72px" });
-        gsap.to(navigationBar, {
-          backgroundColor: "#fff",
-          duration: 0.5,
-          delay: 0.5,
-        });
-        gsap.to(".svg_icon", { fill: "#000", color: "#000", duration: 0.5 });
-        document.body.style.overflowX = "hidden";
-      }
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [toggle]);
-
+  // Effect to close header on large screens
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setToggle(false);
-        document.body.style.overflowX = "hidden";
-      }
+      if (window.innerWidth >= 1024) setHeaderToggle(false);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleNav =
-    "w-screen h-auto top-[40vh] bottom-0 left-0 right-0 gap-5 absolute text-[#fff] uppercase flex flex-col items-center justify-center z-[5]";
-  const unToggleNav =
-    "gap-[40px] w-1/2 text-[#000] uppercase hidden md:hidden lg:hidden xl:flex items-center justify-center";
+  // Effect for header animations
+  useEffect(() => {
+    if (headerToggle) {
+      // Animations for opening the header
+      gsap.to(".header", {
+        backgroundColor: "#252525",
+      });
+      gsap.to(".header", {
+        height: "100vh",
+        delay: 0.25,
+      });
+      gsap.to(".fill_elements", {
+        color: "#FFFEF2",
+      });
+      gsap.to(".logo_color", {
+        fill: "#FFFEF2",
+      });
+
+      // Animation for menu items
+      if (menuRef.current) {
+        gsap.fromTo(
+          menuRef.current.children,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: -20,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "power2.out",
+            delay: 0.5,
+          }
+        );
+      }
+    } else {
+      // Animations for closing the header
+      gsap.to(".header", {
+        backgroundColor: "#FFFEF2",
+        delay: 1,
+      });
+      gsap.to(".header", {
+        height: "8vh",
+      });
+      gsap.to(".fill_elements", {
+        color: "#252525",
+        delay: 1,
+      });
+      gsap.to(".logo_color", {
+        fill: "#252525",
+        delay: 1,
+      });
+      if (menuRef.current) {
+        gsap.to(menuRef.current.children, {
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          ease: "power2.inOut",
+        });
+      }
+    }
+  }, [headerToggle]);
 
   return (
-    <div>
-      <div ref={navigationBarRef} className="navigation_bar">
-        <div className="absolute top-4 md:top-3 lg:top-1 xl:top-1.5 w-full h-auto flex items-center justify-center">
-          <div className="ml-[1.5rem] md:ml-[2rem] lg:ml-[2.5rem] w-1/2 md:w-1/3 flex items-center justify-start">
-            <Link href={"/"}>
-              <LogoSvg className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 svg_icon" />
+    <div className="w-full absolute top-0">
+      <Banner />
+      <div className="header">
+        {/* Main header content */}
+        <div className="h-[8vh] px-10 flex items-center justify-between">
+          {/* Logo */}
+          <div className="w-1/4 flex items-center justify-start">
+            <Link href="/">
+              <Logo className="w-10 h-10 md:w-10 md:h-10 lg:w-12 lg:h-12 logo_color" />
             </Link>
           </div>
-          <div className={toggle ? toggleNav : unToggleNav}>
+          {/* Desktop navigation */}
+          <nav className="lg:w-1/2 hidden gap-5 lg:flex items-center justify-center">
             <Link href="/">
-              <h6 className="font-normal link-item">Acasă</h6>
+              <h5 className="fill_elements">Acasă</h5>
             </Link>
             <Link href="/products">
-              <h6 className="font-normal link-item">Produse</h6>
+              <h5 className="fill_elements">Produse</h5>
             </Link>
-            <Link href="/categories">
-              <h6 className="font-normal link-item">Catalog</h6>
+            <Link href="/catalog">
+              <h5 className="fill_elements">Catalog</h5>
             </Link>
-            {/* <Link href="/blog">
-              <h6 className="font-normal link-item">Blog</h6>
-            </Link> */}
-            <Link href="/aboutus">
-              <h6 className="font-normal text-center link-item">Despre noi</h6>
+            <Link href="/blog">
+              <h5 className="fill_elements">Blog</h5>
             </Link>
+            <Link href="/despre_noi">
+              <h5 className="fill_elements">Despre noi</h5>
+            </Link>
+            <Link href="/contact">
+              <h5 className="fill_elements">Contact</h5>
+            </Link>
+          </nav>
+          {/* User actions */}
+          <div className="lg:w-1/4 gap-4 flex items-center justify-end">
+            {/* Search button */}
+            <Link href="/search" className="fill_elements">
+              <HiOutlineSearch size={24} />
+            </Link>
+            {/* Login button */}
+            <button onClick={toggleLogin} className="fill_elements">
+              <span className="hidden lg:flex fill_elements"><h5>Cont</h5></span>
+              <HiOutlineUser className="lg:hidden" size={24} />
+            </button>
+            {/* Cabinet button */}
+            <Link href="/cabinet" className="fill_elements">
+              <span className="hidden lg:flex fill_elements"><h5>Cabinet</h5></span>
+              <HiOutlineHeart className="lg:hidden" size={24} />
+            </Link>
+            {/* Cart button */}
+            <Link href="/cart" className="fill_elements flex items-center justify-center gap-2">
+              <span className="hidden lg:flex fill_elements"><h5>Coș</h5></span>
+              <HiOutlineShoppingCart
+                className="lg:hidden fill_elements"
+                size={24}
+              />
+              {/* Cart items count */}
+              {cartProducts && cartProducts.length > 0 && (
+                <span className=" bg-red-500 text-white rounded-full  w-auto h-auto px-2  flex items-center justify-center">
+                  <h5> {cartProducts.length}</h5>
+                </span>
+              )}
+            </Link>
+            {/* Mobile menu toggle */}
+            <button onClick={toggleHeader} className="lg:hidden fill_elements">
+              {headerToggle ? <HiX size={30} /> : <HiMenu size={30} />}
+            </button>
           </div>
-          <div className="mr-[1.5rem] md:mr-[2rem] lg:mr-[2.5rem] gap-1 w-1/2 md:w-1/3 z-[1] flex items-center justify-end">
-            <Link href="/cart" className="flex items-center relative mr-2" onMouseEnter={() => setIsCartHovered(true)} onMouseLeave={() => setIsCartHovered(false)}>
-              <Cart className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 svg_icon" />
-              <p className="absolute -top-2 -right-2 w-6 h-6 md:w-6 md:h-6 lg:w-7 lg:h-7 flex items-center justify-center bg-orange-300 text-white rounded-full text-xs md:text-sm lg:text-base">{cartProducts ? cartProducts.length : 0}</p>
-              {/* {isCartHovered && (
-                <div className="absolute right-0 top-full mt-2 w-64 bg-white text-black shadow-lg p-4 hidden lg:flex">
-                  {cartProducts.length > 0 ? (
-                    <div>
-                      {cartProducts.map((item) => (
-                        <div key={item.localId} className="flex justify-between mb-2">
-                          <span>{typeof item.productTitle === 'object' ? Object.values(item.productTitle).join(', ') : item.productTitle}</span>
-                          <span>{item.quantity}</span>
-                        </div>
-                      ))}
-
-                    </div>
-                  ) : (
-                      <div>Nu există produse în coş</div>
-                  )}
-                </div>
-              )} */}
+        </div>
+        {/* Mobile navigation */}
+        <div
+          className={`lg:hidden overflow-hidden ${headerToggle ? "max-h-[calc(100vh-10vh)]" : "max-h-0"
+            }`}
+        >
+          <div
+            ref={menuRef}
+            className="gap-5 mt-[35%] flex flex-col items-center justify-center"
+          >
+            <Link href="/" className="mobile_menu">
+              <h4 className="fill_elements">Acasă</h4>
             </Link>
-            <Link href="/account">
-              <Account className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 svg_icon" />
+            <Link href="/products" className="mobile_menu">
+              <h4 className="fill_elements">Produse</h4>
             </Link>
-            <Link href="/search">
-              <Search className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 svg_icon" />
+            <Link href="/catalog" className="mobile_menu">
+              <h4 className="fill_elements">Catalog</h4>
             </Link>
-            <Menu
-              className="w-8 h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 svg_icon cursor-pointer xl:hidden"
-              onClick={handleToggle}
-            />
+            <Link href="/blog" className="mobile_menu">
+              <h4 className="fill_elements">Blog</h4>
+            </Link>
+            <Link href="/aboutUs" className="mobile_menu">
+              <h4 className="fill_elements">Despre noi</h4>
+            </Link>
+            <Link href="/contact" className="mobile_menu">
+              <h4 className="fill_elements">Contact</h4>
+            </Link>
           </div>
         </div>
       </div>
+      {/* Login modal */}
+      {loginToggle && (
+        <Login state={loginToggle} updateState={setLoginToggle} />
+      )}
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useSession, signIn } from "next-auth/react";
 import axios from "axios";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
-import Layout from "@/components/Layout/Layout";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
+import Layout from "@/components/layout/Layout";
 
 const Address = () => {
     const { data: session, status } = useSession();

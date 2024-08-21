@@ -1,11 +1,11 @@
-import Header from "@/components/Basic/Header";
+import Header from "@/components/basic/Header";
 import Input from "@/components/Layout/Input";
 import { useMemo, useEffect, useState } from "react";
 import axios from "axios";
-import ProductsGrid from "@/components/Product/ProductsGrid";
+import ProductsGrid from "@/components/product/ProductsGrid";
 import { debounce } from "lodash";
-import Layout from "@/components/Layout/Layout";
-import Banner from "@/components/Basic/Banner";
+import Layout from "@/components/layout/Layout";
+import Banner from "@/components/basic/Banner";
 
 export default function SearchPage() {
   const [phrase, setPhrase] = useState('');

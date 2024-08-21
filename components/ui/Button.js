@@ -1,4 +1,4 @@
-import { CartContext } from "../Cart/CartContext";
+import { CartContext } from "../cart/CartContext";
 import { useContext, useState, useEffect } from "react";
 import Cart from "../../public/icons/shopping_cart_24dp_E8EAED_FILL0_wght200_GRAD0_opsz24.svg";
 import { gsap } from "gsap";
@@ -29,14 +29,14 @@ export default function FlyingButton(props) {
   return (
     <div className={`${props.disabled ? 'pointer-events-none' : 'pointer-events-auto'} w-full`}>
       <button
-        className="cartButton w-full flex items-center justify-center bg-black text-white px-4 py-2 rounded-md transition-colors duration-500"
+        className="cartButton w-full flex items-center justify-center bg-black text-white px-4 py-2  transition-colors duration-500"
         onClick={handleClick}
         disabled={props.disabled}
       >
-        <div className="w-2/3 flex items-center justify-center">
+        <div className="lg:w-2/3 flex items-center justify-center">
           {props.children}
         </div>
-        <Cart className="cartIcon ml-2 h-7 w-7 transition-transform duration-300" />
+        <Cart className="hidden lg:flex cartIcon ml-2 h-7 w-7 transition-transform duration-300" />
       </button>
     </div>
   );

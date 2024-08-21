@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         return;
     }
 
-    const { name, email, phone, city, postalCode, streetAddress, country, cartProducts } = req.body;
+    const { name, email, phone, city, postalCode, streetAddress, country, cartProducts, status } = req.body;
     const session = await getServerSession(req, res, authOptions);
 
     try {
@@ -41,6 +41,7 @@ export default async function handler(req, res) {
             streetAddress,
             country,
             paid: false,
+            status,
             userEmail: session?.user?.email,
         });
 

@@ -1,5 +1,7 @@
+// importing useState andUseEffect
 import { useState, useEffect } from "react";
-import { AiOutlineArrowUp } from "react-icons/ai"
+// importing icons
+import { HiOutlineArrowNarrowUp } from "react-icons/hi";
 
 const ScrollButton = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -38,7 +40,7 @@ const ScrollButton = () => {
             {isVisible && (
                 <div className="w-full flex items-center justify-end">
                     <button onClick={scrollToTop} className="w-[50px] h-[50px] text-[#000] font-bold  rounded-full bg-[#fff] flex items-center justify-center mr-[30px] mt-5 ">
-                        <AiOutlineArrowUp size={30} />
+                        <HiOutlineArrowNarrowUp size={30} />
                     </button>
                 </div>
             )}

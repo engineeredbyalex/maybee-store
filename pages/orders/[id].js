@@ -1,10 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
-import Layout from "@/components/Layout/Layout";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
+import Layout from "@/components/layout/Layout";
+import OrderStatusIndicator from "@/components/basic/OrderStatusIndicator";
 
 export default function OrderDetails() {
     const router = useRouter();
@@ -71,8 +72,11 @@ export default function OrderDetails() {
                                 <h5 className="mb-2">Telefon: {order.phone}</h5>
                                 <h5 className="mb-2">Adresă: {order.streetAddress}, {order.city}, {order.postalCode}, {order.country}</h5>
                                 <h5 className="mb-4">Plătit: {order.paid ? 'Da' : 'Nu'}</h5>
+                                <h5 className="mb-4">Status comandă: {order.status}</h5>
 
-                                <h5 className="text-xl font-semibold mb-4">Produse Comandate:</h5>
+
+
+                                <h5 className="text-xl font-semibold mb-4 mt-6">Produse Comandate:</h5>
                                 <ul className="mb-4">
                                     {order.line_items.map((item) => (
                                         <li key={item.productId} className="mb-2">

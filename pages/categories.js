@@ -1,5 +1,5 @@
-import Header from "@/components/Basic/Header";
-import ProductBox from "@/components/Product/ProductBox";
+import Header from "@/components/basic/Header";
+import ProductBox from "@/components/product/ProductBox";
 import Link from "next/link";
 import { mongooseConnect } from "@/lib/mongoose";
 import { getServerSession } from "next-auth";
@@ -7,11 +7,11 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { WishedProduct } from "@/models/WishedProduct";
 import { Category } from "@/models/Category"; // Import Category model
 import { Product } from "@/models/Product"; // Import Product model
-import Footer from "@/components/Basic/Footer";
+import Footer from "@/components/basic/Footer";
 import { useLayoutEffect } from "react";
-import ScrollButton from "@/components/Basic/ScrollButton";
-import Layout from "@/components/Layout/Layout";
-import Banner from "@/components/Basic/Banner";
+import ScrollButton from "@/components/ui/ScrollButton";
+import Layout from "@/components/layout/Layout";
+import Banner from "@/components/basic/Banner";
 
 export default function CategoriesPage({ mainCategories, categoriesProducts, wishedProducts = [] }) {
   useLayoutEffect(() => {

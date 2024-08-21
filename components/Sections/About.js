@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
-import Layout from "../Layout/Layout";
-import Button from "../Basic/Button";
+import Layout from "../layout/Layout";
+import Button from "../ui/Button";
 import Image from "next/image";
 
 export default function AboutUs() {
@@ -9,9 +9,9 @@ export default function AboutUs() {
     <div className="bg-gray-100 py-[3.5rem]">
       <Layout>
         <div className="flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 text-center lg:text-left">
+          <div className="text-center lg:text-left">
             <h3 className=" font-semibold text-black mb-[3.5rem]">Despre noi</h3>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-black leading-relaxed">
               MAYBEE a fost înființată în 2023 și creează manual produse precum săpunuri, lumânări și ceară parfumată.
               Ne specializăm în parfumuri personalizate și ambalaje frumoase pentru a aduce un sentiment special clienților noștri.
               Toate produsele noastre sunt 100% naturale și bazate pe uleiuri esențiale bio, combinate armonios pentru a oferi o experiență deosebită.
@@ -23,17 +23,6 @@ export default function AboutUs() {
                   <h5 className="uppercase">Află mai multe</h5>
                 </Button>
               </Link>
-            </div>
-          </div>
-          <div className="lg:w-1/2 flex justify-end mt-10 lg:mt-0">
-            <div className="w-[18rem] h-[18rem] xl:w-[30rem] xl:h-[30rem] relative">
-              <Image
-                src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FIMG-20240709-WA0005.jpg?alt=media&token=49fecde3-b27f-4af0-98f5-a2f3449acc47"
-                alt="MAYBEE Image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
-              />
             </div>
           </div>
         </div>

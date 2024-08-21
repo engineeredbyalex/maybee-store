@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import axios from "axios";
 import Link from "next/link";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
-import Layout from "@/components/Layout/Layout";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
+import Layout from "@/components/layout/Layout";
+import OrderStatusIndicator from "@/components/basic/OrderStatusIndicator";
 
 export default function Orders() {
     const { data: session, status } = useSession();
@@ -23,7 +24,9 @@ export default function Orders() {
                     }
                 })
                 .then((response) => {
-                    setOrders(response.data);
+                    const sortedOrders = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    setOrders(sortedOrders);
+                    console.log(sortedOrders);
                     setLoadingOrders(false);
                 })
                 .catch((error) => {
@@ -83,7 +86,8 @@ export default function Orders() {
             <div className="mt-[5rem] min-h-screen">
                 <Layout>
                     <div className="w-full flex flex-col items-start justify-center">
-                        <h5 className="text-[#000] mb-4">Comenzile dvs.</h5>
+                        <h3 className=" font-semibold text-black mb-[3.5rem]">Comenzile dvs.</h3>
+
                         {loadingOrders || loadingProducts ? (
                             <div>Se încarcă comenzile...</div>
                         ) : orders.length === 0 ? (
@@ -95,6 +99,7 @@ export default function Orders() {
                                         <h4 className="text-lg font-bold mb-2">Comanda #{order._id}</h4>
                                         <p className="mb-2">Data: {new Date(order.createdAt).toLocaleDateString()}</p>
                                         <p className="mb-2">Total: {order.line_items.reduce((total, item) => total + item.price * item.quantity, 0)} RON</p>
+                                        <p>Status comandă : {order.status}</p>
                                         <ul className="mb-4">
                                             {order.line_items.map((item, index) => (
                                                 <li key={index} className="border-b border-gray-200 py-2">

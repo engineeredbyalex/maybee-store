@@ -2,11 +2,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Header from "@/components/Basic/Header";
-import Page from "@/components/Layout/Page";
-import Banner from "@/components/Basic/Banner";
+import Header from "@/components/basic/Header";
+import Page from "@/components/layout/Page";
+import Banner from "@/components/basic/Banner";
 import Container from "@/components/Layout/Container";
-import Footer from "@/components/Basic/Footer";
+import Footer from "@/components/basic/Footer";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");

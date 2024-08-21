@@ -2,91 +2,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
-    background-color: #ffffff;
-    font-size: 62.5%;
-    font-family: "Poppins", sans-serif;
+  @apply m-0 p-0 overflow-x-hidden bg-[#FFFEF2];
 }
 
 .playfair {
-    font-family: "Playfair Display", serif;
+  font-family: "Playfair Display", serif;
+}
+input {
+  @apply w-full bg-transparent text-[#666666]  border-b border-[#666666] focus:border-none;
 }
 
-/* Responsive Text Sizes */
 h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl;
+  @apply text-h1;
 }
 
 h2 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+  @apply text-h2;
 }
 
 h3 {
-    @apply text-3xl md:text-4xl lg:text-5xl;
+  @apply text-h3;
 }
 
 h4 {
-    @apply text-xl md:text-2xl lg:text-3xl;
+  @apply text-h4;
 }
 
 h5 {
-
-    @apply text-lg md:text-xl lg:text-2xl;
+  @apply text-h5;
 }
-
 h6 {
-    @apply text-base md:text-lg lg:text-xl;
+  @apply text-h6;
 }
 
 p {
-    @apply text-base md:text-lg lg:text-xl;
+  @apply text-p;
+}
+.header {
+  background-color: #fffef2;
+  height: 8vh;
+  width: 100%;
+  overflow: hidden;
 }
 
-.input_search {
-    background-color: transparent;
-    width: 100%;
-    height: 3rem;
-    padding: 1rem;
+.transition {
+  @apply transition-all ease-in-out duration-500;
 }
 
-.navigation_bar {
-    width: 100vw;
-    height: 72px;
-    position: absolute;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 13;
-    @media screen and (min-width: 1024px) {
-        width: 100vw;
-        height: 72px;
-        background-color: #fff;
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 13;
-    }
+.button {
+  @apply w-full bg-[#252525] py-2 px-4 text-white hover:bg-neutral-800;
 }
-
-.logo_svg {
-    fill: #000;
+.button_outline {
+  @apply bg-transparent py-2 px-4 text-[#252525] hover:bg-neutral-800 hover:text-white border border-gray-400;
 }
-
-.svg_icon {
-    fill: #000;
-    color: #000;
+.fill_elements {
+  color: #000;
 }
-
-.cartButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: auto;
-    padding: 12px 0;
-    background-color: black;
-    border-radius: 0.5rem;
+.logo_color {
+  fill: #000;
+}
+.mobile_menu {
+  color: #000;
+}
+.container {
+  @apply px-5 py-5 
+}
+.product_box {
+  @apply w-full h-[30rem] lg:w-full lg:h-[20rem] bg-black;
+}
+.product_hover {
+  @apply hover:scale-[101%] transition-all ease-in-out duration-200 cursor-pointer;
 }

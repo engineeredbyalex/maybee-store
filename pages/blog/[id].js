@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Banner from "@/components/Basic/Banner";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Layout from "@/components/Layout/Layout";
+import Banner from "@/components/basic/Banner";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Layout from "@/components/layout/Layout";
 
 export default function BlogFunction() {
     const router = useRouter();

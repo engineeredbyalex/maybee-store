@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "@/components/Basic/Header";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
-import Layout from "@/components/Layout/Layout";
-import ProductsGrid from "@/components/Product/ProductsGridAll";
+import Header from "@/components/basic/Header";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
+import Layout from "@/components/layout/Layout";
+import ProductsGrid from "@/components/product/ProductsGridAll";
 import { Category } from "@/models/Category";
 import { Product } from "@/models/Product";
 

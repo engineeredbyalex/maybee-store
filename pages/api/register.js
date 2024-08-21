@@ -1,8 +1,6 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import { Account } from "@/models/Account";
 import bcrypt from "bcrypt";
-import { mongooseConnect } from '@/lib/mongoose';
-import axios from 'axios';
 
 export default async function handler(req, res) {
     try {

@@ -1,10 +1,10 @@
 import React from "react";
-import ProductBox from "@/components/Product/ProductBox";
+import ProductBox from "@/components/product/ProductBox";
 
 export default function ProductsGrid({ products, wishedProducts = [] }) {
   return (
-    <div className="w-full h-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-hidden">
-      {products?.slice(0, 6).map((product) => (
+    <div className="w-full h-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5 overflow-x-hidden">
+      {products?.slice(0, 4).map((product) => (
         <ProductBox
           key={product._id}
           {...product}

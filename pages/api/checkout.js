@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   const {
     name, email, phone, city,
-    postalCode, streetAddress, country,
+    postalCode, streetAddress, country, status,
     cartProducts,
   } = req.body;
 
@@ -99,6 +99,7 @@ export default async function handler(req, res) {
       streetAddress,
       country,
       paid: false,
+      status,
       userEmail: session?.user?.email,
     });
 

@@ -1,8 +1,8 @@
 
-import Header from "@/components/Basic/Header";
-import Layout from "@/components/Layout/Layout";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
+import Header from "@/components/basic/Header";
+import Layout from "@/components/layout/Layout";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
 
 
 

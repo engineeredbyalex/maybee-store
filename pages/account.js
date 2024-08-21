@@ -1,12 +1,12 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import Header from "@/components/Basic/Header";
+import Header from "@/components/basic/Header";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Footer from "@/components/Basic/Footer";
-import Banner from "@/components/Basic/Banner";
-import Page from "@/components/Layout/Page";
-import Layout from "@/components/Layout/Layout";
+import Footer from "@/components/basic/Footer";
+import Banner from "@/components/basic/Banner";
+import Page from "@/components/layout/Page";
+import Layout from "@/components/layout/Layout";
 
 const AccountPage = () => {
   const router = useRouter();
@@ -59,8 +59,8 @@ const AccountPage = () => {
           <Layout>
             <div className=" w-full flex flex-col items-center justify-center">
               <div className="w-full flex flex-col items-start justify-center text-left bg-white p-8 rounded-lg shadow-md">
-                <h4 className="mb-4">Bună, {session.user?.name}</h4>
-                <p className="mb-8 ">
+                <h3 className="mb-4">Bună, {session.user?.name}</h3>
+                <h5 className="mb-8 ">
                   În acest panou de control al contului tău poţi accesa{" "}
                   
                     comenzile recente
@@ -73,24 +73,24 @@ const AccountPage = () => {
                  
                     să îţi editezi parola şi detaliile contului.
               
-                </p>
+                </h5>
                 <ul className="w-full flex flex-col items-start text-left space-y-4">
-                  <li className="list-disc">
+                  <li className="list-none">
                     <Link href="/orders">
                       <h4>Comenzile recente</h4>
                     </Link>
                   </li>
-                  <li className="list-disc">
+                  <li className="list-none">
                     <Link href="/address">
                       <h4>Adresele de livrare şi de facturare</h4>
                     </Link>
                   </li>
-                  <li className="list-disc">
+                  <li className="list-none">
                     <Link href="/details">
                       <h4>Editează parola şi detaliile contului</h4>
                     </Link>
                   </li>
-                  <li className="list-disc">
+                  <li className="list-none">
                     <button onClick={logout} className="focus:outline-none">
                       <h4>Deconectează-te</h4>
                     </button>

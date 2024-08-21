@@ -1,31 +1,48 @@
-import React from 'react';
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import Image from "next/image";
-import Button from "../Basic/Button";
+import LandingImage from "@/public/images/heroPhoto.jpg"
+import Link from "next/link";
 
 export default function Landing() {
+  const [featuredProduct, setFeaturedProduct] = useState([]);
+  const [product, setProduct] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/settings").then((res) => {
+      setProduct(res.data);
+      console.log(res.data);
+    });
+    axios.get("/api/products").then((res) => {
+      setFeaturedProduct(res.data);
+      console.log(res.data);
+    });
+  }, []);
+
   return (
-    <div className='w-screen h-[40rem] mt-[72px] relative'>
-      <div className='w-full h-full gap-5 flex flex-col lg:flex-row px-0 md:px-[2rem] lg:px-[2.5rem]'>
-        <div className='w-full xl:w-1/2 h-full text-left flex flex-col items-start justify-center gap-5 z-10 relative'>
-          <h2 className="text-white lg:text-black font-bold px-[1.5rem] lg:px-0">
-            Lumânări parfumate create <br /> cu grijă şi atenţie
-          </h2>
-          <div className='w-full px-[1.5rem] lg:px-0'>
-            <Button variant="solid_dark">
-              <Link href="/products" passHref>
-                <h5 className="uppercase">Cumpără acum</h5>
-              </Link>
-            </Button>
-          </div>
+    <div className="w-screen h-auto mt-[9vh]">
+      <div className="h-full w-full gap-10 px-5 flex flex-col-reverse items-center justify-center lg:flex-row lg:px-10 lg:gap-10">
+        <div className="w-full h-full text-[#252525] flex flex-col items-start justify-center lg:w-1/2 lg:h-full">
+          <h5 className="font-normal">Online only for a limited time</h5>
+          <h4 className="font-semibold mb-2 uppercase">Enjoy a premium gift</h4>
+          <h6 className="font-normal mb-4">
+            Receive a complimentary sample of Mandarin Facial Hydrating Cream—a
+            rapidly absorbed, lightly hydrating formulation replete with
+            citrus-derived botanicals—with all orders over €150.
+          </h6>
+          <Link className="w-full lg:w-1/2" href="/products">
+            <button className="button button_outline transition flex justify-between items-center space-x-2">
+              <span>Vezi toate produsele noastre</span>
+              <HiOutlineArrowNarrowRight size={24} />
+            </button>
+          </Link>
         </div>
-        <div className='w-full xl:w-1/2 xl:h-[40rem] absolute inset-0 lg:relative '>
+        <div className="w-full h-1/2 flex items-center justify-center lg:h-full lg:w-1/2">
           <Image
-            src="https://firebasestorage.googleapis.com/v0/b/maybee-store.appspot.com/o/images%2FWhatsApp%20Image%202024-07-09%20at%2017.29.10_ac0b9a25.jpg?alt=media&token=cbb97716-9d44-4909-9e5e-91f9eee93256" // Update with the correct image path
-            alt="Hero Background"
-            layout="fill"
-            objectFit="cover"
-            className="z-0 xl:rounded-xl "
+            src={LandingImage}
+            alt="Landing Image"
+            className="object-cover object-center w-full h-full"
           />
         </div>
       </div>

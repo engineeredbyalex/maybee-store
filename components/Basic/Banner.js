@@ -1,7 +1,8 @@
-// Importing axios
-import axios from "axios";
-// Importing useState and useEffect
-import { useEffect, useState } from "react";
+
+// importing axios
+import axios from 'axios';
+// importing useState and useEffect
+import { useEffect, useState } from 'react';
 
 export default function Banner() {
     const [bannerText, setBannerText] = useState("");
@@ -9,10 +10,10 @@ export default function Banner() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("/api/customization");
-                const lastItem = response.data[response.data.length - 1];
-                if (lastItem && lastItem.bannerText) {
-                    setBannerText(lastItem.bannerText);
+                const response = await axios.get("../api/customization");
+                if (response && response.data) {
+                    setBannerText(response.data.bannerText);
+                    console.log(response.data);
                 } else {
                     setBannerText("Banner text not found");
                 }
@@ -25,8 +26,10 @@ export default function Banner() {
     }, []);
 
     return (
-        <div className="w-full min-h-[5vh] bg-[#7F1515] flex items-center justify-center">
-            <p className="text-white font-light uppercase">{bannerText}</p>
+        <div className="w-full h-auto">
+            <div className="bg-[#252525] text-white w-screen py-2 text-center flex items-center justify-center">
+                <p className="font-extralight">{bannerText || "Banner not Found"}</p>
+            </div>
         </div>
     );
 }
