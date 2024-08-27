@@ -11,13 +11,12 @@ module.exports = {
     theme: {
         extend: {
             fontSize: {
-                'h1': '3rem', // Adjust these values as needed
-                'h2': '2.5rem',
+                'h1': '3.5rem', // Adjust these values as needed
+                'h2': '3rem',
                 'h3': '2rem',
                 'h4': '1.5rem',
-                'h5': '1.15rem',
-                'h6': '1rem',
-                'p': '0.8rem',
+                'h5': '1.25rem',
+                'h6': '1.25rem',
             },
         },
     },

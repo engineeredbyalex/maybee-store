@@ -37,32 +37,30 @@ export default function CategoriesSection() {
     ];
 
     return (
-        <div className="py-[3.5rem]">
-            <Layout>
-                <div className="w-full h-full flex flex-col items-start justify-center gap-[3.5rem]">
-                    <div >
-                        <h3 className="font-semibold uppercase">Categorii</h3>
-                        <Link href={'/categories/'}>
-                            <p className="text-[#000]">Vezi mai multe</p>
+        <div className="py-14">
+            <div className="container">
+                <div className="w-full flex flex-col items-start justify-center gap-14">
+                    <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full gap-4">
+                        <h3 className="">Comandă pe categorii</h3>
+                        <Link href="/categories">
+                            <h5 className="">Vezi mai multe</h5>
                         </Link>
                     </div>
-                    <div className="w-full h-auto gap-5 flex flex-col lg:grid lg:grid-cols-5">
+                    <div className="w-full grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
                         {categories.map((cat) => (
                             <Link href={cat.link} key={cat._id}>
-                                <div
-                                    className="w-full flex flex-col items-start"
-
-                                >
-                                    <div className="w-full aspect-w-1 aspect-h-1 bg-cover bg-center relative rounded-xl"
+                                <div className="flex flex-col items-center">
+                                    <div
+                                        className="w-full aspect-w-1 aspect-h-1 bg-cover bg-center relative rounded-xl"
                                         style={{ backgroundImage: `url(${cat.imageUrl})` }}
                                     />
-                                    <h4 className="mt-2 text-center text-black">{cat.name}</h4>
+                                    <h4 className="mt-4 text-center">{cat.name}</h4>
                                 </div>
                             </Link>
                         ))}
                     </div>
                 </div>
-            </Layout>
+            </div>
         </div>
     );
 }

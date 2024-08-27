@@ -1,28 +1,34 @@
-import { HiOutlineTruck, HiOutlineGift, HiOutlineShoppingBag } from "react-icons/hi";
+import {
+  HiOutlineTruck,
+  HiOutlineGift,
+  HiOutlineShoppingBag,
+} from "react-icons/hi";
 
 export default function OrderProcess() {
-    return (
-        <div className="w-screen h-auto py-10 flex flex-col items-center justify-center container ">
-            <div className="w-full text-center mb-8">
-                <h4 className="text-2xl font-semibold text-gray-800">Getting your products to you.</h4>
-            </div>
-            <div className="w-full h-auto flex flex-col lg:flex-row lg:justify-between items-center lg:items-start gap-10">
-                <div className="flex flex-col items-center justify-center transform transition-transform duration-500 hover:scale-105">
-                    <HiOutlineShoppingBag color="#4A4A4A" size={60} className="mb-4 transition-transform duration-300 transform hover:rotate-12" />
-                    <p className="text-lg font-medium text-gray-600">Choose your products</p>
-                    <h5 className="text-md text-gray-500">Browse and select your favorites.</h5>
-                </div>
-                <div className="flex flex-col items-center justify-center transform transition-transform duration-500 hover:scale-105">
-                    <HiOutlineTruck color="#4A4A4A" size={60} className="mb-4 transition-transform duration-300 transform hover:rotate-12" />
-                    <p className="text-lg font-medium text-gray-600">Processing your order</p>
-                    <h5 className="text-md text-gray-500">We prepare your items for shipment.</h5>
-                </div>
-                <div className="flex flex-col items-center justify-center transform transition-transform duration-500 hover:scale-105">
-                    <HiOutlineGift color="#4A4A4A" size={60} className="mb-4 transition-transform duration-300 transform hover:rotate-12" />
-                    <p className="text-lg font-medium text-gray-600">Enjoying your products</p>
-                    <h5 className="text-md text-gray-500">Experience the joy of your purchase.</h5>
-                </div>
-            </div>
+  return (
+    <div className="h-auto w-auto px-5 lg:px-10 gap-10 lg:gap-14 mt-10 lg:mt-20 flex flex-col items-center justify-center overflow-hidden">
+      <div className="w-full gap-4 flex flex-col items-start justify-center">
+        <h3 className="">Procesul de comanda</h3>
+      </div>
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14 text-center">
+        <div className="text-left lg:text-center flex flex-col items-start lg:items-center space-y-4">
+          <HiOutlineShoppingBag color="#000" size={50} />
+          <h3 className=" ">Alege produsul</h3>
+          <h5 className=" ">
+            Alege produsul din gama noastră variată de produse
+          </h5>
         </div>
-    );
+        <div className="text-left lg:text-center flex flex-col items-start lg:items-center space-y-4">
+          <HiOutlineTruck color="#000" size={50} />
+          <h3 className=" ">Livrare rapida</h3>
+          <h5 className=" ">Produsul tău va fi livrat rapid și în siguranță</h5>
+        </div>
+        <div className="text-left lg:text-center flex flex-col items-start lg:items-center space-y-4">
+          <HiOutlineGift color="#000" size={50} />
+          <h3 className="">Cadou special</h3>
+          <h5 className="">Bucură-te de un cadou special la fiecare comandă</h5>
+        </div>
+      </div>
+    </div>
+  );
 }

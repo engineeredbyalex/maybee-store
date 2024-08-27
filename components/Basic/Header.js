@@ -26,8 +26,8 @@ export default function Header() {
   const menuRef = useRef(null);
 
   // Toggle functions for header and login
-  const toggleHeader = () => setHeaderToggle(prev => !prev);
-  const toggleLogin = () => setLoginToggle(prev => !prev);
+  const toggleHeader = () => setHeaderToggle((prev) => !prev);
+  const toggleLogin = () => setLoginToggle((prev) => !prev);
 
   // Effect to close header on large screens
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function Header() {
         delay: 1,
       });
       gsap.to(".header", {
-        height: "8vh",
+        height: "72px",
       });
       gsap.to(".fill_elements", {
         color: "#252525",
@@ -104,7 +104,7 @@ export default function Header() {
       <Banner />
       <div className="header">
         {/* Main header content */}
-        <div className="h-[8vh] px-10 flex items-center justify-between">
+        <div className="h-[72px] px-10 flex items-center justify-between">
           {/* Logo */}
           <div className="w-1/4 flex items-center justify-start">
             <Link href="/">
@@ -114,43 +114,49 @@ export default function Header() {
           {/* Desktop navigation */}
           <nav className="lg:w-1/2 hidden gap-5 lg:flex items-center justify-center">
             <Link href="/">
-              <h5 className="fill_elements">Acasă</h5>
+              <h6 className="fill_elements font-normal">Acasă</h6>
             </Link>
             <Link href="/products">
-              <h5 className="fill_elements">Produse</h5>
-            </Link>
-            <Link href="/catalog">
-              <h5 className="fill_elements">Catalog</h5>
+              <h6 className="fill_elements font-normal">Produse</h6>
             </Link>
             <Link href="/blog">
-              <h5 className="fill_elements">Blog</h5>
+              <h6 className="fill_elements font-normal">Blog</h6>
             </Link>
             <Link href="/despre_noi">
-              <h5 className="fill_elements">Despre noi</h5>
+              <h6 className="fill_elements font-normal">Despre noi</h6>
             </Link>
             <Link href="/contact">
-              <h5 className="fill_elements">Contact</h5>
+              <h6 className="fill_elements font-normal">Contact</h6>
             </Link>
           </nav>
           {/* User actions */}
           <div className="lg:w-1/4 gap-4 flex items-center justify-end">
             {/* Search button */}
-            <Link href="/search" className="fill_elements">
+            <Link href="/search" className="fill_elements font-normal">
               <HiOutlineSearch size={24} />
             </Link>
             {/* Login button */}
             <button onClick={toggleLogin} className="fill_elements">
-              <span className="hidden lg:flex fill_elements"><h5>Cont</h5></span>
+              <span className="hidden lg:flex fill_elements font-normal">
+                <h6>Cont</h6>
+              </span>
               <HiOutlineUser className="lg:hidden" size={24} />
             </button>
             {/* Cabinet button */}
             <Link href="/cabinet" className="fill_elements">
-              <span className="hidden lg:flex fill_elements"><h5>Cabinet</h5></span>
+              <span className="hidden lg:flex fill_elements font-normal">
+                <h6>Cabinet</h6>
+              </span>
               <HiOutlineHeart className="lg:hidden" size={24} />
             </Link>
             {/* Cart button */}
-            <Link href="/cart" className="fill_elements flex items-center justify-center gap-2">
-              <span className="hidden lg:flex fill_elements"><h5>Coș</h5></span>
+            <Link
+              href="/cart"
+              className="fill_elements flex items-center justify-center gap-2"
+            >
+              <span className="hidden lg:flex fill_elements font-normal">
+                <h6>Coș</h6>
+              </span>
               <HiOutlineShoppingCart
                 className="lg:hidden fill_elements"
                 size={24}
@@ -170,30 +176,28 @@ export default function Header() {
         </div>
         {/* Mobile navigation */}
         <div
-          className={`lg:hidden overflow-hidden ${headerToggle ? "max-h-[calc(100vh-10vh)]" : "max-h-0"
-            }`}
+          className={`lg:hidden overflow-hidden ${
+            headerToggle ? "max-h-[calc(100vh-10vh)]" : "max-h-0"
+          }`}
         >
           <div
             ref={menuRef}
             className="gap-5 mt-[35%] flex flex-col items-center justify-center"
           >
             <Link href="/" className="mobile_menu">
-              <h4 className="fill_elements">Acasă</h4>
+              <h6 className="fill_elements font-normal">Acasă</h6>
             </Link>
             <Link href="/products" className="mobile_menu">
-              <h4 className="fill_elements">Produse</h4>
-            </Link>
-            <Link href="/catalog" className="mobile_menu">
-              <h4 className="fill_elements">Catalog</h4>
+              <h6 className="fill_elements font-normal">Produse</h6>
             </Link>
             <Link href="/blog" className="mobile_menu">
-              <h4 className="fill_elements">Blog</h4>
+              <h6 className="fill_elements font-normal">Blog</h6>
             </Link>
             <Link href="/aboutUs" className="mobile_menu">
-              <h4 className="fill_elements">Despre noi</h4>
+              <h6 className="fill_elements font-normal">Despre noi</h6>
             </Link>
             <Link href="/contact" className="mobile_menu">
-              <h4 className="fill_elements">Contact</h4>
+              <h6 className="fill_elements font-normal">Contact</h6>
             </Link>
           </div>
         </div>

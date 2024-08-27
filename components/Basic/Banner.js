@@ -26,7 +26,7 @@ export default function Banner() {
     }, []);
 
     return (
-        <div className="w-full h-auto">
+        <div className="w-full h-[36px] absolute top-0">
             <div className="bg-[#252525] text-white w-screen py-2 text-center flex items-center justify-center">
                 <p className="font-extralight">{bannerText || "Banner not Found"}</p>
             </div>

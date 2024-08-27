@@ -22,6 +22,7 @@ import NewProducts from "@/components/sections/Products";
 import OrderProcess from "@/components/sections/Order";
 // 
 import CategoriesSection from "@/components/sections/Categories";
+import Reviews from "@/components/sections/Reviews";
 
 
 export default function HomePage({ newProducts, wishedNewProducts }) {
@@ -50,8 +51,9 @@ export default function HomePage({ newProducts, wishedNewProducts }) {
       <Header />
       <Landing />
       <NewProducts products={newProducts} wishedProducts={wishedNewProducts} />
-      <OrderProcess />
       <CategoriesSection />
+      <Reviews/>
+      <OrderProcess />
     </div>
   );
 }

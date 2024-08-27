@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,44 +6,40 @@ body {
   @apply m-0 p-0 overflow-x-hidden bg-[#FFFEF2];
 }
 
-.playfair {
-  font-family: "Playfair Display", serif;
-}
 input {
   @apply w-full bg-transparent text-[#666666]  border-b border-[#666666] focus:border-none;
 }
 
 h1 {
-  @apply text-h1;
+  @apply text-[2.5rem] lg:text-[3.5rem] leading-[120%];
 }
 
 h2 {
-  @apply text-h2;
+  @apply text-[2.25rem] lg:text-[3rem] leading-[120%];
 }
 
 h3 {
-  @apply text-h3;
+  @apply text-[2rem] lg:text-[2.5rem] leading-[120%];
 }
 
 h4 {
-  @apply text-h4;
+  @apply text-[1.25rem] lg:text-[1.5rem] leading-[120%];
 }
 
 h5 {
-  @apply text-h5;
+  @apply text-[1.125rem] lg:text-[1.25rem] leading-[120%];
 }
 h6 {
-  @apply text-h6;
+  @apply text-[1rem] lg:text-[1.125rem] leading-[150%];
 }
 
-p {
-  @apply text-p;
-}
 .header {
   background-color: #fffef2;
-  height: 8vh;
+  height: 72px;
   width: 100%;
   overflow: hidden;
+  position: absolute;
+   top: 36px;
 }
 
 .transition {
